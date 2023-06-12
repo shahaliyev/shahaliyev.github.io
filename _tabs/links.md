@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-link
-order: 5
+order: 6
 ---
 
 Each item below changed my life for the better. I consistently update this page.
