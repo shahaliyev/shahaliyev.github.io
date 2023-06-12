@@ -12,15 +12,17 @@ Books
 Before compiling this short list, I went through the titles of classics and realized how uneducated I was. What is here is rather symbolic and sometimes less known.
 
 *   Beowulf (Seamus Heaney translation)
-*   David Herbert Donald - Lincoln (biography)
-*   Guy de Maupassant - The Horla (short stories)
-*   Jorge Luis Borges - The Aleph (short stories)
-*   Stendhal - The Life of Henry Brulard
 *   [Plutarch - Parallel Lives](https://penelope.uchicago.edu/Thayer/e/roman/texts/plutarch/lives/home.html)
 *   [Michel de Montaigne - Essays](https://hyperessays.net/essays/toc/)
-*   Irvin Yalom - Becoming Myself (essays)
+*   [Miguel de Cervantes - Don Quixote](https://www.gutenberg.org/ebooks/996)
 *   [Honore de Balzac - Gobseck (novella)](https://www.gutenberg.org/files/1389/1389-h/1389-h.htm)
+*   Stendhal - The Life of Henry Brulard
 *   [Lev Tolstoy - The Death of Ivan Ilyich (novella)](http://az.lib.ru/t/tolstoj_lew_nikolaewich/text_0136.shtml)
+*   Guy de Maupassant - The Horla (short stories)
+*   Jorge Luis Borges - The Aleph (short stories)
+*   Irvin Yalom - Becoming Myself (essays)
+*   David Herbert Donald - Lincoln (biography)
+*   Stephen Jay Greenblatt - The Swerve
 
 Essays, Articles, Speeches, Transcripts
 ---------------------------------------
@@ -41,6 +43,7 @@ Essays, Articles, Speeches, Transcripts
 *   [George Orwell - Politics and the English Language](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
 *   [Harold Pinter - Art, Truth & Politics (Nobel Lecture)](https://www.nobelprize.org/prizes/literature/2005/pinter/25621-harold-pinter-nobel-lecture-2005/)
 *   Andre Maurois - Open Letter to a Young Man
+*   [David Brooks - Who Would Plutarch Write About Today?](https://www.youtube.com/watch?v=u36Ls6o9nWM)
 
 Web Pages
 ---------
@@ -84,10 +87,12 @@ It is easier to get educated in cinema than in literature: when a usual movie ca
 *   Hidden (2005)
 *   There Will Be Blood (2007)
 *   No Country for Old Men (2007)
+*   Beowulf (2007)
 *   In Bruges (2008)
 *   The Hunt (2012)
 *   Paterson (2016)
 *   First Reformed (2017)
 *   The Father (2020)
+*   Everything Everywhere All at Once (2022)
 
 I wrote two essays on Stanley Kubrick movies: [Three Duels of Barry Lyndon](/posts/barry-lyndon) and [Full Metal Jacket: Duality of Human Nature and Birth of Empathy](/posts/fmj-empathy).

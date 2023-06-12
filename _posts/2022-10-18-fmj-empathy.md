@@ -36,7 +36,7 @@ There was rain today, and as always, it created a pond in front of our building�
 
 Several days ago, when it previously rained, I noticed that the security guard was removing rainwater from the pond with a shovel he had found somewhere. It was not a part of his job to take care of such matters. As it was early morning, no one else was around, so I assumed that he had made this decision partly because of the boredom of his profession, but mainly because of his conscience which dictated his action. He considered other people’s difficulties.
 
-It was a new security guard, and as he didn’t greet me back when I greeted him a couple of days prior, I disliked him. But after the “pond episode”, I reevaluated my judgment and started to respect him (though I still don’t greet him). Wasn’t his behavior an act of empathy as well? — now I ask myself.
+It was a new security guard, and as he didn’t greet me back when I greeted him a couple of days prior, I disliked him. But after the “pond episode”, I reevaluated my judgment and started to respect him (though I still don’t greet him). _Wasn’t his behavior an act of empathy as well?_ — now I ask myself.
 
 ## Footnotes
 
