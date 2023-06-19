@@ -7,11 +7,11 @@ order: 5
 
 ## Jun 15, 2023
 
-Today I completed the first part of _Don Quixote_. This literaty process, starting with _Le Rouge_ in 2020 is something exceptional. I question myself repeatedly on what would have been with my life if I had started reading the correct literature earlier on, throughout my youth. Which decision I would make, which opportunities I'd make use of, who would I become? Also, would I interpret the books in a way that they'd benefit me, or was I too stupid for that?
+Today I completed the first part of _Don Quixote_. This literary process, starting with _Le Rouge_ in 2020 is something exceptional. I question myself repeatedly on what would have been with my life if I had started reading the correct literature earlier on, throughout my youth. Which decisions would I make, which opportunities would I appreciate, who would I become? Also, would I interpret the books in a way that they'd benefit me, or was I too stupid for that?
 
 I read very slowly. I know that I should not get lost in reading and act, which is more important. Still, I read very slowly.
 
-If the second part of _Don Quixote_ is better (that is what I have heard of), then I wonder how one can bypass the perfection the way Cervantes did.
+If the second part of _Don Quixote_ is better than the first (that is what I have heard of), then I wonder how one can bypass the perfection the way Cervantes did.
 
 ## Jun 12, 2023
 
