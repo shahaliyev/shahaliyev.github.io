@@ -1,0 +1,956 @@
+[
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "The Idiot",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "The Brothers Karamazov",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "Notes from the Underground",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "Possessed",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "The Devils",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "Crime and Punishment",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Fyodr Dostoevsky",
+   "title": "The House of the Dead",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Gustav Flauber",
+   "title": "Madame Bovary",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Gaius Julius Caesar",
+   "title": "Commentarii de Bello Gallico",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Stendhal",
+   "title": "Charterhouse of Parma",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Stendhal",
+   "title": "Red and Black",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Stendhal",
+   "title": "The Life of Henry Brulard",
+   "genre": "Biography",
+   "read": true
+  },
+  {
+   "author": "Stendhal",
+   "title": "A Life of Napoleon",
+   "genre": "Biography",
+   "read": true
+  },
+  {
+   "author": "Niccolo Machiavelli",
+   "title": "The Prince",
+   "genre": "Politics",
+   "read": true
+  },
+  {
+   "title": "The Holy Quran",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "title": "The Old and New Testament",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "title": "The Torah",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "Plato",
+   "title": "Dialogues",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Plato",
+   "title": "The Republic",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Aristotle",
+   "title": "Poetics",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Aristotle",
+   "title": "Physics",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Aristotle",
+   "title": "Ethics",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Aristotle",
+   "title": "Rhetorics",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Aristotle",
+   "title": "De Anima",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Thucydides",
+   "title": "The Peloponnesian War",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Homer",
+   "title": "Iliad",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Homer",
+   "title": "Odyssey",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Herodotus",
+   "title": "Histories",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Lucretius",
+   "title": "On the Nature of Things",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Plutarch",
+   "title": "Parallel Lives",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Apuleus",
+   "title": "Metamorphoses",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Chesterton",
+   "title": "Everlasting Man",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "Virgil",
+   "title": "Aeneid",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Tacitus",
+   "title": "Annals",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Ovid",
+   "title": "Metamorphoses",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Suetonius",
+   "title": "The Twelve Caesars",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Epictetus",
+   "title": "Discourses",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Marcus Aurelius",
+   "title": "Meditations",
+   "genre": "Philosophy",
+   "read": true
+  },
+  {
+   "author": "Michael Psellus",
+   "title": "Fourteen Byzantine Rulers",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Edward Gibbon",
+   "title": "The Rise and Fall of the Roman Empire",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Plotinus",
+   "title": "The Enneads",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Eusebius",
+   "title": "Ecclesiastical History",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Boethius",
+   "title": "Consolations of Philosophy",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Pliny the Younger",
+   "title": "Letters",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Heraclitus",
+   "title": "Fragments",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "St. Augustine",
+   "title": "Confessions",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "Thomas Aquinas",
+   "title": "Summa Theologica",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "St. Francis of Assisi",
+   "title": "The Little Flowers",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "Date Alighieri",
+   "title": "Divine Comedy (Tr. By John Ciardi)",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Franco Sacchetti",
+   "title": "Novelle",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "title": "Gilgamesh",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "title": "Icelandic sagas",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "title": "Beowulf (Seamus Heaney translation)",
+   "genre": "Other",
+   "read": true
+  },
+  {
+   "title": "Song of Roland",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "C. S. Lewis",
+   "title": "Till we have faces",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Alexander Hamilton, James Madison, John Jay",
+   "title": "The Federalist Papers",
+   "genre": "Politics",
+   "read": false
+  },
+  {
+   "author": "Francis Bacon",
+   "title": "Essays",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Martin Luther",
+   "title": "Selected Works",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "John Calvin",
+   "title": "Institutio Christianae religionis",
+   "genre": "Theology",
+   "read": false
+  },
+  {
+   "author": "Michel de Montaigne",
+   "title": "Essays",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "François Rabelais",
+   "title": "Gargantua and Pantagruel",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Miguel de Cervantes",
+   "title": "Don Quixote",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "René Descartes",
+   "title": "Discourses",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Benvenuto Cellini",
+   "title": "Authobiography",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Henry Adams",
+   "title": "Education of Henry Adams",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Thomas Hobbes ",
+   "title": "The Leviathan",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Blaise Pascal",
+   "title": "Pensées",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "John Milton",
+   "title": "Paradise Lost",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "John Donne",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Williamm Shakespeare",
+   "title": "Anthony and Cleopatra",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Williamm Shakespeare",
+   "title": "Hamlet",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Williamm Shakespeare",
+   "title": "Macbeth",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Williamm Shakespeare",
+   "title": "Henry V",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Andrew Marvell",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "George Herbert",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Richard Crashaw",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Fernando Pessoa",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Baruch Spinoza",
+   "title": "Treatises",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Laurence Sterne",
+   "title": "Tristram Shandy",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Jonathan Swift",
+   "title": "Gulliver’s Travels",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Choderlos de Laclos",
+   "title": "Les Liaisons Dangereuses",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Baron de Montesquieu",
+   "title": "Persian Letters",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "John Locke",
+   "title": "Second Treatise on Government",
+   "genre": "Politics",
+   "read": false
+  },
+  {
+   "author": "Adam Smith",
+   "title": "The Wealth of Nations",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Gottfried Wilhelm Leibniz",
+   "title": "Discourse on Metaphysics",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "David Hume",
+   "title": "Everything",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Immanuel Kant",
+   "title": "Critique of Pure Reason",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Søren Kierkegaard",
+   "title": "Fear and Trembling",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Søren Kierkegaard",
+   "title": "Either\/Or",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Søren Kierkegaard",
+   "title": "Philosophical Fragments",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Alexis de Tocqueville",
+   "title": "Democracy in America",
+   "genre": "Politics",
+   "read": false
+  },
+  {
+   "author": "Johann Wolfgang von Goethe",
+   "title": "Faust",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Johann Wolfgang von Goethe",
+   "title": "Italian Journey",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Marquis de Custine",
+   "title": "Empire of the Czar",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Eric Auerbach",
+   "title": "Mimesis",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "William H. Prescott",
+   "title": "Conquest of Mexico",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Octavio Paz",
+   "title": "Labyrinths of Solitude",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Sir Karl Popper",
+   "title": "The Open Society and Its Enemies",
+   "genre": "Politics",
+   "read": false
+  },
+  {
+   "author": "Sir Karl Popper",
+   "title": "The Logic of Scientific Discovery",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Elias Canetti",
+   "title": "Crowds and Power",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Franz Kafka",
+   "title": "Metamorphosis",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Albert Camus",
+   "title": "The Myth of Sysyphus",
+   "genre": "Philosophy",
+   "read": true
+  },
+  {
+   "author": "Hunter S. Thompson",
+   "title": "Fear and Loathing in Las Vegas",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Tom Wolfe",
+   "title": "The Electric Kool-Aid Acid Test",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Leo Tolstoy",
+   "title": "War and Peace",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Leo Tolstoy",
+   "title": "Anna Karenina",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Leo Tolstoy",
+   "title": "The Death of Ivan Ilyich",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "title": "Michaelangelo’s letters",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Aleksandr Solzhenitsyn",
+   "title": "Gulag Archipelago",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "George Orwell",
+   "title": "Nineteen Eighty Four (1984)",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Robert Graves",
+   "title": "I, Claudius",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Friedrich Nietzsche",
+   "title": "Beyond Good and Evil",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Friedrich Nietzsche",
+   "title": "On the Genealogy of Morals",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Friedrich Nietzsche",
+   "title": "The Antichrist",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Friedrich Nietzsche",
+   "title": "The Gay Science",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Friedrich Nietzsche",
+   "title": "The Will to Power",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Mikhail Bulgakov",
+   "title": "Master and Margarita",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Ernest Hemingway",
+   "title": "A Farewell to Arms",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Ernest Hemingway",
+   "title": "The Sun also Rises",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Guy de Maupassant",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Marcel Proust",
+   "title": "In Search of Lost Time",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "William Faulkner",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Thomas Mann",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Somerset Maugham",
+   "title": "The Moon and Sixpence",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Giuseppe di Lampedusa",
+   "title": "Theatre",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "John Steinbeck ",
+   "title": "Of Mice and Men",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "John Steinbeck ",
+   "title": "The Grapes of Wrath",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Anton Chekhov",
+   "title": "short stories",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Jorge Luis Borges",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Sophocles",
+   "genre": "Poetry",
+   "read": false
+  },
+  {
+   "author": "Henry Miller",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Kurt Vonnegut",
+   "title": "Slaughterhouse-Five",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Boris Pasternak",
+   "title": "Doctor Zhivago",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Ray Bradbury",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Isaac Asimov",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "James Joyce",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Andrei Bely",
+   "title": "St. Petersburg",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Giovanni Baccaccio",
+   "title": "Decameron",
+   "genre": "Philosophy",
+   "read": false
+  },
+  {
+   "author": "Jerome David Salinger",
+   "title": "The Catcher in the Rye",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Anna Frank",
+   "title": "Anna Frank's diary",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Anna Dostoevskaya",
+   "title": "Dostoevsky",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Giuseppe di Lampedusa",
+   "title": "Il Gattopardo",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Vladimir Nabokov",
+   "title": "Lectures",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Vladimir Nabokov",
+   "title": "Lolita",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Vladimir Nabokov",
+   "title": "Speak, Memory",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Cormac Mccarthy",
+   "title": "Blood Meridian",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Joseph Brodsky",
+   "title": "Less Than One",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "Father Goriot",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "The Lost Illusions",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "Gobseck",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "The Secrets of Princesse de Cadignan",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "The Elixir of Life",
+   "genre": "Fiction",
+   "read": true
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "The Magic Skin",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Honore de Balzac",
+   "title": "The Splendors And Miseries Of Courtesans",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Stefan Zweig",
+   "read": false
+  },
+  {
+   "author": "Stefan Zweig",
+   "title": "Stendhal",
+   "genre": "Fiction",
+   "read": false
+  },
+  {
+   "author": "Andre Maurois",
+   "title": "novellas",
+   "genre": "Biography",
+   "read": true
+  },
+  {
+   "author": "Andre Maurois",
+   "title": "Balzac",
+   "genre": "Biography",
+   "read": false
+  },
+  {
+   "author": "Andre Maurois",
+   "title": "History of France",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Tadeusz Swietochowsky",
+   "title": "Azerbaijan and Russia",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Stephen Greenblatt",
+   "title": "The Swerve",
+   "genre": "Other",
+   "read": false
+  },
+  {
+   "author": "Lev Gumilev",
+   "title": "Ancient Turks",
+   "genre": "History",
+   "read": false
+  },
+  {
+   "author": "Lev Gumilev",
+   "title": "From Rus to Russia",
+   "genre": "History",
+   "read": false
+  }
+ ]
