@@ -18,7 +18,7 @@ window.onscroll = function() {
 };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
     scrollBtn.style.display = "block";
   } else {
     // Hide the button when the user is at the top of the page

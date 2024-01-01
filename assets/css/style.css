@@ -155,21 +155,22 @@ figcaption {
   right: 20px;
   background-color: transparent;
   border-radius: 50%;
-  border: 3px solid #556a9a;
+  border: 2px solid #888;
   font-size: 15px;
-  width: 50px; /* Set the width and height to make it a full circle */
-  height: 50px; /* Equal values for a full circle */
-  padding: 0; /* Remove padding to maintain circle shape */
+  width: 50px; 
+  height: 50px; 
+  padding: 0; 
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  /* opacity: 0.7; */
-  color: #556a9a;
+  color:#888;
+  opacity: 0.5;
 }
 
 #scroll-btn:hover {
-  /* opacity: 1; */
+  opacity: 1;
   color: white;
-  background-color: #556a9a;
+  background-color: #888;
+
 }
 
 a, button {

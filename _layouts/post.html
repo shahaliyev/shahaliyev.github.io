@@ -3,7 +3,7 @@ layout: default
 ---
 
 <head>
-  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
 </head>
 <article class="post">
   <div class="title">
@@ -13,3 +13,5 @@ layout: default
 
   {{ content }}
 </article>
+
+
