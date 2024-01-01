@@ -1,0 +1,21 @@
+---
+layout: default
+title: Writings
+css: /assets/css/post.css
+---
+
+<!-- # Writings -->
+
+<article>
+  <p style="text-align: center;">NO WRITINGS TO SHOW</p>
+</article>
+
+
+{% for post in site.posts %}
+<div class="writings">
+  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  <span class="post-meta">{{ post.date | date: "%b %e, %Y" }}</span>
+</div>
+
+{% endfor %}
+

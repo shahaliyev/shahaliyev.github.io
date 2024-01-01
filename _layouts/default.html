@@ -1,0 +1,54 @@
+<!-- _layouts/default.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <script src="https://kit.fontawesome.com/7ff4944b00.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if page.css %}
+    <link rel="stylesheet" href="{{ page.css | relative_url }}">
+  {% endif %}
+  {% seo %}
+
+</head>
+
+<body>
+  <header>
+    <div class="site-info">
+      <p class="logo"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
+      <!-- <p class="site-description">{{ site.description }}</p> -->
+    </div>
+    <nav>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/writings.html' | relative_url }}">Writings</a>
+
+    </nav>
+  </header>
+
+  <main>
+    {{ content }}
+  </main>
+
+
+  <!-- <button id="scroll-btn">
+    <i class="fas fa-arrow-up"></i>
+  </button> -->
+
+
+  <footer>
+    <p>Ismayil Shahaliyev &copy; {{ "now" | date: "%Y" }}</p>
+    <p>
+      <a href="{{ '/feed.xml' | relative_url }}">Subscribe to RSS Feed </a> | Created with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+    </p>
+  </footer>
+
+  <button id="scroll-btn" onclick="scrollToTop()">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>  
+
+  <script src="{{ '/assets/app/app.js' | relative_url }}"></script>
+</body>

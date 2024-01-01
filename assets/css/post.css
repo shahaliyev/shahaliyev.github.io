@@ -1,0 +1,41 @@
+.post .title {
+  display: flex;
+  flex-direction: column;
+  text-align: center; 
+  align-items: center;
+}
+
+.post h1 {
+  margin-bottom: 0;
+}
+
+.post-meta {
+  font-family: 'Roboto', sans-serif;
+  color: #888;
+  display: block; 
+}
+
+.post a {
+  color: #6275a0;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+.post a:hover {
+  color: #35425f;
+}
+
+
+.writings {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  font-family: Roboto, sans-serif;
+}
+.writings a {
+  text-decoration: none;
+  color: #6275a0;
+  font-weight: 600;
+}
+.writings a:hover {
+  color:#cfd5e3;
+}
