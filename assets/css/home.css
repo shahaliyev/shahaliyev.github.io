@@ -44,6 +44,11 @@
   color: #0077b5;
 }
 
+
+.social-icons .fab.fa-instagram:hover {
+  color: #d11686;
+}
+
 .social-icons .fas.fa-rss:hover {
   color: #d05a0cca;
 }

@@ -5,6 +5,14 @@ description: Ismayil Shahaliyev's essays
 css: /assets/css/post.css
 ---
 
+<h1>{{ page.title }}</h1>
+
+<article>
+  <p>
+    My computer science blog posts, which I published on the Medium platform during my master's studies, along with my writings predating 2024, can be found in my <a href="https://github.com/shahaliyev/writings_archive">writings archive</a>.
+  </p>
+</article>
+
 {% for post in site.posts %}
 <div class="writings">
   <a href="{{ post.url | relative_url }}">{{ post.title }}</a>

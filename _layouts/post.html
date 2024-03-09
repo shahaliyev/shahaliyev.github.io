@@ -13,7 +13,12 @@ layout: default
 <article class="post">
   <div class="title">
     <h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
-    <p class="post-meta">Published on {{ page.date | date: "%b %e, %Y" }}</p>
+    <p class="post-meta">
+      {{ page.date | date: "%b %e, %Y" }} ·
+      {% assign words = content | number_of_words %}
+      {{ words }} words · 
+      {{ words | divided_by:180 }} min read
+  </p>  
   </div>
 
   {{ content }}
