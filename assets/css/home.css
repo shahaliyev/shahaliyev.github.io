@@ -1,6 +1,9 @@
 #homepage-content {
   text-align: center;
 }
+article p {
+  text-align: justify;
+}
 
 #profile-image {
   margin-top: 20px;

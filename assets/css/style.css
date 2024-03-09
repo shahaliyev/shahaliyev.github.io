@@ -49,15 +49,9 @@ nav a:hover {
 }
 
 main {
-  max-width: 600px; 
-  margin: 5px auto;
-  padding: 0 5px;
-}
-
-
-article p, li {
-  font-family: 'Roboto', sans-serif;
-  text-align: justify;
+  max-width: 700px; 
+  margin: 0px auto;
+  padding: 0 0px;
 }
 
 
@@ -68,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
 }
 h1 {
-  font-size: 2.5em;
+  font-size: 2.7em;
 }
 h2 {
   font-size: 1.9em;
@@ -102,8 +96,13 @@ img {
   height: auto; 
 }
 
-p, li, .footnotes li {
-  font-size: 1em;
+p, li, .table {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+}
+
+.footnotes li {
+  font-size: 0.9em;
 }
 
 
@@ -177,6 +176,21 @@ figcaption {
   background-color: #888;
 
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f2f2f2;
+}
+
 
 a, button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
