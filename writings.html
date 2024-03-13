@@ -13,11 +13,11 @@ css: /assets/css/post.css
   </p>
 </article>
 
+<div class = "writings">
 {% for post in site.posts %}
-<div class="writings">
-  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-  <span class="post-meta">{{ post.date | date: "%b %e, %Y" }}</span>
-</div>
-
+  <div class="writing">
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="post-meta">{{ post.date | date: "%b %e, %Y" }}</span>
+  </div>
 {% endfor %}
-
+</div>

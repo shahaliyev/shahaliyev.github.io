@@ -25,19 +25,33 @@
   color: #35425f;
 }
 
-
 .writings {
+  display: flex;
+  flex-direction: column;
+ }
+.writing {
   display: flex;
   gap: 1em;
   justify-content: space-between;
   font-family: Roboto, sans-serif;
   font-size: 1.2em;
 }
-.writings a {
+.writing a {
   text-decoration: none;
   color: #6275a0;
   font-weight: 600;
 }
-.writings a:hover {
+.writing a:hover {
   color:#cfd5e3;
+}
+
+
+@media screen and (max-width: 700px) {
+  .writings {
+    gap: 1em;
+   }
+  .writing a {
+    max-width: 270px;
+   }
+
 }
