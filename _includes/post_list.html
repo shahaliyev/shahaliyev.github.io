@@ -1,0 +1,11 @@
+<div class="writings">
+    {% for post in site.posts %}
+        {% if post.lang == page.lang %}
+            <div class="writing">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <span class="post-meta">{{ post.date | date: "%b %e, %Y" }}</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+  

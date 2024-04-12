@@ -9,15 +9,10 @@ css: /assets/css/post.css
 
 <article>
   <p>
-    My computer science blog posts, which I published on the Medium platform during my master's studies, along with my writings predating 2024, can be found in my <a href="https://github.com/shahaliyev/writings_archive">writings archive</a>.
+    Toggle the website language above to see my writings in Azerbaijani. My computer science blog posts, which I published on the Medium platform during my master's studies, along with my writings predating 2024, you can find in my <a href="https://github.com/shahaliyev/writings_archive">writings archive</a>. 
   </p>
 </article>
 
-<div class = "writings">
-{% for post in site.posts %}
-  <div class="writing">
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    <span class="post-meta">{{ post.date | date: "%b %e, %Y" }}</span>
-  </div>
-{% endfor %}
+{% include post_list.html %}
+
 </div>

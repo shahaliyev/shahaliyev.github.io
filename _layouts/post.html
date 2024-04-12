@@ -14,12 +14,18 @@ layout: default
   <div class="title">
     <h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
     <p class="post-meta">
-      {{ page.date | date: "%b %e, %Y" }} ·
+      {% if page.lang == "az" %}
+      {% assign months_az = "Yan,Fev,Mart,Apr,May,İyun,İyul,Avq,Sen,Okt,Noy,Dek" | split: "," %}
+        {% assign month = page.date | date: "%-m" | minus: 1 %}
+        {{ page.date | date: "%e" }} {{ months_az[month] }}, {{ page.date | date: "%Y" }} ·
+      {% else %}
+        {{ page.date | date: "%b %e, %Y" }} ·
+      {% endif %}
       {% assign words = content | number_of_words %}
-      {{ words }} words · 
-      {{ words | divided_by:250 }} min read
-  </p>  
-  </div>
+      <!-- {{ words }} words ·  -->
+      {{ words | divided_by: 250 }} {% if page.lang == "az" %} dəqiqəlik mətn {% else %} min read {% endif %}
+    </p>  
+  </div>  
 
   {{ content }}
 </article>

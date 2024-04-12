@@ -1,19 +1,19 @@
 <!-- _layouts/default.html -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
+  <title>{{ page.title | default: site.title[page.lang] }}</title>
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1QRRQG9BM"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-S1QRRQG9BM');
+    gtag('config', '{{ site.google_analytics }}');
   </script>
 
   <!-- Icons  -->
@@ -33,13 +33,17 @@
 <body>
   <header>
     <div class="site-info">
-      <p class="logo"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
+      <p class="logo">
+        {% if page.lang == "en" %}
+          <a href="/">{{ site.title[page.lang] }}</a>
+        {% else %}
+          <a href="{{ page.lang | relative_url }}">{{ site.title[page.lang] }}</a>
+        {% endif %}
+      </p>
       <!-- <p class="site-description">{{ site.description }}</p> -->
     </div>
-    <nav>
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/writings.html' | relative_url }}">Writings</a>
-    </nav>
+    
+  {% include navbar.html %}
   </header>
 
   <main>
@@ -47,10 +51,7 @@
   </main>
 
   <footer>
-    <p>Ismayil Shahaliyev &copy; {{ "now" | date: "%Y" }}</p>
-    <p>
-      <a href="{{ '/feed.xml' | relative_url }}">Subscribe to RSS Feed </a> | Created with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
-    </p>
+    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a></p>
   </footer>
 
   <button id="scroll-btn" onclick="scrollToTop()">
