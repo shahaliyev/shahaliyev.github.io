@@ -1,0 +1,37 @@
+<div class="toc">
+    <h2 class="toc-heading">
+        {% if page.lang == "en" %}
+            Table of Contents
+        {% elsif page.lang == "az" %}
+            Mündəricat  
+        {% endif %}
+    </h2>
+    <ul>
+        {% capture rendered_content %}{{ page.content | markdownify }}{% endcapture %}
+        {% assign headers = rendered_content | split: '<h' %}
+
+        {% for header in headers %}
+        {% if header contains '</h1>' or header contains '</h2>' or header contains '</h3>' or header contains '</h4>' or header contains '</h5>' or header contains '</h6>' %}
+            {% assign parts = header | split: '>' %}
+            {% assign tag_complete = 'h' | append: parts[0] %}
+            {% assign header_info = parts[1] | split: '</' %}
+            {% assign header_text = header_info[0] %}
+            {% assign header_level = tag_complete | slice: 1, 1 %}
+            {% assign id_index = tag_complete | split: 'id="' %}
+            {% if id_index.size > 1 %}
+            {% assign id_part = id_index[1] | split: '"' %}
+            {% assign header_id = id_part[0] %}
+            {% endif %}
+            <li class="toc-item toc-h{{ header_level }}"><a href="#{{ header_id }}">{{ header_text }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<style>
+    .toc ul {
+        border: solid 1px black;
+        padding: 1em;
+        list-style: none;
+    }
+</style>

@@ -1,13 +1,9 @@
 /* assets/css/style.css */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-
+html {
+  scroll-behavior: smooth;
+}
 
 body, header, footer {
   background-color: #fdfdfd; 
@@ -58,7 +54,7 @@ main {
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Lato", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   /* text-transform: uppercase; */
   color: #403f3f;
   margin-bottom: 10px;
@@ -98,15 +94,19 @@ img {
   height: auto; 
 }
 
+
 p, li, .table {
   font-family: 'Roboto', sans-serif;
   font-size: 1.2em;
 }
 
+ol, ol li {
+  font-size: 1em; 
+}
+
 .footnotes li {
   font-size: 0.9em;
 }
-
 
 
 .logo a {
