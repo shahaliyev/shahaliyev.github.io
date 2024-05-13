@@ -155,6 +155,13 @@ figcaption {
   margin-top: 5px;
 }
 
+.inline-figure {
+  max-width:300px; 
+  margin: 0 auto;
+  float:left; 
+  padding: 1em 1em 1em 0px;
+}
+
 #scroll-btn {
   display: none;
   position: fixed;
@@ -199,6 +206,11 @@ a, button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@media screen and (max-width: 568px) {
+  .inline-figure {
+    float: none;
+  }
+}
 
 @media screen and (max-width: 768px) {
   header {
