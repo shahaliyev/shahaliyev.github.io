@@ -104,8 +104,8 @@ ol, ol li {
   font-size: 1em; 
 }
 
-.footnotes li {
-  font-size: 0.9em;
+.footnotes li, .footnotes p {
+  font-size: 1em;
 }
 
 
