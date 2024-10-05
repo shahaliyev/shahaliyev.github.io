@@ -63,7 +63,11 @@ When a religious man uses the scientific method to prove the existence of god, h
 
 ## Death
 
-It is premature to judge a man's life before his demise[^3]. But we will be lost in oblivion in any case. Even if I am to die a heroic death, I will be forgotten soon enough. If I am lucky, after a hundred years, my whole emotional and rational life experience will be reduced to the memory of a couple of deeds and character traits, as if I never was real and existed only in abstraction.
+It is premature to judge a man's life before his demise.[^3] But we will be lost in oblivion in any case. Even if I am to die a heroic death, I will be forgotten soon enough. If I am lucky, after a hundred years, my whole emotional and rational life experience will be reduced to the memory of a couple of deeds and character traits, as if I never was real and existed only in abstraction.
+
+> Summer grasses,<br>
+All that remains<br>
+Of soldiers' dreams.[^4]
 
 How to deal with unlived life? How to test if I truly lived? If perchance I learned that today I will breathe my last, I wish to feel total indifference towards my own death. That indifference would emanate from understanding of a) that I did one thing truly worthwhile in my life, and b) that the world would be untouched by my death.
 
@@ -80,3 +84,5 @@ On my last day in this world, I don't want to declare my love to others and ask 
 [^2]: A good deal of misunderstanding among people comes from attributing different shades of meaning to the same word, or not using the precise word due to the lack of vocabulary. Sometimes I feel like there exists only a unique combination of words to express my thoughts as efficiently and as accurately as possible. And even in that case, I doom myself to be misunderstood by the mass which neglects vocabulary.
 
 [^3]: Read [Montaigne's essay](https://hyperessays.net/essays/let-others-judge-of-our-happiness-after-our-death/) or [The Life of Otho](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/Otho*.html) for elaboration.
+
+[^4]: There are different translations of this haiku by Bashō.
