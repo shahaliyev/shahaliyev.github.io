@@ -8,7 +8,7 @@ We read, but what we read isn't merely the writing of an author anymore. We read
 
 Books are for the refinement of our experiences and should prepare us for life—action. In books, we cannot find answers to the most important questions of life, for no one knows the answer. Famous writers are no more than talented showmen who have mastered their craft — the craft of word, structure of language, lyrical flow of sentences, rhythm of syllables, consonants, vowels. The main purpose of literature is to entertain, soothe us, or rush the blood in our veins. We find solace in the novels of Balzac or Stendhal with the hope of understanding the “springs of society” (as Maurois would put it), or living an elevated, passionate life. We desperately hope that their stories will finally disillusion us, when in reality, because of our erroneous reckoning, they do the opposite and impose on us an unrealistic view of the world. One should realize: the eighteenth century French morals, confined by the experience, imagination, and complexity of its author’s character are nothing but distortion of reality. Nabokov didn’t have false expectations of literature:
 
->[^4] We turn to the storyteller for entertainment, for mental stimulation of the simplest kind, for emotional involvement, for the pleasure of wandering in some distant regions of space and time. A slightly different, though not necessarily higher, cast of mind seeks teachers in writers. […] Unfortunately, I know people who read French and Russian novelists in order to find out something about life in gay Paris or in sad Russia.
+>[^1] We turn to the storyteller for entertainment, for mental stimulation of the simplest kind, for emotional involvement, for the pleasure of wandering in some distant regions of space and time. A slightly different, though not necessarily higher, cast of mind seeks teachers in writers. […] Unfortunately, I know people who read French and Russian novelists in order to find out something about life in gay Paris or in sad Russia.
 
 Knowledge propagates through time, and authors I read have already studied classics in great depth. Not only studied, but purified. Not only purified, but opposed. Not only opposed, but rejected. Does it make someone a better man if he has studied the complete oeuvre of Plutarch or Seneca? Isn’t it obvious that in Montaigne I can find both the refined Plutarch *and* Seneca? Or that the whole knowledge corpus of humanity sums up to fifty ideas, being told and retold, over and over and over again in different forms and mediums?
 
@@ -47,7 +47,7 @@ I left this essay alone for several days to come back and look at it with a fres
 I will publish this essay which disgusts me with its half-baked paragraphs. There is nothing in my writing that I am certain about, yet my sentences claim confidence. I am afraid of misleading someone to my perplexed understanding of reality, but I shouldn't assume more self-importance than I deserve, and the impact I can have. I have already installed wiring around the hazardous void of my thoughts, and what I write is nothing but a checkpoint to describe my intellectual capacity in some region of time and space.
 
 
-> The Moving Finger writes; and, having writ [^1]<br>
+> The Moving Finger writes; and, having writ [^4]<br>
 Moves on: nor all thy Piety nor Wit<br>
 Shall lure it back to cancel half a Line,<br>
 Nor all thy Tears wash out a Word of it.<br>
@@ -58,10 +58,11 @@ I draft the following lines: *In a man dozes a seed of greatness and he has no i
 
 ### Footnotes
 
-[^1]: [*Rubáiyát*](https://www.gutenberg.org/cache/epub/246/pg246-images.html), Omar Khayyam (translated by [Edward FitzGerald](https://en.wikipedia.org/wiki/Edward_FitzGerald_(poet))) 
+[^1]: *Lectures on Literature*, Vladimir Nabokov (1980)
 
 [^2]: [*Blaise Pascal*](https://plato.stanford.edu/archives/fall2015/entries/pascal), Desmond Clarke, The Stanford Encyclopedia of Philosophy (Fall 2015 Edition), Edward N. Zalta (ed.)
 
 [^3]: *The Books in My Life*, Henry Miller (1952)
 
-[^4]: *Lectures on Literature*, Vladimir Nabokov (1980)
+[^4]: [*Rubáiyát*](https://www.gutenberg.org/cache/epub/246/pg246-images.html), Omar Khayyam (translated by [Edward FitzGerald](https://en.wikipedia.org/wiki/Edward_FitzGerald_(poet))) 
+
