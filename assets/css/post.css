@@ -30,9 +30,9 @@
   flex-direction: column;
  }
 .writing {
-  display: flex;
-  gap: 1em;
-  justify-content: space-between;
+  /* display: flex; */
+  /* gap: 1em; */
+  /* justify-content: space-between; */
   font-family: Roboto, sans-serif;
   font-size: 1.2em;
 }
@@ -42,7 +42,7 @@
   font-weight: 600;
 }
 .writing a:hover {
-  color:#cfd5e3;
+  color:#2a3960;
 }
 
 

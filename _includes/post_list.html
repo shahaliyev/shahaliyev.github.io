@@ -4,14 +4,14 @@
       {% if post.lang == page.lang %}
         <div class="writing">
           <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <span class="post-meta">
+          <!-- <span class="post-meta">
             {% if post.lang == "az" %}
               {% assign month = post.date | date: "%-m" | minus: 1 %}
               {{ post.date | date: "%e" }} {{ months_az[month] }}, {{ post.date | date: "%Y" }}
             {% else %}
               {{ post.date | date: "%b %e, %Y" }}
             {% endif %}
-          </span>
+          </span> -->
         </div>
       {% endif %}
     {% endfor %}
