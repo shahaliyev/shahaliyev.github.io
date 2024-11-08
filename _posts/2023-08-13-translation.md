@@ -2,9 +2,7 @@
 title: Problem with Azerbaijani Translations
 ---
 
-{% info %}
-I usually avoid reading translations into Azerbaijani language. The main problem is that the books are often translated not directly from their original tongue, but from their Russian language translations. Below is one specific example (out of possible many) excerpted from my earlier essay, demonstrating one issue (out of possible many) with such "second-hand" translations.
-{% endinfo %}
+{% include info.html content='I usually avoid reading translations into Azerbaijani language. The main problem is that the books are often translated not directly from their original tongue, but from their Russian language translations. Below is one specific example (out of possible many) excerpted from my earlier essay, demonstrating one issue (out of possible many) with such "second-hand" translations.' %}
 
 There is no easy translation of the word _честолюбие_ even to english. It is translated as _ambition_ as far as I know, when the synonym/analogue _амбиция_ has a subtle shade in Russian languge. Yet let's try to translate the word _честолюбие_ into Azerbaijani. Isn't it _şöhrətpərəstlik_, as noted in [online vocabularies](https://obastan.com/%D0%A7%D0%95%D0%A1%D0%A2%D0%9E%D0%9B%D0%AE%D0%91%D0%98%D0%95/874951/?l=az)? But then тщеславие (vanity) is [also](https://obastan.com/%D1%82%D1%89%D0%B5%D1%81%D0%BB%D0%B0%D0%B2%D0%B8%D0%B5/99852/?l=az) _şöhrətpərəstlik._
 

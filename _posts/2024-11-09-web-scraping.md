@@ -3,9 +3,7 @@ title: Introduction to Web Scraping
 description: General Introduction to Web Scraping (theory and code with Python)
 ---
 
-{% info %}
-The following material was initially prepared as a lecture for <strong>ENCE 3503: Data & Information Engineering (Fall 2024)</strong> course at ADA University.
-{% endinfo %}
+{% include info.html content="The following material was initially prepared as a lecture for <strong>ENCE 3503: Data & Information Engineering (Fall 2024)</strong> course at ADA University." %}
 
 <a target="_blank" href="https://colab.research.google.com/github/shahaliyev/shahaliyev.github.io/blob/main/assets/nb/intro_to_web_scraping_post.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
