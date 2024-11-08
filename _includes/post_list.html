@@ -1,18 +1,34 @@
 <div class="writings">
-    {% assign months_az = "Yan,Fev,Mart,Apr,May,İyun,İyul,Avq,Sen,Okt,Noy,Dek" | split: "," %}
-    {% for post in site.posts %}
-      {% if post.lang == page.lang %}
-        <div class="writing">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <!-- <span class="post-meta">
-            {% if post.lang == "az" %}
-              {% assign month = post.date | date: "%-m" | minus: 1 %}
-              {{ post.date | date: "%e" }} {{ months_az[month] }}, {{ post.date | date: "%Y" }}
-            {% else %}
-              {{ post.date | date: "%b %e, %Y" }}
-            {% endif %}
-          </span> -->
-        </div>
-      {% endif %}
-    {% endfor %}
-</div>  
+  {% assign months_az = "Yan,Fev,Mart,Apr,May,İyun,İyul,Avq,Sen,Okt,Noy,Dek" | split: "," %}
+  {% for post in site.posts %}
+    {% if post.lang == page.lang %}
+      <div class="writing">
+        <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+        <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
+          {% if post.lang == "az" %}
+            {% assign month = post.date | date: "%-m" | minus: 1 %}
+            {{ post.date | date: "%e" }} {{ months_az[month] }}, {{ post.date | date: "%Y" }}
+          {% else %}
+            {{ post.date | date: "%b %e, %Y" }}
+          {% endif %}
+        </time>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<style>
+  .writing .post-date {
+      display: none;
+      margin-left: 5px; 
+      font-size: 0.8em; 
+      color: #666; 
+  }
+
+  .writing:hover .post-date {
+      display: inline; 
+  }
+
+
+</style>

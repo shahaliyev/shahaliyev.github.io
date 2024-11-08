@@ -97,7 +97,7 @@ img {
 
 p, li, .table {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 ol, ol li {
@@ -205,6 +205,14 @@ th {
 a, button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 568px) {
   .inline-figure {
