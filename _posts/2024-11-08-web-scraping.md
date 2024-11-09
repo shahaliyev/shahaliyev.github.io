@@ -160,7 +160,7 @@ def can_scrape(url, user_agent='*'):
   return rp.can_fetch(user_agent, url)
 ```
 
-## Understanding Web Page Structure
+### Understanding Web Page Structure
 
 Once we read ToS and consider `robots.txt`, we can start scraping allowed web pages. The knowledge of basic web page content (generally `html`) structure is essential for that. On a browser you can right click and `inspect` the web page.
 

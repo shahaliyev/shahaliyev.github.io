@@ -1,0 +1,52 @@
+<div id="share-bar">
+    <h4 class="share-heading">Share the post:</h4>
+    <div class="share-buttons">
+        <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on Twitter">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" title="Share on LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="https://telegram.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on Telegram">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ page.url | absolute_url }}" target="_blank" title="Share on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="mailto:?subject={{ page.title | url_encode }}&body=Check out this link: {{ page.url | absolute_url }}" target="_blank" title="Share via Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit-alien"></i>
+        </a>
+        <a class="horizontal-share-buttons" href="https://www.threads.net/share?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on Threads">
+            <i class="fab fa-threads"></i>
+    </div>
+</div>
+
+<style>
+    #share-bar {
+        margin-top: 50px;
+    /* margin: 20px 0; */
+    }
+
+    .share-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .share-buttons a {
+        text-decoration: none;
+        font-size: 1.8em;
+        /* border-radius: 5px; */
+        /* background-color: #f0f0f0;
+        color: #333; */
+    }
+
+    .share-buttons a:hover {
+        
+    }
+</style>
