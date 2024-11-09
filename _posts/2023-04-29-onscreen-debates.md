@@ -1,6 +1,7 @@
 ---
 title: "Why Some Journalists Belittle Interviewees"
 description: "Why we never see a healthy debate on screen."
+category: [essay]
 ---
 
 *What is the purpose of arguing with another person?* — **reaching the truth or consensus**. *NOT* winning the argument. *NOT* bringing the opposite side to your belief system. *NOT* belittling or ridiculing the other person.

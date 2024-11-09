@@ -1,12 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+
 .post .title {
   display: flex;
   flex-direction: column;
   text-align: center; 
   align-items: center;
+  
 }
 
 .post h1 {
   margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.post h1 a {
+  color: rgb(35, 34, 34);
+  font-family: 'Lora', serif; 
+  transition: 0.3s;
+}
+.post h1 a:hover {
+  color: rgb(86, 85, 85);
 }
 
 .post-meta {
@@ -25,34 +39,7 @@
   color: #35425f;
 }
 
-.writings {
-  display: flex;
-  flex-direction: column;
- }
-.writing {
-  /* display: flex; */
-  /* gap: 1em; */
-  /* justify-content: space-between; */
-  font-family: Roboto, sans-serif;
-  font-size: 1.2em;
-}
-.writing a {
-  text-decoration: none;
-  color: #6275a0;
-  font-weight: 600;
-}
-.writing a:hover {
-  color:#2a3960;
-}
 
 
 
-@media screen and (max-width: 700px) {
-  .writings {
-    gap: 1em;
-   }
-  .writing a {
-    max-width: 270px;
-   }
 
-}

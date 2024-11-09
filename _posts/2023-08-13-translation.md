@@ -1,5 +1,6 @@
 ---
 title: Problem with Azerbaijani Translations
+category: [essay]
 ---
 
 {% include info.html content='I usually avoid reading translations into Azerbaijani language. The main problem is that the books are often translated not directly from their original tongue, but from their Russian language translations. Below is one specific example (out of possible many) excerpted from my earlier essay, demonstrating one issue (out of possible many) with such "second-hand" translations.' %}

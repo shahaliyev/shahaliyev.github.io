@@ -1,5 +1,6 @@
 ---
 title: "Three Duels of Barry Lyndon"
+category: [cinema, essay]
 ---
 
 {% include figcaption.html src="/assets/img/lyndon.jpg" alt="Drunk Scene from Stanley Kurbick's Barry Lyndon" %}

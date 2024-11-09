@@ -1,6 +1,7 @@
 ---
 title: "Full Metal Jacket: Duality of Human Nature and Birth of Empathy"
 description: "Analyzing war through the prism of humanity, empathy, and the duality of human nature."
+category: [essay, cinema]
 ---
 
 

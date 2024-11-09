@@ -49,14 +49,38 @@
 </div>
 
 <style>
-    .toc ul {
-        border: solid 1px black;
+
+    .toc {
+        border: solid 1px #cccccc;
+        background-color: #fafafa;
+        border-radius: 8px;
         padding: 1em;
-        list-style: none;
     }
 
-    .toc-h3 { padding-left: 1em; } 
-    .toc-h4 { padding-left: 2em; } 
-    .toc-h5 { padding-left: 3em; }
-    .toc-h6 { padding-left: 4em; }
+    .toc ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .toc a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        padding: 0.2em 0;
+        transition: all 0.3s;
+    }
+
+    .toc a:hover {
+        padding-left: 3px;
+        color: #0a164c;
+        background-color: #f0f3ff;
+    }
+
+    .toc-heading {margin-top: 0; }
+    .toc-h3 { padding-left: 1em; }
+    .toc-h4 { padding-left: 1.5em;  }
+    .toc-h5 { padding-left: 2em;  }
+    .toc-h6 { padding-left: 2.5em;  }
+
 </style>

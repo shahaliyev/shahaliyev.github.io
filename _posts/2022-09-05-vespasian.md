@@ -1,6 +1,7 @@
 ---
 title: An Emperor Must Die Standing
 description: You need to do what is necessary without concerning yourself with the outcome of fate.
+category: [essay]
 ---
 
 The Roman Emperor Vespasian was making tough and consequential decisions while being terminally ill in his bed. When his physician told him that it was negatively affecting his health, he said: “An emperor must die standing.”

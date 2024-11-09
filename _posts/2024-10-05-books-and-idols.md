@@ -1,5 +1,6 @@
 ---
 title: Books & Idols
+category: [essay]
 ---
 
 With the fallen zenith of the Summer sun, my reverence in front of books and great minds disappears. I realize that infinite questions, fruitless search for the meaning of life paralyze man, make him impotent to any action, and by keeping philosophers in high regard he demolishes his own greatness. Why did no one tell me that, I ask, the purpose of life was to *act*?

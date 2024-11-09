@@ -1,8 +1,27 @@
+<div class="filter-menu">
+  <button class="active" onclick="filterPosts('all')">{% if page.lang == "en" %} All {% elsif page.lang == "az" %} Bütün {% endif %}</button>
+  {% assign categories = site.posts | where: "lang", page.lang | map: 'category' | uniq %}
+  {% for category in categories %}
+    {% if category and category != "" %}
+      <button onclick="filterPosts('{{ category }}')">{{ category | capitalize }}</button>
+    {% endif %}
+  {% endfor %}
+  <button onclick="filterPosts('uncategorized')">{% if page.lang == "en" %} Uncategorized {% elsif page.lang == "az" %} Kateqoriyasız {% endif %}</button>
+</div>
+
 <div class="writings">
   {% assign months_az = "Yan,Fev,Mart,Apr,May,İyun,İyul,Avq,Sen,Okt,Noy,Dek" | split: "," %}
   {% for post in site.posts %}
     {% if post.lang == page.lang %}
-      <div class="writing">
+      {% assign post_categories = post.category %}
+      
+      {% if post_categories == nil or post_categories == "" %}
+        {% assign post_categories = "uncategorized" %}
+      {% elsif post_categories != "" and post_categories != nil %}
+        {% assign post_categories = post_categories | join: ',' %}
+      {% endif %}
+      
+      <div class="writing" data-category="{{ post_categories }}">
         <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
         <time class="post-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">
           {% if post.lang == "az" %}
@@ -17,18 +36,103 @@
   {% endfor %}
 </div>
 
-
 <style>
+
+  .filter-menu {
+      margin-bottom: 20px;
+      line-height: 2.5;
+  }
+
+  .filter-menu button {
+      margin-right: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #eee;
+      border: none;
+      border-radius: 5px;
+      line-height: 1.5;
+  }
+
+  .filter-menu button:hover {
+      background-color: #ddd;
+  }
+
+  .filter-menu button.active {
+      background-color: #44b6e7;
+      color: white;
+  }
+
+
+
+  .writings {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+  }
+  .writing {
+    font-family: Roboto, sans-serif;
+    font-size: 1.2em;
+      line-height: 1.2;
+  }
+  .writing a {
+    text-decoration: none;
+    color: #3c3d3d;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
   .writing .post-date {
       display: none;
       margin-left: 5px; 
       font-size: 0.8em; 
       color: #666; 
   }
-
   .writing:hover .post-date {
       display: inline; 
+  }
+  .writing:hover {
+    background-color:rgb(251, 246, 175);
+  }
+
+  @media screen and (max-width: 700px) {
+
   }
 
 
 </style>
+
+<script>
+  function filterPosts(category) {
+    const posts = document.querySelectorAll('.writing');
+    const buttons = document.querySelectorAll('.filter-menu button');
+
+    buttons.forEach(button => {
+      button.classList.remove('active');
+    });
+    
+    if (category === 'all') {
+      buttons[0].classList.add('active'); 
+    } else if (category === 'uncategorized') {
+      const uncategorizedButton = Array.from(buttons).find(button => {
+        return button.textContent.trim().toLowerCase() === 'uncategorized' || button.textContent.trim().toLowerCase() === 'kateqoriyasız';
+      });
+      if (uncategorizedButton) {
+        uncategorizedButton.classList.add('active');
+      }
+    } else {
+      const selectedButton = Array.from(buttons).find(button => button.textContent.trim().toLowerCase() === category);
+      if (selectedButton) {
+        selectedButton.classList.add('active');
+      }
+    }
+
+    posts.forEach(post => {
+      const categories = post.dataset.category.split(',');
+      if (category === 'all' || categories.includes(category)) {
+        post.style.display = 'block';
+      } else {
+        post.style.display = 'none';
+      }
+    });
+  }
+</script>

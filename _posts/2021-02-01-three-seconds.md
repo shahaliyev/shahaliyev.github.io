@@ -1,6 +1,6 @@
 ---
 title: "Three Seconds"
-description: ""
+description: "Dedicated to my grandfather"
 ---
 
 When I entered the empty room, instead of peace and calmness I felt discomfort — as if the lack of something necessary could also disturb the soul. What is this? — I asked — We don’t have nothing; the bare floor that we should sleep on will be too cold during winters, but the child should grow healthy. She is small, you see, she can’t grow ill.

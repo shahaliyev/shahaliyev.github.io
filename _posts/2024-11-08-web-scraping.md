@@ -1,6 +1,7 @@
 ---
 title: Introduction to Web Scraping
 description: General Introduction to Web Scraping (theory and code with Python)
+category: [computer science]
 ---
 
 {% include info.html content="The following material was initially prepared as a lecture for <strong>ENCE 3503: Data & Information Engineering (Fall 2024)</strong> course at ADA University." %}

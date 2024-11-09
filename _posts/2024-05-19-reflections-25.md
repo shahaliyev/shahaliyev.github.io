@@ -1,5 +1,6 @@
 ---
 title: Reflections for 25 Years
+category: [essay]
 ---
 
 Twenty-five is a mathematically precise moment to stop and reflect on life and beliefs. I used to hide myself from the outside world, but now that I realize how insecure all people are than what they reveal, I begin to put my shield down. With genuineness and honesty comes peace and comfort, and I am unleashed from the chains that suppress my soul. May the following lines help others to love me, ridicule me, or manipulate me (jk, only love me). It doesn't take two months until everything I write irritates me, but let the mind produce the mediocre work of now: it permits us to spot from a distant future the snapshot of our naive thoughts and desires.

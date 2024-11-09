@@ -1,5 +1,13 @@
 <div id="share-bar">
-    <h4 class="share-heading">Share the post:</h4>
+
+    <h4 class="share-heading">
+        {% if page.lang == "en" %}
+            Share the post:
+        {% elsif page.lang == "az" %}
+            Yazını paylaşın:
+        {% endif %}</h4>
+
+
     <div class="share-buttons">
         <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">
             <i class="fab fa-facebook"></i>
