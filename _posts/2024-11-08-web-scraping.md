@@ -10,7 +10,11 @@ category: [computer science]
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-Data we wish to work with are rarely available (e.g. as a `.csv` file) suiting our needs. Often we need to be proactive and obtain data ourselves. We have vast amount of web resources for that, however, manually retrieving data is a slow and not scalable process. Therefore, the automation of this task called **web scraping** will be handy in many situations.
+Data we wish to work with are rarely available (e.g. as a `.csv` file) suiting our needs. Often we need to be proactive and obtain data ourselves. We have vast amount of web resources for that, however, manually retrieving data is a slow and not scalable process. Therefore, the automation of this task called **web scraping** will be handy in many situations. 
+
+But it doesn't end here. You may even stumble upon a job announcement (as of November 2024) while "sniffing around" `robots.txt` file of big companies such as <a href='https://tripadvisor.com/'>tripadvisor.com</a>. (What is `robots.txt` will be discussed soon.)
+
+{% include figcaption.html src="/assets/img/tripadvisor.png" alt="tripadvisor.com robots.txt file job announcement" caption="<a href='https://tripadvisor.com/robots.txt'>robots.txt file of tripadvisor.com</a> with job announcement" %}
 
 {% include toc.html %}
 
@@ -23,7 +27,7 @@ Data we wish to work with are rarely available (e.g. as a `.csv` file) suiting o
 ## Legal Considerations
 
 - **Terms of Service Violation.** Some websites have ToS which prohibit web scraping, making it illegal by law.
-- **Copyright Infingement.** Scraping copyrighted data may also lead to legal repercussions.
+- **Copyright Infringement.** Scraping copyrighted data may also lead to legal repercussions.
 - **Privacy Laws.** Scraping personal and sensitive data can violate privacy regulations of different governments.
 - **Unauthorized Access.** Scraping data from not publicly available websites is basically digital trespassing and can lead to legal consequences.
 
@@ -39,7 +43,7 @@ Data we wish to work with are rarely available (e.g. as a `.csv` file) suiting o
 - Use official **APIs** if available.
 - Follow **`robots.txt`** file if available in order to not access restricted pages.
 - Get consent for using **personal/sensitive data**.
-- Scrape only **necessary data** and not burden website.
+- Scrape only **necessary data** and not burden the website.
 
 > A quick article, [Ethics in Web Scraping](https://towardsdatascience.com/ethics-in-web-scraping-b96b18136f01) by James Densmore is worth reading.
 
