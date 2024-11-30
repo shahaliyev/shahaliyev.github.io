@@ -33,7 +33,7 @@ I am bold and unwavering on that February day. I am consistent in my desire for 
 
 I write these lines exactly three months later. I don't know how to replicate that strange day. Living life guided with passion will usually usher stupidities, cause pain to ourselves and to our loved ones. Why would then one choose a passionate life over a life full of interesting activities? Only a selfish man who cannot properly define the word "passion" will aspire to live a passionate life.
 
-I am half the man I used to be. I stopped overestimating the importance of books and great thinkers. My [ Brodsky List](https://www.openculture.com/2013/11/joseph-brodskys-reading-list-for-having-an-intelligent-conversation.html) turned into an optional activity from a required burden. I now plainly recognize intensive reading and self-education as a distraction from life.
+I am half the man I used to be. I stopped overestimating the importance of [books and great thinkers](/writings/books-and-idols). My [ Brodsky List](https://www.openculture.com/2013/11/joseph-brodskys-reading-list-for-having-an-intelligent-conversation.html) turned into an optional activity from a required burden. I now plainly recognize intensive reading and self-education as a distraction from life.
 
 ## Greatness
 
@@ -72,7 +72,7 @@ Of soldiers' dreams.[^4]
 
 How to deal with unlived life? How to test if I truly lived? If perchance I learned that today I will breathe my last, I wish to feel total indifference towards my own death. That indifference would emanate from understanding of a) that I did one thing truly worthwhile in my life, and b) that the world would be untouched by my death.
 
-A year and a half ago, I edited my grandfather's memoirs and brought unorganized writing into the form of a book. It was a several-month long process, and once I edited the last page and saw the result of my efforts in front of my eyes, I realized for the first time what living actually meant. It was neither variety and intensity of experience which I desperately was striving for all the time, nor success or admiration of others which are fleeting and unrealiable, but a selfless act of completing a noble work that made my life meaningful.
+A year and a half ago, I edited my grandfather's memoirs and brought unorganized writing into the form of a book. It was a several-month long process, and once I edited the last page and saw the result of my efforts in front of my eyes, I realized for the first time what living actually meant. It was neither variety and intensity of experience which I desperately was striving for all the time, nor success or admiration of others which are fleeting and unreliable, but a selfless act of completing a noble work that made my life meaningful.
 
 On my last day in this world, I don't want to declare my love to others and ask for forgiveness, for correctly conducted life would relieve me from this responsibility. Instead, I should [do what is necessary](/writings/vespasian) at the moment: plant a tree that may never grow, deliver a scheduled lecture to ungrateful audience, write the  lines of a poem which will remain unfinished, go for a morning jog to improve health which won't be needed the next day, fix the bedroom lampshade which will go off forever. I do not want my last day to  change my habitual behavior. And if I am to die today, I should finish this writing. 
 

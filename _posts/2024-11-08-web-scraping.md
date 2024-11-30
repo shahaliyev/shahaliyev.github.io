@@ -12,7 +12,7 @@ category: [computer science]
 
 Data we wish to work with are rarely available (e.g. as a `.csv` file) suiting our needs. Often we need to be proactive and obtain data ourselves. We have vast amount of web resources for that, however, manually retrieving data is a slow and not scalable process. Therefore, the automation of this task called **web scraping** will be handy in many situations. 
 
-But it doesn't end here. You may even stumble upon a job announcement (as of November 2024) while "sniffing around" `robots.txt` file of big companies such as <a href='https://tripadvisor.com/'>tripadvisor.com</a>. (What is `robots.txt` will be discussed soon.)
+You may even stumble upon a job announcement (as of November 2024) while "sniffing around" `robots.txt` file of big companies such as <a href='https://tripadvisor.com/'>tripadvisor.com</a>. (What is `robots.txt` will be discussed soon.)
 
 {% include figcaption.html src="/assets/img/tripadvisor.png" alt="tripadvisor.com robots.txt file job announcement" caption="<a href='https://tripadvisor.com/robots.txt'>robots.txt file of tripadvisor.com</a> with job announcement" %}
 

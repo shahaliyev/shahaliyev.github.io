@@ -1,0 +1,123 @@
+<div class="note-card" id="note-{{ include.date | slugify }}">
+    <div class="note-header">
+      <!-- Timestamp -->
+      <time class="note-date" data-timestamp="{{ include.date | date: '%Y-%m-%dT%H:%M:%S' }}">
+        Loading...
+      </time>
+      <!-- Share Options -->
+      <div class="note-share-options">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&quote={{ include.content | url_encode }}" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ include.content | url_encode }}" target="_blank" title="Share on Twitter">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&summary={{ include.content | url_encode }}" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.threads.net/share?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}" target="_blank" title="Share on Threads">
+            <i class="fab fa-threads"></i>
+        </a>
+        <a href="https://telegram.me/share/url?url={{ site.url }}{{ page.url }}&text={{ include.content | url_encode }}" target="_blank" title="Share on Telegram">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}" target="_blank" title="Share on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:?subject=Check out this note&body={{ include.content | escape }}%0A%0ALink: {{ site.url }}{{ page.url }}" target="_blank" title="Share via Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Optional Image -->
+    {% if include.image %}
+      <div class="note-image">
+        <img src="{{ include.image }}" alt="Note Image">
+      </div>
+    {% endif %}
+    <!-- Note Content -->
+    <div class="note-content">
+      <p>{{ include.content }}</p>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const timeElements = document.querySelectorAll(".note-date");
+  
+      timeElements.forEach((timeElement) => {
+        const timestamp = timeElement.getAttribute("data-timestamp");
+        const relativeTime = getRelativeTime(new Date(timestamp));
+        timeElement.textContent = relativeTime;
+      });
+  
+      function getRelativeTime(date) {
+        const now = new Date();
+        const minutes = Math.floor((now - date) / 1000 / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const weeks = Math.floor(days / 7);
+  
+        if (minutes < 60) return `${minutes} minutes ago`;
+        if (hours < 24) return `${hours} hours ago`;
+        if (days < 7) return `${days} days ago`;
+        return `${weeks} weeks ago`;
+      }
+    });
+  </script>
+  
+  <style>
+  /* Note Card Styles */
+  .note-card {
+    border: 2px solid #d0d7de;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 2rem auto;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(4, 4, 4, 0.1);
+    max-width: 600px;
+  }
+  
+  .note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #57606a;
+  }
+
+  .note-date {
+    color:rgb(242, 84, 32);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .note-share-options a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #57606a;
+    padding: 0.4rem;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .note-share-options a:hover {
+    color: #27abbf;
+  }
+  
+  .note-image img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .note-content {
+    font-size: 1rem;
+    color: #24292f;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem; 
+    line-height: 1.6;
+  }
+  </style>
+  

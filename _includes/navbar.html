@@ -3,6 +3,7 @@
       <a href="/az{{ page.url }}">AZ <i class="fas fa-globe"></i></a>
       <a href="{{ '/' | relative_url }}">{{ site.nav.home[page.lang] }}</a>
       <a href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+      <a href="{{ '/notes.html' | relative_url }}">Notes</a>
     {% elsif page.lang == "az" %}
       <a href="{{ page.url | replace_first: '/az', '' }}">EN <i class="fas fa-globe"></i></a>
       <a href="{{ '/az' | relative_url }}">{{ site.nav.home[page.lang] }}</a>
