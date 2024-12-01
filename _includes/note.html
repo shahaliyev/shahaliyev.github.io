@@ -1,123 +1,215 @@
-<div class="note-card" id="note-{{ include.date | slugify }}">
-    <div class="note-header">
+<div class="note-card{% if include.pin %} pinned{% endif %}" id="note-{{ include.date | slugify }}">
+  <div class="note-header">
+      <!-- Pin Icon -->
+      {% if include.pin %}
+      <div class="note-pin">
+          <i class="fas fa-thumbtack" title="Pinned"></i>
+      </div>
+      {% endif %}
       <!-- Timestamp -->
       <time class="note-date" data-timestamp="{{ include.date | date: '%Y-%m-%dT%H:%M:%S' }}">
-        Loading...
+          Loading...
       </time>
-      <!-- Share Options -->
-      <div class="note-share-options">
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&quote={{ include.content | url_encode }}" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ include.content | url_encode }}" target="_blank" title="Share on Twitter">
-          <i class="fab fa-x-twitter"></i>
-        </a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&summary={{ include.content | url_encode }}" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://www.threads.net/share?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}" target="_blank" title="Share on Threads">
-            <i class="fab fa-threads"></i>
-        </a>
-        <a href="https://telegram.me/share/url?url={{ site.url }}{{ page.url }}&text={{ include.content | url_encode }}" target="_blank" title="Share on Telegram">
-          <i class="fab fa-telegram-plane"></i>
-        </a>
-        <a href="https://api.whatsapp.com/send?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}" target="_blank" title="Share on WhatsApp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="mailto:?subject=Check out this note&body={{ include.content | escape }}%0A%0ALink: {{ site.url }}{{ page.url }}" target="_blank" title="Share via Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-    <!-- Optional Image -->
-    {% if include.image %}
-      <div class="note-image">
-        <img src="{{ include.image }}" alt="Note Image">
-      </div>
-    {% endif %}
-    <!-- Note Content -->
-    <div class="note-content">
-      <p>{{ include.content }}</p>
-    </div>
   </div>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const timeElements = document.querySelectorAll(".note-date");
-  
-      timeElements.forEach((timeElement) => {
-        const timestamp = timeElement.getAttribute("data-timestamp");
-        const relativeTime = getRelativeTime(new Date(timestamp));
-        timeElement.textContent = relativeTime;
-      });
-  
-      function getRelativeTime(date) {
-        const now = new Date();
-        const minutes = Math.floor((now - date) / 1000 / 60);
-        const hours = Math.floor(minutes / 60);
-        const days = Math.floor(hours / 24);
-        const weeks = Math.floor(days / 7);
-  
-        if (minutes < 60) return `${minutes} minutes ago`;
-        if (hours < 24) return `${hours} hours ago`;
-        if (days < 7) return `${days} days ago`;
-        return `${weeks} weeks ago`;
+  <!-- Optional Image -->
+  {% if include.image %}
+  <div class="note-image">
+      <img src="{{ include.image }}" alt="Note Image">
+  </div>
+  {% endif %}
+  <!-- Note Content -->
+  <div class="note-content">
+      <p>{{ include.content }}</p>
+  </div>
+  <!-- Tags -->
+  {% if include.tags %}
+  <div class="note-tags">
+      {% assign tags_list = include.tags | split: "," %}
+      {% for tag in tags_list %}
+      <span class="note-tag">#{{ tag | strip }}</span>
+      {% endfor %}
+  </div>
+  {% endif %}
+  <div class="note-share-options">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&quote={{ include.content | url_encode }}{% if include.image %}&picture={{ include.image | url_encode }}{% endif %}" 
+       target="_blank" title="Share on Facebook">
+        <i class="fab fa-facebook"></i>
+    </a>
+
+    <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?text={{ include.content | url_encode }}&url={{ site.url }}{{ page.url }}{% if include.image %}&image={{ include.image | url_encode }}{% endif %}" 
+       target="_blank" title="Share on Twitter">
+        <i class="fab fa-x-twitter"></i>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&summary={{ include.content | url_encode }}{% if include.image %}&source={{ include.image | url_encode }}{% endif %}" 
+       target="_blank" title="Share on LinkedIn">
+        <i class="fab fa-linkedin"></i>
+    </a>
+
+    <!-- Threads -->
+    <a href="https://www.threads.net/share?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}{% if include.image %}&image={{ include.image | url_encode }}{% endif %}" 
+       target="_blank" title="Share on Threads">
+        <i class="fab fa-threads"></i>
+    </a>
+
+    <!-- Telegram -->
+    <a href="https://telegram.me/share/url?url={{ site.url }}{{ page.url }}&text={{ include.content | url_encode }}{% if include.image %}&image={{ include.image | url_encode }}{% endif %}" 
+       target="_blank" title="Share on Telegram">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://api.whatsapp.com/send?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}{% if include.image %}%20{{ include.image | url_encode }}{% endif %}" 
+       target="_blank" title="Share on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:?subject={{ page.title | escape }}&body={{ include.content | escape }}%0A%0AImage: {% if include.image %}{{ include.image }}%0A{% endif %}Link: {{ site.url }}{{ page.url }}" 
+       target="_blank" title="Share via Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const timeElements = document.querySelectorAll(".note-date");
+
+  function updateRelativeTime(timeElement) {
+      const timestamp = new Date(timeElement.getAttribute("data-timestamp"));
+      const now = new Date();
+      const minutes = Math.floor((now - timestamp) / 1000 / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+      const weeks = Math.floor(days / 7);
+
+      // Display relative time
+      if (minutes < 60) {
+          timeElement.textContent = minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+      } else if (hours < 24) {
+          timeElement.textContent = hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+      } else if (days < 7) {
+          timeElement.textContent = days === 1 ? "1 day ago" : `${days} days ago`;
+      } else {
+          timeElement.textContent = weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
       }
-    });
-  </script>
-  
-  <style>
-  /* Note Card Styles */
-  .note-card {
-    border: 2px solid #d0d7de;
-    border-radius: 5px;
-    padding: 1rem;
-    margin: 2rem auto;
-    background: #ffffff;
-    box-shadow: 0 4px 6px rgba(4, 4, 4, 0.1);
-    max-width: 600px;
-  }
-  
-  .note-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 0.85rem;
-    color: #57606a;
+
+      // Determine update interval
+      let nextUpdateInterval;
+      if (minutes < 60) {
+          nextUpdateInterval = 60 * 1000; // 60 seconds
+      } else if (hours < 24) {
+          nextUpdateInterval = 60 * 60 * 1000; // 60 minutes
+      } else if (days < 7) {
+          nextUpdateInterval = 24 * 60 * 60 * 1000; // 1 day
+      } else {
+          nextUpdateInterval = 7 * 24 * 60 * 60 * 1000; // 1 week
+      }
+
+      // Schedule next update
+      setTimeout(() => updateRelativeTime(timeElement), nextUpdateInterval);
   }
 
-  .note-date {
-    color:rgb(242, 84, 32);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-  
-  .note-share-options a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: #57606a;
-    padding: 0.4rem;
-    border-radius: 5px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .note-share-options a:hover {
-    color: #27abbf;
-  }
-  
+  // Initialize updates
+  timeElements.forEach(updateRelativeTime);
+});
+</script>
+
+<style>
+/* Note Card Styles */
+.note-card {
+  border: 2px solid #d0d7de;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 2rem auto;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(4, 4, 4, 0.1);
+  max-width: 600px;
+  position: relative;
+}
+
+/* Pin Icon */
+.note-pin {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #f28420;
+  font-size: 1.2rem;
+}
+
+/* Tags Styles */
+.note-tags {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.note-tag {
+  color: #3479c7;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.note-tag:hover {
+  text-decoration: underline;
+}
+
+/* Social Media Sharing Options */
+.note-share-options {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.note-share-options a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #57606a;
+  padding: 0.4rem;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.note-share-options a:hover {
+  color: #27abbf;
+}
+
+/* Note Header */
+.note-header {
+  font-size: 0.85rem;
+  color: #57606a;
+  margin-bottom: 1rem;
+}
+
+.note-date {
+  color: rgb(242, 84, 32);
+  font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+
+/* Note Content */
+.note-content {
+  font-size: 1rem;
+  color: #24292f;
+  line-height: 1.6;
+}
+
+/* Pinned Note */
+.note-card.pinned {
+  border-color: #f28420;
+  background: #fff7e6;
+}
+
   .note-image img {
-    max-width: 100%;
     border-radius: 5px;
-    margin-bottom: 1rem;
-    display: block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
-  .note-content {
-    font-size: 1rem;
-    color: #24292f;
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem; 
-    line-height: 1.6;
-  }
-  </style>
-  
+</style>
+
+
+
