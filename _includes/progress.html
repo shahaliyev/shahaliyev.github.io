@@ -1,0 +1,76 @@
+{% assign success = include.success %}
+{% assign fail = include.fail | default: 0 %}
+{% assign count = include.count %}
+{% assign success_width = success | times: 100.0 | divided_by: count %}
+{% assign fail_width = fail | times: 100.0 | divided_by: count %}
+
+<div id="habit-tracker">
+  <p>{{ include.content }}</p>
+
+  <div id="counts" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+    <span id="success-count">Success: {{ success }}</span>
+    {% if fail > 0 %}
+      <span id="fail-count">Fail: {{ fail }}</span>
+    {% else %}
+      <span id="total-count">Total: {{ count }}</span>
+    {% endif %}
+  </div>
+
+  <div id="progress-bar-container">
+    <div id="success-bar" style="width: {{ success_width | round: 2 }}%;"></div>
+    {% if fail > 0 %}
+      <div id="fail-bar" style="width: {{ fail_width | round: 2 }}%;"></div>
+    {% endif %}
+  </div>
+
+  <div id="percentages" style="display: flex; justify-content: space-between; margin-top: 5px;">
+    <span id="success-percentage">{{ success_width | round: 1 }}%</span>
+    {% if fail > 0 %}
+      <span id="fail-percentage">{{ fail_width | round: 1 }}%</span>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  #habit-tracker {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* max-width: 600px;
+    margin: 20px auto;
+    text-align: center; */
+    border: 2px solid #d0d7de;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 2rem auto;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(4, 4, 4, 0.1);
+    max-width: 600px;
+    position: relative;
+  }
+
+  #progress-bar-container {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ddd;
+    margin: 10px 0;
+  }
+
+  #success-bar {
+    background-color: #4caf50;
+    height: 100%;
+    transition: width 0.3s;
+  }
+
+  #fail-bar {
+    background-color: #f44336;
+    height: 100%;
+    transition: width 0.3s;
+  }
+
+  #counts, #percentages {
+    font-size: 14px;
+    color: #333;
+  }
+</style>

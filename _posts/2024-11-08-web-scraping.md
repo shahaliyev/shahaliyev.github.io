@@ -126,6 +126,7 @@ print(response.text)
 
 The main Python libraries to be aware of for web scraping are `BeautifulSoup` and `requests` / `urllib` `(urllib2)`.
 
+{% include info.html content="The implementation below is not using <code>requests</code> (my bad) which is a <a href='https://stackoverflow.com/questions/2018026/what-are-the-differences-between-the-urllib-urllib2-urllib3-and-requests-modul'> better choice</a> than <code>urllib</code>." %}
 
 ```python
 from bs4 import BeautifulSoup

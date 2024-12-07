@@ -1,0 +1,66 @@
+---
+title: Progress
+layout: default
+---
+
+<h1 style="text-align:center">{{ page.title }}</h1>
+
+<article>
+    <!-- Routine -->
+    {% 
+        include progress.html 
+        success=0
+        count=31 
+        fail=8
+        content="The bar below shows how many days I woke up at 6 am and didn't sleep throughout the day in December." 
+    %}
+
+    <!-- Research -->
+    {% 
+        include progress.html 
+        success=0
+        count=5
+        content="My research consists of five main parts: in-depth literature review, careful implementation, writing the first draft, writing the final draft, and publishing the paper." 
+    %}
+
+    <!-- Karpathy -->
+    {% 
+        include progress.html 
+        success=0
+        count=10
+        content="Andrej Karpathy's <a href='https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ'>Neural Network playlist</a> consists of 10 long videos." 
+    %}
+
+    <!-- Iliad -->
+    {% 
+        include progress.html 
+        success=218
+        count=15693
+        content="There are 15,693 verses in <a href='https://www.britannica.com/biography/Homer-Greek-poet'>Homer's Iliad</a> to study in multiple languages." 
+     %}
+
+    <!-- Writings -->
+    {% 
+        include progress.html 
+        success=0
+        count=10
+        content="I wonder how many days it will take until I publish 10 (technical) <a href='/writings.html'>writings</a> on this website." 
+    %}
+
+    <!-- Pull ups -->
+    {% 
+        include progress.html 
+        success=12
+        count=20
+        content="An ideal pull-up count is 20." 
+     %}
+
+    <!-- Running -->
+    {% 
+        include progress.html 
+        success=3.5
+        count=21.1
+        content="I will not be ready for Baku half-marathon with this pace." 
+     %}
+</article>
+
