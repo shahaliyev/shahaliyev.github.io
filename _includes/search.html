@@ -1,0 +1,78 @@
+<div class="search-container">
+    {% if page.lang == "en" %}
+        <input type="text" id="search-input" 
+        class="search-input" placeholder="🔍 Search in writings...">
+    {% elsif page.lang == "az" %}
+        <input type="text" id="search-input" 
+        class="search-input" placeholder="🔍 Yazılarda axtar...">
+    {% endif %}
+    <ul id="results-container" class="results-list"></ul>
+</div>  
+
+<style>
+    .search-container {
+        max-width: 600px;
+        margin: 50px auto;
+        text-align: center;
+    }
+  
+    .search-input {
+        width: 300px;
+        padding: 12px 16px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+        outline: none;
+        background-color: #fff;
+        transition: border-color 0.2s ease;
+    }
+    
+    .search-input:focus {
+        border-color: #3a6ec8;
+    }
+    
+    .search-input::placeholder {
+        color: #aaa;
+    }
+    
+    .results-list {
+        list-style: none;
+        margin-top: 15px;
+        padding: 0;
+    }
+    
+    .results-list li {
+        background-color: #fff;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        padding: 12px 16px;
+        border: 1px solid #eaeaea;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    
+    .results-list li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .results-list li:hover {
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
+    
+    .no-results {
+        font-size: 16px;
+        color: #666;
+        padding: 15px;
+    }
+</style>
+
+
+<script>
+    let sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json'
+    })
+  </script>

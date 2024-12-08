@@ -5,7 +5,7 @@ css: /assets/css/home.css
 
 <div id="homepage-content">
   <div id="profile-image">
-    <img src="/assets/img/profile.jpg" alt="Ismayıl Şahəliyevin profil şəkli">
+    <img src="/assets/img/profile.jpg" alt="Ismayıl Şahəliyevin profil şəkli" loading="lazy">
   </div>
   <p class="site-description">{{ site.description[page.lang] }}</p>
   <div class="social-icons">
@@ -15,13 +15,12 @@ css: /assets/css/home.css
     <a href="/feed.xml" target="_blank" title="RSS Feed"><i class="fas fa-rss"></i></a>
   </div>
   <article>
-    <article>
-      <p>
-        Mən bakalavr və magistr dərəcələrimi aldığım <a href="https://ada.edu.az/">ADA Universitetində</a> Kompüter və İnformasiya Elmləri kafedrasının müəllimiyəm. Magistr dərəcəm həmçinin <a href="https://www.gwu.edu/">Corc Vaşinqton Universiteti</a> tərəfindən təklif olunan ikili diplom proqramı idi.
-      </p>
-      <p>
-        Mən Qrossmeyster norması olan <a href="https://ratings.fide.com/profile/13406388">Beynəlxalq Şahmat Ustasıyam</a> (2019). 12, 14 və 16 yaşadək (ard-arda iki il) şahmat üzrə dörd-qat Azərbaycan çempionu olmaqla yanaşı, Rumıniyanın İaşi şəhərində keçirilən və 13 yaşadək məktəblilər arasında baş tutan şahmat üzrə dünya çempionatının gümüş mükafatçısı olmuşam. Son çempionluğum "Naxçıvan Open 2022" turnirində olub.
-      </p>
-    </article>
+    <p>
+      Mən bakalavr və magistr dərəcələrimi aldığım <a href="https://ada.edu.az/">ADA Universitetində</a> Kompüter və İnformasiya Elmləri kafedrasının müəllimiyəm. Magistr dərəcəm həmçinin <a href="https://www.gwu.edu/">Corc Vaşinqton Universiteti</a> tərəfindən təklif olunan ikili diplom proqramı idi.
+    </p>
+    <p>
+      Mən Qrossmeyster norması olan <a href="https://ratings.fide.com/profile/13406388">Beynəlxalq Şahmat Ustasıyam</a> (2019). 12, 14 və 16 yaşadək (ard-arda iki il) şahmat üzrə dörd-qat Azərbaycan çempionu olmaqla yanaşı, Rumıniyanın İaşi şəhərində keçirilən və 13 yaşadək məktəblilər arasında baş tutan şahmat üzrə dünya çempionatının gümüş mükafatçısı olmuşam. Son çempionluğum "Naxçıvan Open 2022" turnirində olub.
+    </p>
   </article>
+  {% include search.html %}
 </div>
