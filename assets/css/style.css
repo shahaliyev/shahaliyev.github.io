@@ -73,13 +73,9 @@ img {
 }
 
 
-p, li, .table {
+p, li, ol li, .table {
   font-family: 'Roboto', sans-serif;
   font-size: 1.1em;
-}
-
-ol, ol li {
-  font-size: 1.1em; 
 }
 
 .footnotes li, .footnotes p {
@@ -106,9 +102,16 @@ header .site-info {
 
 blockquote {
   border-left: 4px solid #3498db; 
+  background-color: #f0f7fc;
+  padding: 5px;
   padding-left: 20px; 
   margin: 10px 0;
-  font-style: italic; 
+  font-style: italic;
+  border-radius: 8px;
+  font-size: 1em;
+}
+blockquote p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 
