@@ -15,12 +15,21 @@ layout: default
         content="To be awake between 6 am and 11 pm in December."
     %}
 
-    <!-- Research -->
+    <!-- Meditatation -->
     {% 
         include progress.html 
         success=0
+        count=31 
+        fail=15
+        content="To meditate for 30 minutes each day in February."
+    %}
+
+    <!-- Research -->
+    {% 
+        include progress.html 
+        success=3
         count=5
-        content="My research consists of the following sections:  MTE, UMAP, CAM, Occlusion, final revision." 
+        content="My research consists of the following sections:  MTE, DR, CAM, Code, Revision." 
     %}
 
     <!-- Karpathy -->
@@ -31,18 +40,10 @@ layout: default
         content="Andrej Karpathy's <a href='https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ'>Neural Network playlist</a> consists of 10 long videos." 
     %}
 
-    <!-- Iliad -->
-    {% 
-        include progress.html 
-        success=218
-        count=15693
-        content="There are 15,693 verses in <a href='https://www.britannica.com/biography/Homer-Greek-poet'>Homer's Iliad</a> to study in multiple languages." 
-     %}
-
     <!-- Writings -->
     {% 
         include progress.html 
-        success=0
+        success=3
         count=10
         content="I have a plan to publish 10 (technical) <a href='/writings.html'>writings</a> on this website (Dec 2024)." 
     %}
@@ -58,7 +59,7 @@ layout: default
     <!-- Running -->
     {% 
         include progress.html 
-        success=3.5
+        success=6
         count=21.1
         content="A very weak pace for Baku half-marathon." 
      %}

@@ -1,18 +1,17 @@
 <div id="share-bar">
-
     <h4 class="share-heading">
         {% if page.lang == "en" %}
             Share the post:
         {% elsif page.lang == "az" %}
             Mətni paylaşın:
-        {% endif %}</h4>
-
+        {% endif %}
+    </h4>
 
     <div class="share-buttons">
         <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">
             <i class="fab fa-facebook"></i>
         </a>
-        <a class="horizontal-share-buttons" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on Twitter">
+        <a class="horizontal-share-buttons" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on X">
             <i class="fab fa-x-twitter"></i>
         </a>
         <a class="horizontal-share-buttons" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" title="Share on LinkedIn">
@@ -24,34 +23,59 @@
         <a class="horizontal-share-buttons" href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ page.url | absolute_url }}" target="_blank" title="Share on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a class="horizontal-share-buttons" href="mailto:?subject={{ page.title | url_encode }}&body=Check out this link: {{ page.url | absolute_url }}" target="_blank" title="Share via Email">
-            <i class="fas fa-envelope"></i>
+
+        <a class="horizontal-share-buttons" href="javascript:void(0);" onclick="copyLink()" title="Copy Link">
+            <i class="fas fa-copy"></i>
         </a>
-        <a class="horizontal-share-buttons" href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" title="Share on Reddit">
-            <i class="fab fa-reddit-alien"></i>
-        </a>
-        <a class="horizontal-share-buttons" href="https://www.threads.net/share?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on Threads">
-            <i class="fab fa-threads"></i>
-        </a>
+    </div>
+
+    <div id="copy-message" style="display: none; color: grey; margin-top: 10px;">
+        Link copied to clipboard
     </div>
 </div>
 
 <style>
+    .share-heading {
+        font-size: 1em;
+    }
+
     #share-bar {
         margin-top: 50px;
-    /* margin: 20px 0; */
+        text-align: center;
     }
 
     .share-buttons {
         display: flex;
-        gap: 10px;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .share-buttons a {
         text-decoration: none;
-        font-size: 1.8em;
-        /* border-radius: 5px; */
-        /* background-color: #f0f0f0;
-        color: #333; */
+        font-size: 1.3em; /* Reduced size */
+        color: #40546a;
+        transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .share-buttons a:hover {
+        /* transform: scale(1.1); */
+        color: #6186ad;
     }
 </style>
+
+<script>
+    function copyLink() {
+        var copyText = window.location.href;
+        var textarea = document.createElement("textarea");
+        textarea.value = copyText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        var message = document.getElementById("copy-message");
+        message.style.display = "inline-block";
+    }
+</script>
