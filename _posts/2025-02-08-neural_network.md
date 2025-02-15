@@ -1,5 +1,5 @@
 ---
-title: Python Code from Neuron to Training Neural Network on a Dataset  
+title: Python Code from Neuron to Neural Network
 description: Based on Andrej Karpathy's lecture on Neural Networks. In addition to building a neural network (multi-layer perceptron) I create a Classifier and trian it on Iris Dataset (which is an overkill) from scratch, in the simplest possible way.
 category: [computer science]
 ---
@@ -273,7 +273,7 @@ An artificial neuron is simply a linear function passing through an activation f
 
 Before creating our neuron, we will first make some updates to the `Value` class.
 
-Not only value class should have a `sigmoid(x)` function, but also it should be able to calculate a derivative for it.
+Not only `Value` class should have a `sigmoid(x)` function, but also it should be able to calculate a derivative for it.
 
 **Exercise:** Find the derivative of the `sigmoid` function:
 
@@ -422,7 +422,7 @@ build_topo(pred)
 topo
 ```
 
-We will integrate topological sort into our `Value` object and implement complete backward pass. We can also add a simple gradient descent function `optimize()` which will use this topology. Finally, instead of overriding gradients (`=`), we will accumulate them (`+=`) to avoid gradient update bugs when using the same node more than once in an operation. And as a consequence, we will have to reset gradients with `zero_()` (similar to PyTorch) so that the gradients of different backward passes will not affect each other (it does the exact same thing as `self.grad = 0.0` was doing before gradient accumulation).
+We will integrate topological sort into our `Value` object and implement complete backward pass. We can also add a simple gradient descent function `optimize()` which will use this topology. Finally, instead of overriding gradients (`=`), we will accumulate them (`+=`) to avoid gradient update bugs when using the same node more than once in an operation. And as a consequence, we will have to reset gradients with `zero_()` (similar to PyTorch) so that the gradients of different backward passes will not affect each other (it does the exact same thing as `self.grad = 0.0` was doing before gradient accumulation). Although, to be precise, `zero_()` function should reset only the gradient of `self`, and it is actually a function called `zero_grad()` of `optimizer` in PyTorch which resets gradients accross all nodes.
 
 
 ```python
@@ -504,6 +504,9 @@ class Value:
       node.data -= learning_rate * node.grad
 
   def zero_(self):
+    self.grad = 0.0
+
+  def zero_grad(self):
     for node in self.params:
       node.grad = 0.0
 
@@ -560,7 +563,7 @@ Let's repeat the backpropagation in multiple epochs until we achieve a minimal l
 
 ```python
 while True:
-  L.zero_()
+  L.zero_grad()
 
   # backward pass
   L.backward()
@@ -632,7 +635,7 @@ draw_dot(L)
 
 ```python
 while True:
-  L.zero_()
+  L.zero_grad()
 
   # backward pass
   L.backward()
@@ -826,7 +829,7 @@ y_test = [Value(y) * Value(0.5) for y in y_test]
 
 We will now create a class for our model, in the style of `scikit-learn` models, more specifically [MLPClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier).
 
-As noted above, what we do is simple and will work in this case, but is **not right**. Ideally, we should initially [one hot](https://en.wikipedia.org/wiki/One-hot) encode the ground truth labels to describe them with only zeros and ones. Our final layer for [multiclass classification](https://en.wikipedia.org/wiki/Multiclass_classification), instead of `sigmoid` activation, should output `logits` (unprocessed predictions) passing through `softmax` function. The loss in this case should be [Cross Entropy](https://en.wikipedia.org/wiki/Cross-entropy) instead of MSE.
+As noted above, what we do is simple and will work in this case, but is **not right**. Ideally, we should initially [one hot](https://en.wikipedia.org/wiki/One-hot) encode the ground truth labels to describe them with only zeros and ones. Our final layer for [multiclass classification](https://en.wikipedia.org/wiki/Multiclass_classification), instead of `sigmoid` activation, should output `logits` (unprocessed predictions) passing through `softmax` function. The loss in this case should be Categorical [Cross Entropy](https://en.wikipedia.org/wiki/Cross-entropy) instead of MSE.
 
 **Exercise (Advanced):** Write code for the correct implementation noted above. See Josh Starmer's (StatQuest) videos which explain its theory, including the [Iris dataset, argmax and softmax functions](https://www.youtube.com/watch?v=KpKog-L9veg&t=261s), as well as [Cross Entropy](https://www.youtube.com/watch?v=6ArSys5qHAU).
 
@@ -849,7 +852,7 @@ class Classifier:
   def train(self, X_train, y_train, learning_rate=0.01):
     preds = self.forward(X_train)
     self.L = self.mean_squared_error(y_train, preds)
-    self.L.zero_()
+    self.L.zero_grad()
     self.L.backward()
     self.L.optimize(learning_rate=learning_rate)
     print(f'Loss: {self.L.data:.4f}')
