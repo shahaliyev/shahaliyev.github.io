@@ -1,7 +1,7 @@
 ---
 title: Python Code from Neuron to Neural Network
 description: Based on Andrej Karpathy's lecture on Neural Networks. In addition to building a neural network (multi-layer perceptron) I create a Classifier and trian it on Iris Dataset (which is an overkill) from scratch, in the simplest possible way.
-category: [computer science]
+category: [computer science, deep learning]
 ---
 
 
