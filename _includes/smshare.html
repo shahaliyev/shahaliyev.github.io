@@ -1,11 +1,11 @@
 <div id="share-bar">
-    <h4 class="share-heading">
+    <p class="share-heading">
         {% if page.lang == "en" %}
             Share the post:
         {% elsif page.lang == "az" %}
             Mətni paylaşın:
         {% endif %}
-    </h4>
+    </p>
 
     <div class="share-buttons">
         <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">
@@ -24,9 +24,9 @@
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <a class="horizontal-share-buttons" href="javascript:void(0);" onclick="copyLink()" title="Copy Link">
+        <button class="horizontal-share-buttons copy-link" onclick="copyLink()" title="Copy Link">
             <i class="fas fa-copy"></i>
-        </a>
+        </button>
     </div>
 
     <div id="copy-message" style="display: none; color: grey; margin-top: 10px;">
@@ -35,8 +35,13 @@
 </div>
 
 <style>
+    .copy-link {
+        padding: 0;
+        margin: 0;
+    }
     .share-heading {
         font-size: 1em;
+        font-weight: bold;
     }
 
     #share-bar {
@@ -52,15 +57,17 @@
         flex-wrap: wrap;
     }
 
-    .share-buttons a {
+    .share-buttons a, .share-buttons button {
         text-decoration: none;
-        font-size: 1.3em; /* Reduced size */
+        font-size: 1.3em;
         color: #40546a;
         transition: transform 0.2s ease, color 0.2s ease;
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 
-    .share-buttons a:hover {
-        /* transform: scale(1.1); */
+    .share-buttons a:hover, .share-buttons button:hover {
         color: #6186ad;
     }
 </style>
@@ -77,5 +84,9 @@
 
         var message = document.getElementById("copy-message");
         message.style.display = "inline-block";
+
+        setTimeout(function() {
+            message.style.display = "none";
+        }, 2000);
     }
 </script>

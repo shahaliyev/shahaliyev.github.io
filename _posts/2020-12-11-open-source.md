@@ -1,5 +1,5 @@
 ---
-title: A Guide to Open-source Software Licenses
+title: A Quick Guide to Open-source Software Licenses
 category: [computer science]
 ---
 

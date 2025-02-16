@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Deep Learning: How Cybernetics became Deep Learning"
 description: A glimpse into important concepts and evolution of deep learning.
-category: [computer science, book summary]
+category: [computer science, book summary, deep learning]
 ---
 
 {% include figcaption.html src="/assets/img/deeplearning/deeplearningbook.jpg" alt="Deep Learning Book cover" caption="<a href='https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618/ref=sr_1_1?ie=UTF8&qid=1472485235&sr=8-1&keywords=deep+learning+book'>Deep Learning book cover</a>, Goodfellow, Bengio, Courville 2016, The MIT Press" %}

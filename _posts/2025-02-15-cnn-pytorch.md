@@ -182,13 +182,13 @@ It is possible to run faster training calculations on GPU with `cuda`. It is pos
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 ```
+
     # output
     MLP(
       (fc1): Linear(in_features=784, out_features=128, bias=True)
       (fc2): Linear(in_features=128, out_features=10, bias=True)
       (relu): ReLU()
     )
-
 
 
 As `PyTorch` is highly optimized and the dataset images are small in size, training will be quick, especially with GPU. We should move our data in batches to the GPU memory as well in order to make it compatible with the model. Backpropagation steps we have repeatedly discussed in the previous lectures. We will train out model for only three epochs to quickly see interesting mistakes of our model, but feel free to train the model for a longer period to achieve a higher accuracy.
