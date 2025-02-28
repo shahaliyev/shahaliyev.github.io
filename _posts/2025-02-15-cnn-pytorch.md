@@ -1,5 +1,5 @@
 ---
-title: PyTorch Code from Kernel to Convolutional Neural Networks
+title: PyTorch Code from Kernel to Convolutional Neural Network
 description: Continuation of the lecture notebooks on deep learning. We start building our simple MLP with Pytorch on MNIST dataset, and then go on to discuss the need for a convolutional layer - kernels, cross-correlation (convolution) operation, and build our first Convolutional Neural Network by implementing the LeNet architecture. 
 category: [computer science, deep learning]
 ---
@@ -451,8 +451,16 @@ plot([manual_padding, conv2d_padding, conv2d_stride],
 ![Padding and Striding demo](/assets/img/cnn/cnn_torch_55_0.png)
     
 
-
 **Exercise:** Manually calculate the strided convolution above.
+
+**Exercise:** Create 100 random images (colored) and calculate the output dimension after the convolution operation. Calculate and print out how many features will be passed to the next layer after flattening the feature maps for all the cases:
+
+| Image Size | Kernel Size | Stride | Padding |
+|------------|------------|--------|---------|
+| 30x30     | 3x3        | 1      | 0       |
+| 224x224   | 5x5        | 2      | 1       |
+| 528x528   | 7x7        | 3      | 2       |
+
 
 ## Increasing Dimensions
 
