@@ -152,14 +152,16 @@ figcaption {
   height: 50px;
   border: none;
   border-radius: 8px;
-  background-color: #64b1ae;
+  background-color: #6ab1b4;
   color: white;
   cursor: pointer;
   opacity: 0.5;
   transition: 0.3s ease-in-out;
   font-size: 20px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 #scroll-btn:hover {
