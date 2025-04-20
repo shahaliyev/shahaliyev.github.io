@@ -1,22 +1,31 @@
 <nav>
-    {% if page.lang == "en" %}
-    <div class="nav-row">
-      <a href="/az{{ page.url }}">AZ <i class="fas fa-language"></i></a>
-      <a href="{{ '/' | relative_url }}">{{ site.nav.home[page.lang] }}</a>
-      <a href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
-      <a href="{{ '/progress.html' | relative_url }}">Progress</a> 
-    </div>
-    <div class="nav-row">
-      <!-- <a href="{{ '/notes.html' | relative_url }}">Notes</a> -->
-    </div> 
-    {% elsif page.lang == "az" %}
-      <div class="nav-row">
-        <a href="{{ page.url | replace_first: '/az', '' }}">EN <i class="fas fa-language"></i></a>
-        <a href="{{ '/az' | relative_url }}">{{ site.nav.home[page.lang] }}</a>
-        <a href="{{ '/az/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
-      </div>
-    {% endif %}  
+  {% if page.lang == "en" %}
+  <div class="nav-row">
+    {% if page.translation %}
+      <a href="{{ page.translation }}">AZ <i class="fas fa-language"></i></a>
+    {% else %}
+      <a href="/az">AZ <i class="fas fa-language"></i></a>
+    {% endif %}
+    <!-- <a href="{{ '/' | relative_url }}">{{ site.nav.home[page.lang] }}</a> -->
+    <a href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+    <!-- <a href="{{ '/progress.html' | relative_url }}">Progress</a>  -->
+  </div>
+  <div class="nav-row">
+    <!-- <a href="{{ '/notes.html' | relative_url }}">Notes</a> -->
+  </div> 
+  {% elsif page.lang == "az" %}
+  <div class="nav-row">
+    {% if page.translation %}
+      <a href="{{ page.translation }}">EN <i class="fas fa-language"></i></a>
+    {% else %}
+      <a href="/">EN <i class="fas fa-language"></i></a>
+    {% endif %}
+    <!-- <a href="{{ '/az' | relative_url }}">{{ site.nav.home[page.lang] }}</a> -->
+    <a href="{{ '/az/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+  </div>
+  {% endif %}  
 </nav>
+
 
 <style>
   nav {
