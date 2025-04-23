@@ -4,7 +4,7 @@ description: Continuation of the notebook series of the deep learning course. We
 category: [computer science, deep learning]
 ---
 
-{% include info.html content="The following material was initially prepared as a lecture for <strong>CSCI 4701: Deep Learning (Spring 2025)</strong> course at ADA University. It is highly based on the examples given in different chapters of the <a href='https://d2l.ai/'>Dive Deep into Deep Learning</a> book. The notebook is the continuation of my lecture series on deep learning: <a href='https://shahaliyev.org/writings/backprop'>Python Code from Derivatives to Backpropagation</a>, <a href='https://shahaliyev.org/writings/neural_network'>Python Code from Neuron to Neural Network</a> and <a href='https://shahaliyev.org/writings/cnn-pytorch'> PyTorch Code from Kernel to Convolutional Neural Network</a>." %}
+{% include info.html content="The following material was initially prepared as a lecture for <strong>CSCI 4701: Deep Learning (Spring 2025)</strong> course at ADA University. It is highly based on the examples given in different chapters of the <a href='https://d2l.ai/'>Dive Deep into Deep Learning</a> book. The notebook is the continuation of my lectures on deep learning: <a href='https://shahaliyev.org/writings/backprop'>Python Code from Derivatives to Backpropagation</a>, <a href='https://shahaliyev.org/writings/neural_network'>Python Code from Neuron to Neural Network</a> and <a href='https://shahaliyev.org/writings/cnn-pytorch'> PyTorch Code from Kernel to Convolutional Neural Network</a>." %}
 
 {% include colab.html link="https://colab.research.google.com/github/shahaliyev/shahaliyev.github.io/blob/main/assets/nb/regul_optim.ipynb" %}
 
@@ -564,12 +564,14 @@ $$\hat{v_t} = \frac{v_t}{1 - \beta_1^t}, \quad \hat{s_t} = \frac{s_t}{1 - \beta_
 
 Here $$v_t$$ and $$s_t$$ are called moments. Let's see how normalized moments get affected after the first two iterations:
 
+<div style="overflow-x: auto;">
 $$
 \beta_1 = 0.9^1 = 0.9 \quad \Rightarrow \quad \frac{1}{1 - \beta_1^1} = \frac{1}{0.1} = 10 \\
 \beta_1^2 = 0.9^2 = 0.81 \quad \Rightarrow \quad \frac{1}{1 - \beta_1^2} = \frac{1}{0.19} \approx 5.26 \\
 \beta_2^1 = 0.999^1 = 0.999 \quad \Rightarrow \quad \frac{1}{1 - \beta_2^1} = \frac{1}{0.001} = 1000 \\
 \beta_2^2 = 0.999^2 = 0.998001 \quad \Rightarrow \quad \frac{1}{1 - \beta_2^2} = \frac{1}{0.001999} \approx 500
 $$
+</div>
 
 Finally, we can integrate the accumulated values into our gradient descent formula to get the final step size:
 
