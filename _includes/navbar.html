@@ -9,10 +9,11 @@
     <!-- <a href="{{ '/' | relative_url }}">{{ site.nav.home[page.lang] }}</a> -->
     <a href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
     <!-- <a href="{{ '/progress.html' | relative_url }}">Progress</a>  -->
+    <a href="{{ '/notes.html' | relative_url }}">Notes</a>
   </div>
-  <div class="nav-row">
-    <!-- <a href="{{ '/notes.html' | relative_url }}">Notes</a> -->
-  </div> 
+  <!-- <div class="nav-row"> -->
+
+  <!-- </div>  -->
   {% elsif page.lang == "az" %}
   <div class="nav-row">
     {% if page.translation %}
@@ -22,6 +23,7 @@
     {% endif %}
     <!-- <a href="{{ '/az' | relative_url }}">{{ site.nav.home[page.lang] }}</a> -->
     <a href="{{ '/az/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+    <!-- <a href="{{ '/notes.html' | relative_url }}">Qeydlər</a> -->
   </div>
   {% endif %}  
 </nav>

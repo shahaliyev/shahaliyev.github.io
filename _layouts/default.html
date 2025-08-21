@@ -4,18 +4,21 @@
 <html lang="{{ page.lang }}">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" conWell done team! 
+
+
+
+No gyro used, no comments, no explanation of why it works, no references, bonus video could be more interesting.tent="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title[page.lang] }}</title>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{ site.google_analytics }}');
-</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
 
   <!-- Icons  -->
   <link rel="stylesheet" href="{{ '/assets/fa/css/all.min.css' | relative_url }}">
@@ -30,20 +33,14 @@
   <!-- SEO -->
   {% seo %}
 
-  <!-- MathJax Latex -->
-  <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-  <!-- Highlightjs for code styling / TODO: Add liquid flag for pages -->
+  <!-- Highlightjs for code styling -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
   <script defer>hljs.highlightAll();</script>
 
   <!-- Search -->
-  <script src="/assets/js/search.js"></script>
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
 </head>
 
 <body>
@@ -67,7 +64,7 @@
   </main>
 
   <footer>
-    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> | <a href="https://github.com/shahaliyev/shahaliyev.github.io">Github</a></p>
+    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a></p>
   </footer>
 
   <button id="scroll-btn" onclick="scrollToTop()">
