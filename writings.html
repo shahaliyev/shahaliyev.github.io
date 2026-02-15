@@ -5,14 +5,7 @@ description: Ismayil Shahaliyev's essays
 css: /assets/css/post.css
 ---
 
-<h1>{{ page.title }}</h1>
-
-<article>
-  {% include info.html content="Toggle the website language above to see my writings in Azerbaijani. " %} 
-  <p>
-  </p>
-</article>
+<h1 class="writings-title">{{ page.title }}</h1>
+{% include info.html content="Toggle the website language above to see my writings in Azerbaijani. " %}
 
 {% include post_list.html %}
-
-</div>

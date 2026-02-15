@@ -1,141 +1,108 @@
 <!-- FILTER MENU -->
-<div class="filter-menu">
-  <button class="active" onclick="filterPosts('all')">
-    {% if page.lang == "en" %} All {% elsif page.lang == "az" %} Bütün {% endif %}
+<nav class="writings-nav" aria-label="Filter writings">
+  <button type="button" class="writings-nav-btn active" onclick="filterPosts('all')">
+    {% if page.lang == "en" %}All{% elsif page.lang == "az" %}Bütün{% endif %}
   </button>
   {% assign categories = site.posts | where: "lang", page.lang | map: 'category' | uniq %}
   {% for category in categories %}
     {% if category and category != "" %}
-      <button onclick="filterPosts('{{ category }}')">{{ category | capitalize }}</button>
+      <button type="button" class="writings-nav-btn" onclick="filterPosts('{{ category }}')">{{ category | capitalize }}</button>
     {% endif %}
   {% endfor %}
-  <button onclick="filterPosts('uncategorized')">
-    {% if page.lang == "en" %} Uncategorized {% elsif page.lang == "az" %} Kateqoriyasız {% endif %}
+  <button type="button" class="writings-nav-btn" onclick="filterPosts('uncategorized')">
+    {% if page.lang == "en" %}Uncategorized{% elsif page.lang == "az" %}Kateqoriyasız{% endif %}
   </button>
-</div>
+</nav>
 
-<!-- TIMELINE -->
-<div class="timeline">
-  {% assign posts_by_year = site.posts | where: "lang", page.lang | group_by_exp: "post", "post.date | date: '%Y'" %}
-  {% assign sorted_years = posts_by_year | sort: "name" | reverse %}
-
-  {% for year_group in sorted_years %}
-    <div class="timeline-year" data-year="{{ year_group.name }}">
-      <div class="year-label">{{ year_group.name }}</div>
-      <div class="timeline-posts">
-        {% for post in year_group.items %}
-          {% assign post_categories = post.category %}
-          {% if post_categories == nil or post_categories == "" %}
-            {% assign post_categories = "uncategorized" %}
-          {% elsif post_categories != "" and post_categories != nil %}
-            {% assign post_categories = post_categories | join: ',' %}
-          {% endif %}
-
-          <div class="timeline-entry writing" data-category="{{ post_categories }}">
-            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
+<!-- WRITINGS LIST -->
+<ul class="writings-list">
+  {% assign lang_posts = site.posts | where: "lang", page.lang | sort: "date" | reverse %}
+  {% for post in lang_posts %}
+    {% assign post_categories = post.category %}
+    {% if post_categories == nil or post_categories == "" %}
+      {% assign post_categories = "uncategorized" %}
+    {% elsif post_categories != "" and post_categories != nil %}
+      {% assign post_categories = post_categories | join: ',' %}
+    {% endif %}
+    <li class="writings-item writing" data-category="{{ post_categories }}">
+      <time class="writings-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %b %Y" }}</time>
+      <a href="{{ post.url | relative_url }}" class="writings-link">{{ post.title }}</a>
+    </li>
   {% endfor %}
-</div>
+</ul>
 
 <!-- STYLES -->
 <style>
-  .filter-menu {
-    margin-bottom: 20px;
-    line-height: 2.5;
+  .writings-title { margin-bottom: 0.25em; }
+  .writings-nav {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 4px;
+    margin: 0.75em 0 0.5em;
   }
-
-  .filter-menu button {
-    padding: 6px 12px;
+  .writings-nav-btn {
+    flex: 0 0 auto;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #495057;
+    background: #f1f3f4;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
     cursor: pointer;
-    background-color: #eee;
-    border: none;
-    border-radius: 5px;
-    font-size: 0.9em;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
-
-  .filter-menu button:hover {
-    background-color: #ddd;
+  .writings-nav-btn:hover {
+    background: #e8eaed;
+    color: #1a1a1a;
   }
-
-  .filter-menu button.active {
-    background-color: #7ba5c7;
-    color: white;
+  .writings-nav-btn.active {
+    background: #2c3e50;
+    color: #fff;
+    border-color: #2c3e50;
   }
-
-  .timeline {
-    margin: 2em 0;
-    padding: 0 0px;
+  .writings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5em 0 0;
   }
-
-  .timeline-year {
-    margin-bottom: 1em;
-  }
-
-  .year-label {
-    display: inline-block;
-    background-color: #7ba5c7;
-    color: white;
-    font-size: 0.8em;
-    font-weight: bold;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    border-radius: 5px;
-    padding: 3px 6px;
-    margin-bottom: 15px;
-    /* margin-left: 15px; */
-  }
-
-  .timeline-posts {
+  .writings-item {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    /* margin-left: 15px; */
+    align-items: baseline;
+    gap: 0.75em;
+    padding: 0.35em 0;
+    font-size: 1rem;
+    line-height: 1.35;
+    border-bottom: 1px solid #eee;
   }
-
-  .timeline-entry {
-    font-family: Roboto, sans-serif;
-    font-size: 1.1em;
-    line-height: 1.5;
+  .writings-item:last-child { border-bottom: none; }
+  .writings-date {
+    flex-shrink: 0;
+    width: 11ch;
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-variant-numeric: tabular-nums;
   }
-
-  .timeline-entry a {
+  .writings-link {
     text-decoration: none;
-    color: #3c3d3d;
-    font-weight: 600;
-    transition: 0.3s;
+    color: #2c3e50;
+    font-weight: 500;
+    transition: color 0.15s;
   }
-
-  .timeline-entry:hover a {
-    color: rgb(165, 164, 164);
-  }
-
+  .writings-link:hover { color: #556a9a; }
   @media screen and (max-width: 700px) {
-    .timeline {
-      padding: 0 0px;
-    }
-
-    .year-label {
-      font-size: 0.8em;
-      padding: 3px 6px;
-    }
-
-    .timeline-entry {
-      font-size: 1em;
-    }
+    .writings-nav { flex-direction: row; }
+    .writings-item { flex-wrap: wrap; gap: 0.25em; }
+    .writings-date { font-size: 0.75rem; width: 11ch; }
   }
 </style>
 
 <!-- SCRIPT -->
 <script>
   function filterPosts(category) {
-    const posts = document.querySelectorAll('.writing');
-    const buttons = document.querySelectorAll('.filter-menu button');
-    const yearGroups = document.querySelectorAll('.timeline-year');
+    const items = document.querySelectorAll('.writing');
+    const buttons = document.querySelectorAll('.writings-nav-btn');
 
     buttons.forEach(btn => btn.classList.remove('active'));
     const matchBtn = Array.from(buttons).find(btn =>
@@ -145,15 +112,9 @@
     );
     if (matchBtn) matchBtn.classList.add('active');
 
-    posts.forEach(post => {
-      const categories = post.dataset.category.split(',');
-      post.style.display = (category === 'all' || categories.includes(category)) ? 'block' : 'none';
-    });
-
-    yearGroups.forEach(group => {
-      const visiblePosts = group.querySelectorAll('.writing');
-      const anyVisible = Array.from(visiblePosts).some(p => p.style.display !== 'none');
-      group.style.display = anyVisible ? 'block' : 'none';
+    items.forEach(item => {
+      const categories = item.dataset.category.split(',');
+      item.style.display = (category === 'all' || categories.includes(category)) ? 'flex' : 'none';
     });
   }
 </script>
