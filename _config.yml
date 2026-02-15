@@ -31,6 +31,9 @@ collections:
   posts:
     output: true
     permalink: /writings/:title
+  notes:
+    output: true
+    permalink: /notes/note/:name/
 
 
 defaults:
@@ -55,6 +58,11 @@ defaults:
       path: "az"
     values:
       lang: "az"
+  -
+    scope:
+      path: "_notes"
+    values:
+      layout: "note_content"
 
 
 # Build settings

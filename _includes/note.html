@@ -1,4 +1,4 @@
-<div class="note-card{% if include.pin %} pinned{% endif %}" id="note-{{ include.date | slugify }}">
+<div class="note-card{% if include.pin %} pinned{% endif %}" id="note-{{ include.date | date: '%Y-%m-%d-%H-%M-%S' }}">
   <div class="note-header">
       <!-- Pin Icon -->
       {% if include.pin %}
@@ -17,58 +17,67 @@
       <img src="{{ include.image }}" alt="Note Image">
   </div>
   {% endif %}
-  <!-- Note Content -->
+  <!-- Note Content (use div so both inline HTML and block/markdown content work) -->
   <div class="note-content">
-      <p>{{ include.content }}</p>
+      {{ include.content }}
   </div>
-  <!-- Tags -->
-  {% if include.tags %}
+  <!-- Tags (handle both string and array; only show when there are tags, no hashtag when none) -->
+  {% assign tags_joined = include.tags | join: "," %}
+  {% assign tags_list = tags_joined | split: "," %}
+  {% assign has_tags = false %}
+  {% for t in tags_list %}{% assign st = t | strip %}{% if st != "" %}{% assign has_tags = true %}{% endif %}{% endfor %}
+  {% if has_tags %}
   <div class="note-tags">
-      {% assign tags_list = include.tags | split: "," %}
       {% for tag in tags_list %}
-      <span class="note-tag">#{{ tag | strip }}</span>
+        {% assign tag_stripped = tag | strip %}
+        {% if tag_stripped != "" %}
+      <span class="note-tag">#{{ tag_stripped }}</span>
+        {% endif %}
       {% endfor %}
   </div>
   {% endif %}
   <div class="note-share-options">
+    {% assign share_url = site.url | append: page.url | append: "#note-" | append: include.date | date: "%Y-%m-%d-%H-%M-%S" %}
+    {% assign share_text = include.content | strip_html | truncate: 300 %}
+    {% if include.image %}{% assign share_image_url = site.url | append: include.image %}{% endif %}
     <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&quote={{ include.content | url_encode }}{% if include.image %}&picture={{ include.image | url_encode }}{% endif %}" 
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}&quote={{ share_text | url_encode }}{% if include.image %}&picture={{ share_image_url | url_encode }}{% endif %}" 
        target="_blank" title="Share on Facebook">
         <i class="fab fa-facebook"></i>
     </a>
 
     <!-- Twitter -->
-    <a href="https://twitter.com/intent/tweet?text={{ include.content | url_encode }}&url={{ site.url }}{{ page.url }}{% if include.image %}&image={{ include.image | url_encode }}{% endif %}" 
+    <a href="https://twitter.com/intent/tweet?text={{ share_text | url_encode }}&url={{ share_url | url_encode }}" 
        target="_blank" title="Share on Twitter">
         <i class="fab fa-x-twitter"></i>
     </a>
 
     <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&summary={{ include.content | url_encode }}{% if include.image %}&source={{ include.image | url_encode }}{% endif %}" 
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ share_url | url_encode }}&summary={{ share_text | url_encode }}" 
        target="_blank" title="Share on LinkedIn">
         <i class="fab fa-linkedin"></i>
     </a>
 
     <!-- Threads -->
-    <a href="https://www.threads.net/share?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}{% if include.image %}&image={{ include.image | url_encode }}{% endif %}" 
+    <a href="https://www.threads.net/share?text={{ share_text | url_encode }}%20{{ share_url | url_encode }}" 
        target="_blank" title="Share on Threads">
         <i class="fab fa-threads"></i>
     </a>
 
     <!-- Telegram -->
-    <a href="https://telegram.me/share/url?url={{ site.url }}{{ page.url }}&text={{ include.content | url_encode }}{% if include.image %}&image={{ include.image | url_encode }}{% endif %}" 
+    <a href="https://telegram.me/share/url?url={{ share_url | url_encode }}&text={{ share_text | url_encode }}" 
        target="_blank" title="Share on Telegram">
         <i class="fab fa-telegram-plane"></i>
     </a>
 
     <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text={{ include.content | url_encode }}%20{{ site.url }}{{ page.url }}{% if include.image %}%20{{ include.image | url_encode }}{% endif %}" 
+    <a href="https://api.whatsapp.com/send?text={{ share_text | url_encode }}%20{{ share_url | url_encode }}" 
        target="_blank" title="Share on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Email -->
-    <a href="mailto:?subject={{ page.title | escape }}&body={{ include.content | escape }}%0A%0AImage: {% if include.image %}{{ include.image }}%0A{% endif %}Link: {{ site.url }}{{ page.url }}" 
+    <a href="mailto:?subject={{ page.title | escape }}&body={{ share_text | escape }}%0A%0ALink:%20{{ share_url | url_encode }}" 
        target="_blank" title="Share via Email">
         <i class="fas fa-envelope"></i>
     </a>

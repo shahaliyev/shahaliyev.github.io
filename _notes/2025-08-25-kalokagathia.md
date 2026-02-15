@@ -1,0 +1,18 @@
+---
+date: 2025-08-25 02:30:00
+tags: education,fitness
+---
+
+In ancient Greece, moral virtue was tied to physical fitness. The phrase – *kalos kagathos (καλὸς κἀγαθός, noun: kalokagathia)*, translated as beautiful and virtuous, was used by classical authors (including Plato and Aristotle) to denote a perfect man. *Mens sana in corpore sano* is a later, Latin phrase, coined by the Roman poet Juvenal, and is known as a proverb: *a healthy mind in a healthy body*. For Juvenal, when praying, one should first desire that, rather than a long life. This ancient ideal inspired Mishima, who was slim and frail until his thirties, to take up bodybuilding after visiting Europe and seeing ancient Greek sculptures.
+
+Wealthy men of ancient Rome were expected to become benefactors, spending their wealth for the community. For Celsus, who was a Roman politician of ancient Greek origin, and for many other recognized Romans, building mighty libraries, hospitals, aqueducts served a double purpose: to fulfil their public duty and inscribe their names in history. For this reason, today, in the Turkish city of Izmir, where the ruins of the ancient Greek city of Ephesus lie, the personification of excellence and virtue, Arete, stands still in the library of Celsus.
+
+The term *arete (ἀρετή)* refers to many meanings, including the full realization of one's potential. We, again, stumble upon this word when reading many ancient authors – Homer, Plato, Aristotle. Sophist Prodicus narrates the story of Heracles at the crossroads: Arete offering him glory and hardship, and Kakia (vice) offering him ease and pleasure.
+
+For Plato, obtaining arete meant the development of the mind, body, and soul. For the mind, the Greeks exercised oratory, rhetoric, and sciences. For physical training, gymnasion (gymnasium) existed. For spiritual development, the practice of music and virtue. Arete should have served *paideia (παιδεία)*, the rearing of a perfect member of an ancient Greek state. Paideia should have brought about kalokagathia.
+
+*Sidenote: Mortimer Adler's [paideia proposal](https://en.wikipedia.org/wiki/Paideia_Proposal) was aimed against mechanical education, also encouraging [Socratic seminars](https://en.wikipedia.org/wiki/Socratic_method). In these seminars, teachers would create a set of ordered questions for the development of ideas, instead of memorization of predetermined truths, while being open to all possible answers by students. Skillful management of such seminars required acumen.*
+
+We may set paideia in contrast with agoge ( ἀγωγή), the training of an ideal Spartan citizen, which would start for boys at the age of seven. Spartan boys were kept away from their families, deprived of food, sleep, and shelter; they developed pain tolerance through military training, engaged in hunting, dancing, singing, and laconism. Less than ten percent of the population – Spartiates (Spartan citizens) were eligible for such an education. The firstborn sons of [both Spartan kings](https://www.youtube.com/watch?v=ppGCbh8ggUs) were probably either exempt or subject to modified training.
+
+The Spartan pupils were taught to read and write for practical purposes, and were expected to steal food in stealth. If someone was caught, he would be beaten. They were given only one clothing item for a year and educated in laconism – speaking briefly and wittily. Age twenty marked transition to adulthood, making Spartans eligible for military service and voting. At age thirty, they would graduate from agoge and were permitted to have a family. For Spartans, agoge entailed mastery of physical strength and social conventions. Such was the education of a military state.
