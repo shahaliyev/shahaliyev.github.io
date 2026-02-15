@@ -24,13 +24,9 @@
             <i class="fab fa-whatsapp"></i>
         </a>
 
-        <button class="horizontal-share-buttons copy-link" onclick="copyLink()" title="Copy Link">
-            <i class="fas fa-copy"></i>
+        <button type="button" class="horizontal-share-buttons copy-link" id="copy-link-btn" onclick="copyLink()" title="Copy link" aria-label="Copy link">
+            <i class="fas fa-copy" id="copy-link-icon" aria-hidden="true"></i>
         </button>
-    </div>
-
-    <div id="copy-message" style="display: none; color: grey; margin-top: 10px;">
-        Link copied to clipboard
     </div>
 </div>
 
@@ -70,23 +66,46 @@
     .share-buttons a:hover, .share-buttons button:hover {
         color: #6186ad;
     }
+    .copy-link.copied {
+        color: #2e7d32;
+    }
+    .copy-link.copied:hover {
+        color: #2e7d32;
+    }
 </style>
 
 <script>
     function copyLink() {
-        var copyText = window.location.href;
-        var textarea = document.createElement("textarea");
-        textarea.value = copyText;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
-
-        var message = document.getElementById("copy-message");
-        message.style.display = "inline-block";
-
+        var url = window.location.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(showCopiedState);
+        } else {
+            var textarea = document.createElement("textarea");
+            textarea.value = url;
+            textarea.setAttribute("readonly", "");
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand("copy");
+                showCopiedState();
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        }
+    }
+    function showCopiedState() {
+        var btn = document.getElementById("copy-link-btn");
+        var icon = document.getElementById("copy-link-icon");
+        if (!btn || !icon) return;
+        icon.className = "fas fa-check";
+        btn.classList.add("copied");
+        btn.title = "Copied!";
+        btn.setAttribute("aria-label", "Copied!");
         setTimeout(function() {
-            message.style.display = "none";
-        }, 2000);
+            icon.className = "fas fa-copy";
+            btn.classList.remove("copied");
+            btn.title = "Copy link";
+            btn.setAttribute("aria-label", "Copy link");
+        }, 1800);
     }
 </script>

@@ -70,8 +70,8 @@
     <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a></p>
   </footer>
 
-  <button id="scroll-btn" onclick="scrollToTop()">
-    <i class="fa-solid fa-arrow-up"></i>
+  <button id="scroll-btn" onclick="scrollToTop()" aria-label="Scroll to top" title="Scroll to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
   
   <!-- JS -->
