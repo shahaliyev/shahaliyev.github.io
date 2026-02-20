@@ -25,6 +25,8 @@ header {
   align-items: center; 
 }
 
+
+
 main {
   max-width: 700px; 
   margin: 10px auto;
@@ -101,6 +103,35 @@ p, li, ol li, .table {
 header .site-info {
   text-align: left;
 }
+
+header .site-info,
+header .site-nav {
+  margin-top: 10px;
+}
+
+header {
+  display: flex;
+  justify-content:space-between;
+  /* gap: 12px; */
+}
+
+header .site-info {
+  min-width: 0;
+}
+
+p.logo {
+  margin: 0;
+  line-height: 1;
+}
+
+.logo a {
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 blockquote {
   /* border-left: 4px solid #3498db; 
@@ -207,13 +238,12 @@ a, button {
   header {
     /* flex-direction: column; */
     /* text-align: center; */
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 0px;
+    padding-left: 10px;
   }
 
-  .logo {
-    /* text-align: center;
-    font-size: 1.3em;  */
+  .logo a {
+    font-size: 1.8em; 
   }
 
   h1 {

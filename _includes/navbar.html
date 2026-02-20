@@ -1,6 +1,5 @@
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a class="brand" href="{{ '/' | relative_url }}">.</a>
   
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
       <span class="nav-toggle-icon" aria-hidden="true"><span></span></span>
@@ -79,13 +78,16 @@
   /* ===== NAV ROOT ===== */
 
 .site-nav {
-  margin-top: 10px;
+  flex: 0 0 auto;
 }
 
-/* Layout isolated from header */
+.site-nav .nav-toggle {
+  flex-shrink: 0;
+}
+
 .site-nav .nav-inner {
   display: grid;
-  grid-template-columns: 1fr auto auto; /* brand | menu | toggle */
+  grid-template-columns: auto auto; /* menu | toggle */
   align-items: center;
   column-gap: 12px;
   width: 100%;
@@ -247,7 +249,9 @@
   right: 0;
   top: calc(100% + 10px);
 
-  width: min(92vw, 360px);     /* key: make it actually wide */
+  box-sizing: border-box;
+  max-width: calc(100vw - 40px);
+  width: 400px;  /* key: make it actually wide */
   padding: 16px;              /* more inner spacing */
   border-radius: 18px;
   border: 1px solid rgba(0,0,0,0.10);
