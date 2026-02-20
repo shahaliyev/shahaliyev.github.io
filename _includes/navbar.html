@@ -1,75 +1,307 @@
-<nav>
-  {% if page.lang == "en" %}
-  <div class="nav-row">
-    {% if page.translation %}
-      <a href="{{ page.translation }}">AZ <i class="fas fa-language"></i></a>
-    {% else %}
-      <a href="/az">AZ <i class="fas fa-language"></i></a>
-    {% endif %}
-    <!-- <a href="{{ '/' | relative_url }}">{{ site.nav.home[page.lang] }}</a> -->
-    <a href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
-    <!-- <a href="{{ '/progress.html' | relative_url }}">Progress</a>  -->
-    <a href="{{ '/notes/' | relative_url }}">Notes</a>
-    <a style="text-decoration: underline;" href="{{ '/csci4701' | relative_url }}">CSCI 4701</a>
-  </div>
-  <!-- <div class="nav-row"> -->
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">.</a>
+  
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-icon" aria-hidden="true"><span></span></span>
+      <span class="sr-only">Menu</span>
+    </button>
 
-  <!-- </div>  -->
-  {% elsif page.lang == "az" %}
-  <div class="nav-row">
-    {% if page.translation %}
-      <a href="{{ page.translation }}">EN <i class="fas fa-language"></i></a>
-    {% else %}
-      <a href="/">EN <i class="fas fa-language"></i></a>
-    {% endif %}
-    <!-- <a href="{{ '/az' | relative_url }}">{{ site.nav.home[page.lang] }}</a> -->
-    <a href="{{ '/az/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
-    <!-- <a href="{{ '/notes.html' | relative_url }}">Qeydlər</a> -->
+    <div id="nav-menu" class="nav-menu">
+      {% if page.lang == "en" %}
+        {% if page.translation %}
+          <a class="nav-link nav-lang" href="{{ page.translation }}">AZ <i class="fas fa-language"></i></a>
+        {% else %}
+          <a class="nav-link nav-lang" href="{{ '/az' | relative_url }}">AZ <i class="fas fa-language"></i></a>
+        {% endif %}
+
+        <a class="nav-link" href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+        <a class="nav-link" href="{{ '/notes/' | relative_url }}">Notes</a>
+
+        <a class="nav-link"
+           href="{{ '/assets/doc/Ismayil_Shahaliyev_Resume_2025_v0_public.pdf' | relative_url }}"
+           target="_blank"
+           rel="noopener">Resume</a>
+
+        <a class="nav-link nav-course" href="{{ '/csci4701' | relative_url }}">CSCI 4701</a>
+        <a class="nav-link nav-course" href="http://ada-site.github.io/SITE-1101">SITE 1101</a>
+
+      {% elsif page.lang == "az" %}
+        {% if page.translation %}
+          <a class="nav-link nav-lang" href="{{ page.translation }}">EN <i class="fas fa-language"></i></a>
+        {% else %}
+          <a class="nav-link nav-lang" href="{{ '/' | relative_url }}">EN <i class="fas fa-language"></i></a>
+        {% endif %}
+
+        <a class="nav-link" href="{{ '/az/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+      {% endif %}
+    </div>
+
   </div>
-  {% endif %}  
 </nav>
 
+<script>
+  (function () {
+    var btn = document.querySelector(".site-nav .nav-toggle");
+    var menu = document.getElementById("nav-menu");
+    if (!btn || !menu) return;
+  
+    function closeMenu() {
+      btn.setAttribute("aria-expanded", "false");
+      menu.classList.remove("open");
+      document.body.classList.remove("nav-open");
+    }
+  
+    function openMenu() {
+      btn.setAttribute("aria-expanded", "true");
+      menu.classList.add("open");
+      document.body.classList.add("nav-open");
+    }
+  
+    btn.addEventListener("click", function () {
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      expanded ? closeMenu() : openMenu();
+    });
+  
+    document.addEventListener("click", function (e) {
+      if (!menu.classList.contains("open")) return;
+      if (menu.contains(e.target) || btn.contains(e.target)) return;
+      closeMenu();
+    });
+  
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  })();
+  </script>
 
 <style>
-  nav {
-    margin-top: 10px;
-    display: flex;
-    gap: 1em;
+  /* ===== NAV ROOT ===== */
+
+.site-nav {
+  margin-top: 10px;
+}
+
+/* Layout isolated from header */
+.site-nav .nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto auto; /* brand | menu | toggle */
+  align-items: center;
+  column-gap: 12px;
+  width: 100%;
+  position: relative;
+}
+
+/* ===== BRAND ===== */
+
+.site-nav .brand {
+  text-decoration: none;
+  color: #333;
+  opacity: 0.75;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  padding: 8px 10px;
+  border-radius: 10px;
+
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.site-nav .brand:hover {
+  opacity: 1;
+}
+
+/* ===== DESKTOP MENU ===== */
+
+.site-nav .nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.site-nav .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #222;
+  opacity: 0.85;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.18s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.site-nav .nav-link:hover {
+  opacity: 1;
+  border-color: rgba(85, 106, 154, 0.35);
+  color: #556a9a;
+}
+
+/* ===== TOGGLE BUTTON ===== */
+
+.site-nav .nav-toggle {
+  display: none;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Slight feedback on hover */
+.site-nav .nav-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* When open: slightly larger */
+.site-nav .nav-toggle[aria-expanded="true"] {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(85, 106, 154, 0.35);
+}
+
+/* 3-line hamburger */
+.site-nav .nav-toggle-icon {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+
+.site-nav .nav-toggle-icon::before,
+.site-nav .nav-toggle-icon::after,
+.site-nav .nav-toggle-icon span {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0,0,0,0.65);
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.site-nav .nav-toggle-icon::before { top: 0; }
+.site-nav .nav-toggle-icon span { top: 50%; transform: translateY(-50%); }
+.site-nav .nav-toggle-icon::after { bottom: 0; }
+
+/* Animate hamburger -> X */
+.site-nav .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.site-nav .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.site-nav .nav-toggle[aria-expanded="true"] .nav-toggle-icon span {
+  opacity: 0;
+}
+
+/* ===== BREAKPOINTS ===== */
+
+/* Hide course links slightly earlier */
+@media (max-width: 980px) {
+  .site-nav .nav-course { display: none; }
+}
+
+@media (max-width: 1120px) {
+
+.site-nav .nav-inner {
+  grid-template-columns: 1fr auto; /* brand | toggle */
+}
+
+.site-nav .nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-nav .brand {
+  font-size: 16px;
+  padding: 8px 8px;
+}
+
+/* Bigger, roomier dropdown */
+.site-nav .nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+
+  width: min(92vw, 360px);     /* key: make it actually wide */
+  padding: 16px;              /* more inner spacing */
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+  z-index: 999;
+
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.site-nav .nav-menu.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Bigger touch targets */
+.site-nav .nav-menu .nav-link {
+  justify-content: center;
+  font-size: 17px;
+  padding: 12px 14px;         /* key: bigger tap area */
+  border-radius: 14px;        /* less “pill”, more button */
+}
+
+.site-nav .nav-menu.open .nav-course {
+  display: inline-flex;
+}
+}
+
+/* Very small screens */
+@media (max-width: 420px) {
+  .site-nav .brand {
+    font-size: 14px;
+    padding: 6px 6px;
   }
 
-  nav a {
-    display: inline-block;
-    /* margin-left: 15px; */
-    /* font-family: Arial, sans-serif; */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* text-transform: uppercase; */
-    font-size: 16px;
-    /* padding: 10px; */
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s ease-in-out;
-    opacity: 0.7;
+  .site-nav .nav-toggle {
+    padding: 8px 10px;
   }
+}
 
-  nav a:hover {
-    color:#556a9a; 
-  }
-
-  .nav-row {
-    display: flex;
-    gap: 1em;
-  }
-
-  @media screen and (max-width: 768px) {
-    nav {
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    nav a {
-      font-size: 18px;
-    }
-  }
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
 </style>
