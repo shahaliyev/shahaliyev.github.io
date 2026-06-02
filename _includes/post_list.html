@@ -1,5 +1,5 @@
 <!-- FILTER MENU -->
-<nav class="writings-nav" aria-label="Filter posts">
+<nav class="writings-nav" aria-label="Filter writings">
   <button type="button" class="writings-nav-btn active" onclick="filterPosts('all')">
     {% if page.lang == "en" %}All{% elsif page.lang == "az" %}Bütün{% endif %}
   </button>
@@ -26,7 +26,7 @@
     {% endif %}
     <li class="writings-item writing" data-category="{{ post_categories }}">
       <time class="writings-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%d %b %Y" }}</time>
-      <a href="{{ post.url | relative_url }}" class="writings-link">{{ post.title }}</a>
+      <a href="{{ post.url | relative_url }}" class="writings-link" title="{{ post.title | escape }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
@@ -92,8 +92,20 @@
   .writings-link:hover { color: #556a9a; }
   @media screen and (max-width: 700px) {
     .writings-nav { flex-direction: row; }
-    .writings-item { flex-wrap: wrap; gap: 0.25em; }
-    .writings-date { font-size: 0.75rem; width: 11ch; }
+    .writings-item {
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.5em;
+      min-width: 0;
+    }
+    .writings-date { font-size: 0.75rem; width: 11ch; flex-shrink: 0; }
+    .writings-link {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 </style>
 

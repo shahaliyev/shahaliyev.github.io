@@ -2,7 +2,7 @@
   <div class="nav-inner">
     <div id="nav-menu" class="nav-menu">
       {% if page.lang == "en" %}
-        <a class="nav-link" href="{{ '/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+        <a class="nav-link" href="{{ '/' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
         <!-- <a class="nav-link" href="{{ '/notes/' | relative_url }}">Notes</a>
 
         <a class="nav-link"
@@ -14,7 +14,7 @@
         <a class="nav-link" href="http://ada-site.github.io/SITE-1101" target="_blank" rel="noopener">SITE 1101</a>
 
       {% elsif page.lang == "az" %}
-        <a class="nav-link" href="{{ '/az/writings.html' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
+        <a class="nav-link" href="{{ '/az/' | relative_url }}">{{ site.nav.writings[page.lang] }}</a>
       {% endif %}
     </div>
   </div>

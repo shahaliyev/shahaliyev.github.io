@@ -1,13 +1,16 @@
 ---
 layout: default
+lang: en
 css: /assets/css/home.css
 is_home: true
 ---
 
 <div id="homepage-content">
-  {% include home-logo.html %}
+  <header class="home-top">
+    {% include home-logo.html %}
+  </header>
 
-  <div class="home-intro">
+  <section class="home-intro" aria-label="About">
     <div class="home-main">
       <div class="home-academic">
         <p>
@@ -32,5 +35,7 @@ is_home: true
         <a href="/feed.xml" target="_blank" title="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
       </div>
     </aside>
-  </div>
+  </section>
+
+  {% include writings-hub.html initial_view="writings" %}
 </div>

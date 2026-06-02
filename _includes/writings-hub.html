@@ -3,13 +3,27 @@
 {% if show_notes == false %}
   {% assign initial_view = "writings" %}
 {% endif %}
+{% if page.lang == "az" %}
+  {% assign hub_base = "/az/" %}
+{% else %}
+  {% assign hub_base = "/" %}
+{% endif %}
+{% unless page.is_home %}
+  {% if page.lang == "az" %}
+    {% assign hub_base = "/az/writings.html" %}
+  {% else %}
+    {% assign hub_base = "/writings.html" %}
+  {% endif %}
+{% endunless %}
 
-<div class="writings-hub"
+<div class="writings-hub{% if page.is_home %} writings-hub--home{% endif %}"
      data-initial-view="{{ initial_view }}"
      data-lang="{{ page.lang | default: 'en' }}"
-     data-page-title="{{ page.title | escape }}"
+     data-hub-base="{{ hub_base }}"
+     data-is-home="{% if page.is_home %}true{% else %}false{% endif %}"
+     data-page-title="{{ page.title | default: site.title[page.lang] | escape }}"
      data-notes-enabled="{% if show_notes %}true{% else %}false{% endif %}"
-     data-label-writings="{% if page.lang == 'az' %}Yazılar{% else %}Posts{% endif %}"
+     data-label-writings="{% if page.lang == 'az' %}Yazılar{% else %}Writings{% endif %}"
      data-label-notes="{% if page.lang == 'az' %}Qeydlər{% else %}Notes{% endif %}">
   <div class="writings-section-header">
     {% include writings-notes-toggle.html view=initial_view %}
@@ -28,6 +42,17 @@
 </div>
 
 <style>
+  .writings-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .writings-section-header .search-container {
+    align-self: stretch;
+    width: 100%;
+  }
+
   .writings-panel {
     display: none;
     opacity: 0;

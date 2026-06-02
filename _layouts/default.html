@@ -26,6 +26,9 @@
   {% if page.css %}
     <link rel="stylesheet" href="{{ page.css | relative_url }}">
   {% endif %}
+  {% if page.is_home %}
+    <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
+  {% endif %}
 
   <!-- SEO -->
   {% seo %}

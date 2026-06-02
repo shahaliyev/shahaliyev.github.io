@@ -15,18 +15,27 @@
     if (!writingsPanel) return;
 
     var labels = {
-      writings: hub.getAttribute("data-label-writings") || "Posts",
+      writings: hub.getAttribute("data-label-writings") || "Writings",
       notes: hub.getAttribute("data-label-notes") || "Notes"
     };
 
     var placeholders = {
-      writings: lang === "az" ? "Yazılarda axtar..." : "Search posts...",
+      writings: lang === "az" ? "Yazılarda axtar..." : "Search writings...",
       notes: lang === "az" ? "Qeydlərdə axtar..." : "Search notes..."
     };
 
+    var isHome = hub.getAttribute("data-is-home") === "true";
+    var hubBase = hub.getAttribute("data-hub-base");
+    if (!hubBase) {
+      hubBase = lang === "az" ? "/az/" : "/";
+    }
+    var notesPath = isHome
+      ? hubBase.replace(/\/?$/, "/") + "#notes"
+      : "/notes/";
+
     var paths = {
-      writings: lang === "az" ? "/az/writings.html" : "/writings.html",
-      notes: "/notes/"
+      writings: hubBase,
+      notes: notesPath
     };
 
     var searchIndex = null;
@@ -94,7 +103,7 @@
 
       updateToggleButtons(view);
 
-      if (notesEnabled) {
+      if (notesEnabled && !isHome) {
         document.title = labels[view];
       } else if (pageTitle) {
         document.title = pageTitle;
@@ -107,8 +116,9 @@
       if (!notesEnabled || updateHistory === false) return;
 
       if (window.history && window.history.replaceState) {
-        var onNotesPage = location.pathname.indexOf("/notes") !== -1;
-        if (onNotesPage) {
+        var onNotesPage =
+          location.pathname.indexOf("/notes") !== -1 || location.hash === "#notes";
+        if (onNotesPage && !isHome) {
           window.history.replaceState({ view: view }, "", view === "notes" ? paths.notes : paths.writings);
         } else {
           window.history.replaceState(
