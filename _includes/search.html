@@ -1,70 +1,95 @@
 <div class="search-container">
-    {% if page.lang == "en" %}
-        <input type="text" id="search-input" 
-        class="search-input" placeholder="🔍 Search in writings...">
-    {% elsif page.lang == "az" %}
-        <input type="text" id="search-input" 
-        class="search-input" placeholder="🔍 Yazılarda axtar...">
-    {% endif %}
+    <label class="search-field" for="search-input">
+        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+        {% if page.lang == "en" %}
+            <input type="search" id="search-input"
+            class="search-input" placeholder="Search writings..." autocomplete="off">
+        {% elsif page.lang == "az" %}
+            <input type="search" id="search-input"
+            class="search-input" placeholder="Yazılarda axtar..." autocomplete="off">
+        {% endif %}
+    </label>
     <ul id="results-container" class="results-list"></ul>
-</div>  
+</div>
 
 <style>
     .search-container {
-        max-width: 600px;
-        margin: 50px auto;
-        text-align: center;
+        margin: 0.75em 0 0.5em;
     }
-  
-    .search-input {
-        width: 300px;
-        padding: 12px 16px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 25px;
-        outline: none;
+
+    .search-field {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px 12px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
         background-color: #fff;
-        transition: border-color 0.2s ease;
+        transition: border-color 0.15s ease;
     }
-    
-    .search-input:focus {
-        border-color: #3a6ec8;
+
+    .search-field:focus-within {
+        border-color: #556a9a;
     }
-    
+
+    .search-icon {
+        flex-shrink: 0;
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0;
+        font-size: 0.9rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #1a1a1a;
+    }
+
     .search-input::placeholder {
-        color: #aaa;
+        color: #9aa0a6;
     }
-    
+
+    .search-input::-webkit-search-cancel-button {
+        cursor: pointer;
+    }
+
     .results-list {
         list-style: none;
-        margin-top: 15px;
+        margin: 0.5em 0 0;
         padding: 0;
     }
-    
+
     .results-list li {
-        background-color: #fff;
-        border-radius: 8px;
-        margin-bottom: 10px;
-        padding: 12px 16px;
-        border: 1px solid #eaeaea;
-        transition: background-color 0.2s ease, border-color 0.2s ease;
+        padding: 0.35em 0;
+        border-bottom: 1px solid #eee;
+        transition: color 0.15s ease;
     }
-    
+
+    .results-list li:last-child {
+        border-bottom: none;
+    }
+
     .results-list li a {
         text-decoration: none;
-        font-size: 16px;
-        color: #333;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #2c3e50;
     }
-    
-    .results-list li:hover {
-        background-color: #f5f5f5;
-        border-color: #ddd;
+
+    .results-list li a:hover {
+        color: #556a9a;
     }
-    
+
     .no-results {
-        font-size: 16px;
-        color: #666;
-        padding: 15px;
+        font-size: 0.9rem;
+        color: #6c757d;
+        padding: 0.35em 0;
     }
 </style>
 
