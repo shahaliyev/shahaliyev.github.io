@@ -1,0 +1,14 @@
+{% if page.lang != "az" %}
+<article class="notes-list">
+  {% assign sorted_notes = site.notes | sort: "date" | reverse %}
+  {% for note in sorted_notes %}
+  {% include note.html
+    date=note.date
+    content=note.content
+    tags=note.tags
+    pin=note.pin
+    image=note.image
+  %}
+  {% endfor %}
+</article>
+{% endif %}

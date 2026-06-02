@@ -1,12 +1,16 @@
-<div class="search-container">
+{% assign current_lang = page.lang | default: "en" %}
+
+<div class="search-container"
+     data-search-scope="writings"
+     data-search-lang="{{ current_lang }}">
     <label class="search-field" for="search-input">
         <i class="fas fa-search search-icon" aria-hidden="true"></i>
-        {% if page.lang == "en" %}
-            <input type="search" id="search-input"
-            class="search-input" placeholder="Search writings..." autocomplete="off">
-        {% elsif page.lang == "az" %}
-            <input type="search" id="search-input"
+        {% if page.lang == "az" %}
+          <input type="search" id="search-input"
             class="search-input" placeholder="Yazılarda axtar..." autocomplete="off">
+        {% else %}
+          <input type="search" id="search-input"
+            class="search-input" placeholder="Search posts..." autocomplete="off">
         {% endif %}
     </label>
     <ul id="results-container" class="results-list"></ul>
@@ -93,11 +97,41 @@
     }
 </style>
 
-
 <script>
-    let sjs = SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('results-container'),
-      json: '/search.json'
-    })
-  </script>
+  (function () {
+    if (document.querySelector(".writings-hub")) return;
+
+    var container = document.querySelector(".search-container");
+    if (!container) return;
+
+    var scope = container.getAttribute("data-search-scope") || "writings";
+    var lang = container.getAttribute("data-search-lang") || "en";
+    var searchInput = document.getElementById("search-input");
+    var resultsContainer = document.getElementById("results-container");
+
+    if (!searchInput || !resultsContainer || typeof SimpleJekyllSearch === "undefined") {
+      return;
+    }
+
+    fetch("/search.json")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var filtered = data.filter(function (item) {
+          if (lang === "az" && item.type === "note") return false;
+          if (item.lang && item.lang !== lang) return false;
+          if (scope === "writings") return item.type === "writing";
+          if (scope === "notes") return item.type === "note";
+          return true;
+        });
+
+        SimpleJekyllSearch({
+          searchInput: searchInput,
+          resultsContainer: resultsContainer,
+          json: filtered
+        });
+      })
+      .catch(function () {});
+  })();
+</script>

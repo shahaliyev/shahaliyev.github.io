@@ -1,5 +1,5 @@
 <!-- FILTER MENU -->
-<nav class="writings-nav" aria-label="Filter writings">
+<nav class="writings-nav" aria-label="Filter posts">
   <button type="button" class="writings-nav-btn active" onclick="filterPosts('all')">
     {% if page.lang == "en" %}All{% elsif page.lang == "az" %}Bütün{% endif %}
   </button>
@@ -14,7 +14,7 @@
   </button>
 </nav>
 
-<!-- WRITINGS LIST -->
+<!-- POSTS LIST -->
 <ul class="writings-list">
   {% assign lang_posts = site.posts | where: "lang", page.lang | sort: "date" | reverse %}
   {% for post in lang_posts %}
@@ -33,7 +33,6 @@
 
 <!-- STYLES -->
 <style>
-  .writings-title { margin-bottom: 0.25em; }
   .writings-nav {
     display: flex;
     flex-direction: row;

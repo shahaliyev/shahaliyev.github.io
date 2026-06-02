@@ -1,0 +1,77 @@
+{% assign show_notes = page.lang != "az" %}
+{% if page.lang == "az" %}
+  {% assign posts_label = "Yazılar" %}
+  {% assign notes_label = "Qeydlər" %}
+  {% assign toggle_aria = "Yazılar" %}
+{% else %}
+  {% assign posts_label = "Posts" %}
+  {% assign notes_label = "Notes" %}
+  {% assign toggle_aria = "Posts and notes" %}
+{% endif %}
+
+{% if show_notes %}
+<h1 class="writings-page-h1 writings-view-toggle" role="tablist" aria-label="{{ toggle_aria }}">
+  <button type="button" role="tab" class="writings-view-btn{% if include.view != 'notes' %} active is-posts{% endif %}" data-view="writings" aria-pressed="{% if include.view != 'notes' %}true{% else %}false{% endif %}" aria-selected="{% if include.view != 'notes' %}true{% else %}false{% endif %}">
+    {{ posts_label }}
+  </button>
+  <button type="button" role="tab" class="writings-view-btn{% if include.view == 'notes' %} active is-notes{% endif %}" data-view="notes" aria-pressed="{% if include.view == 'notes' %}true{% else %}false{% endif %}" aria-selected="{% if include.view == 'notes' %}true{% else %}false{% endif %}">
+    {{ notes_label }}
+  </button>
+</h1>
+{% else %}
+<h1 class="writings-page-h1 writings-page-h1--solo">{{ posts_label }}</h1>
+{% endif %}
+
+<style>
+  .writings-page-h1 {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0 0 0.25em;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f1f3f4;
+    font: inherit;
+    line-height: 1;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .writings-page-h1--solo {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #2c3e50;
+    color: #fff;
+    border: none;
+  }
+
+  .writings-view-toggle .writings-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    line-height: 1.2;
+    color: #495057;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .writings-view-btn:hover:not(.active) {
+    background: #e8eaed;
+    color: #1a1a1a;
+  }
+
+  .writings-view-btn.active {
+    cursor: default;
+  }
+</style>

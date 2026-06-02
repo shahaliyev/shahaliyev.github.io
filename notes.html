@@ -2,28 +2,8 @@
 title: Notes
 layout: default
 permalink: /notes/
+lang: en
+css: /assets/css/post.css
 ---
 
-<h1 style="text-align:center">{{ page.title }}</h1>
-
-<style>
-   ul {
-      /* list-style-type: none; */
-   }
-   ul a:hover, ol a:hover{
-      text-decoration: none;
-   }
-</style>
-
-<article>
-   {% assign sorted_notes = site.notes | sort: "date" | reverse %}
-   {% for note in sorted_notes %}
-   {% include note.html
-      date=note.date
-      content=note.content
-      tags=note.tags
-      pin=note.pin
-      image=note.image
-   %}
-   {% endfor %}
-</article>
+{% include writings-hub.html initial_view="notes" %}

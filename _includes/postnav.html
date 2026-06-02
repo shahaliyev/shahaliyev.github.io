@@ -1,18 +1,35 @@
-<div class="post-navigation">
-    <div class="previous-post">
-      {% if page.previous %}
-        <button onclick="window.location.href='{{ page.previous.url | relative_url }}'" class="prev">← {{ page.previous.title }}</button>
-      {% endif %}
-    </div>
-    <div class="next-post">
-      {% if page.next %}
-        <button onclick="window.location.href='{{ page.next.url | relative_url }}'" class="next">{{ page.next.title }} →</button>
-      {% endif %}
-    </div>
-  </div>
+{% assign current_lang = page.lang | default: "en" %}
+{% assign lang_posts = site.posts | where: "lang", current_lang | sort: "date" %}
+{% assign prev_post = nil %}
+{% assign next_post = nil %}
+{% assign found_current = false %}
 
-  <style>
-    
+{% for post in lang_posts %}
+  {% if post.url == page.url %}
+    {% assign found_current = true %}
+  {% elsif found_current == false %}
+    {% assign prev_post = post %}
+  {% elsif next_post == nil %}
+    {% assign next_post = post %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="post-navigation">
+  <div class="previous-post">
+    {% if prev_post %}
+      <button onclick="window.location.href='{{ prev_post.url | relative_url }}'" class="prev">← {{ prev_post.title }}</button>
+    {% endif %}
+  </div>
+  <div class="next-post">
+    {% if next_post %}
+      <button onclick="window.location.href='{{ next_post.url | relative_url }}'" class="next">{{ next_post.title }} →</button>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+
 .post-navigation {
   display: flex;
   justify-content: center;
@@ -37,4 +54,4 @@
   color:white;
   /* border-color:  #56595a;  */
 }
-  </style>
+</style>

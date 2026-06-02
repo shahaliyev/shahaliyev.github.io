@@ -2,14 +2,32 @@
 layout: none
 ---
 [
+  {% assign first = true %}
   {% for post in site.posts %}
+    {% unless first %},{% endunless %}
     {
       "title"    : "{{ post.title | escape }}",
       "category" : "{{ post.category }}",
       "tags"     : "{{ post.tags | join: ', ' }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date }}",
+      "type"     : "writing",
+      "lang"     : "{{ post.lang | default: 'en' }}",
       "content"  : {{ post.content | strip_html | strip_newlines | jsonify }}
-    } {% unless forloop.last %},{% endunless %}
+    }
+    {% assign first = false %}
+  {% endfor %}
+  {% for note in site.notes %}
+    ,
+    {
+      "title"    : "{{ note.content | strip_html | strip_newlines | truncate: 80 | escape }}",
+      "category" : "",
+      "tags"     : "{{ note.tags | join: ', ' }}",
+      "url"      : "{{ site.baseurl }}{{ note.url }}",
+      "date"     : "{{ note.date }}",
+      "type"     : "note",
+      "lang"     : "en",
+      "content"  : {{ note.content | strip_html | strip_newlines | jsonify }}
+    }
   {% endfor %}
 ]

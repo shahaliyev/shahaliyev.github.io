@@ -1,0 +1,63 @@
+{% assign initial_view = include.initial_view | default: "writings" %}
+{% assign show_notes = page.lang != "az" %}
+{% if show_notes == false %}
+  {% assign initial_view = "writings" %}
+{% endif %}
+
+<div class="writings-hub"
+     data-initial-view="{{ initial_view }}"
+     data-lang="{{ page.lang | default: 'en' }}"
+     data-page-title="{{ page.title | escape }}"
+     data-notes-enabled="{% if show_notes %}true{% else %}false{% endif %}"
+     data-label-writings="{% if page.lang == 'az' %}Yazılar{% else %}Posts{% endif %}"
+     data-label-notes="{% if page.lang == 'az' %}Qeydlər{% else %}Notes{% endif %}">
+  <div class="writings-section-header">
+    {% include writings-notes-toggle.html view=initial_view %}
+    {% include search.html %}
+  </div>
+
+  <div id="writings-panel" class="writings-panel{% if initial_view != 'notes' %} is-active{% endif %}" data-view="writings">
+    {% include post_list.html %}
+  </div>
+
+  {% if show_notes %}
+  <div id="notes-panel" class="writings-panel{% if initial_view == 'notes' %} is-active{% endif %}" data-view="notes">
+    {% include notes_list.html %}
+  </div>
+  {% endif %}
+</div>
+
+<style>
+  .writings-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+
+  .writings-panel.is-active {
+    display: block;
+    opacity: 1;
+  }
+
+  .writings-view-btn.active.is-posts,
+  .writings-view-btn.active.is-writings {
+    background: #2c3e50;
+    color: #fff;
+  }
+
+  .writings-view-btn.active.is-notes {
+    background: #2e7d4a;
+    color: #fff;
+  }
+
+  .notes-list ul a:hover,
+  .notes-list ol a:hover {
+    text-decoration: none;
+  }
+
+  .writings-section-header:has(.search-container):not(:has(.writings-view-toggle)) .search-container {
+    margin-top: 0;
+  }
+</style>
+
+<script src="{{ '/assets/js/writings-view.js' | relative_url }}" defer></script>
