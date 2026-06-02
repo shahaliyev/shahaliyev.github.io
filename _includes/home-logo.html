@@ -1,0 +1,7 @@
+<p class="home-logo logo">
+  {% if page.lang == "en" %}
+    <a href="/">{{ site.title[page.lang] }}</a>
+  {% else %}
+    <a href="{{ '/az' | relative_url }}">{{ site.title[page.lang] }}</a>
+  {% endif %}
+</p>

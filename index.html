@@ -1,25 +1,36 @@
 ---
 layout: default
 css: /assets/css/home.css
+is_home: true
 ---
 
 <div id="homepage-content">
-  <div id="profile-image">
-    <img src="/assets/img/profile.jpg" alt="Ismayil Shahaliyev's profile image" loading="lazy">
+  {% include home-logo.html %}
+
+  <div class="home-intro">
+    <div class="home-main">
+      <div class="home-academic">
+        <p>
+          I am a PhD student at <a href="https://ada.edu.az/">ADA University</a>, researching deep generative modeling for computer vision. I also instruct in the School of IT &amp; Engineering at ADA University, where I received my bachelor's and master's degrees; the latter was a dual degree program offered by the <a href="https://www.gwu.edu/">George Washington University</a>.
+        </p>
+
+        {% include home-nav-links.html %}
+      </div>
+
+      <p class="home-chess">
+        I am an <a href="https://ratings.fide.com/profile/13406388">International Chess Master</a> with a Grandmaster norm (2019). I became the chess champion of Azerbaijan four times, in Under-12, Under-14, and Under-16 (two years in a row) age categories. I also became the U-13 World School Chess Championship silver medalist in Iaşi, Romania. My latest championship was in Nakhchivan Open 2022.
+      </p>
+    </div>
+
+    <aside class="home-sidebar">
+      <div id="profile-image">
+        <img src="/assets/img/profile.jpg" alt="Ismayil Shahaliyev's profile image" loading="lazy">
+      </div>
+      <div class="social-icons">
+        <a href="https://scholar.google.com/citations?user=VLTyio4AAAAJ&amp;hl=ru&amp;oi=sra" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a>
+        <a href="https://github.com/shahaliyev" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="/feed.xml" target="_blank" title="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+      </div>
+    </aside>
   </div>
-  <p class="site-description">{{ site.description[page.lang] }}</p>
-  <div class="social-icons">
-    <a href="https://linkedin.com/in/shahaliyev" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://instagram.com/shahaliyevism" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://github.com/shahaliyev" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="/feed.xml" target="_blank" title="RSS Feed"><i class="fas fa-rss"></i></a>
-  </div>
-  <article>
-    <p>
-      I am an Instructor in the Computer and Information Sciences department at the <a href="https://ada.edu.az/">ADA University</a>, where I got my bachelor's and master's degrees. My master's degree was also a dual degree program offered by the <a href="https://www.gwu.edu/">George Washington University</a>.
-    </p>
-    <p>
-      I am an <a href="https://ratings.fide.com/profile/13406388">International Chess Master</a> with a Grandmaster norm (2019). I became the chess champion of Azerbaijan four times, in Under-12, Under-14, and Under-16 (two years in a row) age categories. I also became the U-13 World School Chess Championship silver medalist in Iaşi, Romania. My latest championship was in Nakhchivan Open 2022.
-    </p>
-  </article>
 </div>

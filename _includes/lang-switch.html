@@ -1,0 +1,13 @@
+{% if page.lang == "en" %}
+  {% if page.translation %}
+    <a class="lang-switch" href="{{ page.translation }}" hreflang="az" aria-label="Switch to Azerbaijani"><i class="fas fa-language" aria-hidden="true"></i></a>
+  {% else %}
+    <a class="lang-switch" href="{{ '/az' | relative_url }}" hreflang="az" aria-label="Switch to Azerbaijani"><i class="fas fa-language" aria-hidden="true"></i></a>
+  {% endif %}
+{% else %}
+  {% if page.translation %}
+    <a class="lang-switch" href="{{ page.translation }}" hreflang="en" aria-label="Switch to English"><i class="fas fa-language" aria-hidden="true"></i></a>
+  {% else %}
+    <a class="lang-switch" href="{{ '/' | relative_url }}" hreflang="en" aria-label="Switch to English"><i class="fas fa-language" aria-hidden="true"></i></a>
+  {% endif %}
+{% endif %}

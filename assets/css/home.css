@@ -1,41 +1,90 @@
 #homepage-content {
-  text-align: center;
+  --home-gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  column-gap: 1.5rem;
+  row-gap: var(--home-gap);
+  align-items: start;
+  text-align: left;
 }
-article p {
+
+.home-logo {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.home-logo a {
+  text-align: left;
+}
+
+.home-intro {
+  display: contents;
+}
+
+.home-main {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--home-gap);
+  margin: 0;
+}
+
+.home-academic {
+  display: flex;
+  flex-direction: column;
+  gap: var(--home-gap);
+  margin: 0;
+}
+
+.home-academic p {
+  margin: 0;
   text-align: justify;
 }
 
-#profile-image {
-  margin-top: 20px;
+.home-sidebar {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--home-gap);
+  width: 220px;
+}
+
+.home-chess {
+  margin: 0;
+  text-align: justify;
 }
 
 #profile-image img {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  padding: 1px;
-  border: 5px solid rgb(226, 226, 226);
-  overflow: hidden;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+  border: 1px solid rgb(226, 226, 226);
   transition: 0.3s ease-in-out;
 }
+
 #profile-image img:hover {
   transform: scale(1.02);
 }
 
 .social-icons {
-  margin-top: 20px;
+  margin: 0;
+  text-align: center;
 }
 
 .social-icons a {
   display: inline-block;
-  margin: 0 15px;
-  font-size: 2em; 
+  margin: 0 10px;
+  font-size: 1.6em;
   color: #3498db;
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
 }
 
 .social-icons a:hover {
-  color: #1e6188; 
+  color: #1e6188;
   transform: translateY(-2px);
 }
 
@@ -43,29 +92,94 @@ article p {
   color: #282623d8;
 }
 
-.social-icons .fab.fa-linkedin:hover {
-  color: #0077b5;
-}
-
-
-.social-icons .fab.fa-instagram:hover {
-  color: #d11686;
+.social-icons .fa-graduation-cap:hover {
+  color: #1a73e8;
 }
 
 .social-icons .fas.fa-rss:hover {
   color: #d05a0cca;
 }
 
-.social-icons .fab, .fas {
+.social-icons .fab,
+.social-icons .fas {
   color: rgb(106, 106, 123);
+}
+
+.home-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+#homepage-content .home-pill-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  color: #222;
+  opacity: 0.85;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+#homepage-content .home-pill-link:hover {
+  opacity: 1;
+  border-color: rgba(85, 106, 154, 0.35);
+  color: #556a9a;
+  text-decoration: none;
 }
 
 #homepage-content p {
   line-height: 1.6;
 }
 
-.site-description {
-  font-family:'Times New Roman', Times, serif;
-  font-size: 1.2em;
-  opacity: 0.8;
+.home-page main {
+  max-width: 820px;
+  margin-top: 52px;
+}
+
+@media (max-width: 768px) {
+  #homepage-content {
+    grid-template-columns: 1fr;
+    column-gap: var(--home-gap);
+  }
+
+  .home-intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--home-gap);
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .home-main {
+    display: contents;
+  }
+
+  .home-academic {
+    order: 1;
+  }
+
+  .home-sidebar {
+    order: 2;
+    width: 100%;
+    max-width: 260px;
+    align-self: center;
+  }
+
+  .home-chess {
+    order: 3;
+    width: 100%;
+  }
 }

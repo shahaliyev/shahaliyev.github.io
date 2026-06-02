@@ -46,28 +46,25 @@
   <script src="/assets/js/search.js"></script>
 </head>
 
-<body>
-  <header>
-    <div class="site-info">
-      <p class="logo">
-        {% if page.lang == "en" %}
-          <a href="/">{{ site.title[page.lang] }}</a>
-        {% else %}
-          <a href="{{ page.lang | relative_url }}">{{ site.title[page.lang] }}</a>
-        {% endif %}
-      </p>
-      <!-- <p class="site-description">{{ site.description }}</p> -->
-    </div>
-
-  {% include navbar.html %}
+<body{% if page.is_home %} class="home-page"{% endif %}>
+  {% unless page.is_home %}
+  <header class="site-header">
+    <p class="logo">
+      {% if page.lang == "en" %}
+        <a href="/">{{ site.title[page.lang] }}</a>
+      {% else %}
+        <a href="{{ page.lang | relative_url }}">{{ site.title[page.lang] }}</a>
+      {% endif %}
+    </p>
   </header>
+  {% endunless %}
 
   <main>
     {{ content }}
   </main>
 
   <footer>
-    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a></p>
+    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> | {% include lang-switch.html %}</p>
   </footer>
 
   <button id="scroll-btn" onclick="scrollToTop()" aria-label="Scroll to top" title="Scroll to top">

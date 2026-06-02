@@ -16,17 +16,6 @@ body {
   line-height: 1.6;
 }
 
-header {
-  /* padding: 10px; */
-  padding-right: 100px;
-  padding-left: 100px;
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-}
-
-
-
 main {
   max-width: 700px; 
   margin: 10px auto;
@@ -62,6 +51,25 @@ footer {
 
 }
 
+footer .lang-switch {
+  display: inline-block;
+  text-decoration: none;
+  color: #556a9a;
+  opacity: 0.85;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+footer .lang-switch i {
+  font-size: 1.05em;
+}
+
+footer .lang-switch:hover {
+  text-decoration: none;
+  color: #3d4f78;
+  opacity: 1;
+  transform: scale(1.12);
+}
+
 p a {
   text-decoration: none;
   color: #556a9a;
@@ -77,8 +85,7 @@ img {
 
 
 p, li, ol li, .table {
-  /* font-family: 'Roboto', sans-serif; */
-  font-family: "Lora", serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.1em;
 }
 
@@ -90,7 +97,7 @@ p, li, ol li, .table {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
   text-align: center;
-  font-size: 2em;
+  font-size: 1.75em;
   text-decoration: none;
   color: #6e6e6e;
   transition: 0.3s ease-in-out;
@@ -98,25 +105,6 @@ p, li, ol li, .table {
 .logo a:hover {
   color: #333333;
   text-decoration: none;
-}
-
-header .site-info {
-  text-align: left;
-}
-
-header .site-info,
-header .site-nav {
-  margin-top: 10px;
-}
-
-header {
-  display: flex;
-  justify-content:space-between;
-  /* gap: 12px; */
-}
-
-header .site-info {
-  min-width: 0;
 }
 
 p.logo {
@@ -132,6 +120,18 @@ p.logo {
   text-overflow: ellipsis;
 }
 
+.site-header {
+  box-sizing: border-box;
+  max-width: 700px;
+  margin: 2rem auto 1.5rem;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.site-header p.logo a {
+  display: inline-block;
+  text-align: center;
+}
 
 blockquote {
   /* border-left: 4px solid #3498db; 
@@ -235,15 +235,9 @@ a, button {
 }
 
 @media screen and (max-width: 768px) {
-  header {
-    /* flex-direction: column; */
-    /* text-align: center; */
-    padding-right: 0px;
-    padding-left: 10px;
-  }
-
-  .logo a {
-    font-size: 1.8em; 
+  .site-header {
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
   h1 {
