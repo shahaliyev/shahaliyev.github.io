@@ -1,224 +1,130 @@
-<div class="note-card{% if include.pin %} pinned{% endif %}" id="note-{{ include.date | date: '%Y-%m-%d-%H-%M-%S' }}">
-  <div class="note-header">
-      <!-- Pin Icon -->
-      {% if include.pin %}
-      <div class="note-pin">
-          <i class="fas fa-thumbtack" title="Pinned"></i>
-      </div>
-      {% endif %}
-      <!-- Timestamp -->
-      <time class="note-date" data-timestamp="{{ include.date | date: '%Y-%m-%dT%H:%M:%S' }}">
-          Loading...
-      </time>
-  </div>
-  <!-- Optional Image -->
-  {% if include.image %}
-  <div class="note-image">
-      <img src="{{ include.image }}" alt="Note Image">
-  </div>
+{% assign posted_date = include.date %}
+{% assign original_date = include.original_date %}
+{% assign note_title = include.label | strip %}
+{% assign is_standalone = include.standalone %}
+{% if original_date == nil or original_date == "" %}
+  {% assign show_dual_dates = false %}
+{% else %}
+  {% assign posted_day = posted_date | date: "%Y-%m-%d" %}
+  {% assign original_day = original_date | date: "%Y-%m-%d" %}
+  {% if posted_day == original_day %}
+    {% assign show_dual_dates = false %}
+  {% else %}
+    {% assign show_dual_dates = true %}
   {% endif %}
-  <!-- Note Content (use div so both inline HTML and block/markdown content work) -->
-  <div class="note-content">
-      {{ include.content }}
-  </div>
-  <!-- Tags (handle both string and array; only show when there are tags, no hashtag when none) -->
-  {% assign tags_joined = include.tags | join: "," %}
-  {% assign tags_list = tags_joined | split: "," %}
-  {% assign has_tags = false %}
-  {% for t in tags_list %}{% assign st = t | strip %}{% if st != "" %}{% assign has_tags = true %}{% endif %}{% endfor %}
-  {% if has_tags %}
-  <div class="note-tags">
-      {% for tag in tags_list %}
-        {% assign tag_stripped = tag | strip %}
-        {% if tag_stripped != "" %}
-      <span class="note-tag">#{{ tag_stripped }}</span>
+{% endif %}
+
+{% assign display_content = include.content %}
+{% if note_title != "" or original_date %}
+  {% assign content_parts = include.content | split: "</p>" %}
+  {% if content_parts.size > 1 %}
+    {% assign first_block = content_parts[0] %}
+    {% if first_block contains "<em>" or first_block contains "<i>" %}
+      {% assign display_content = "" %}
+      {% for part in content_parts offset: 1 %}
+        {% if part != "" %}
+          {% assign display_content = display_content | append: part | append: "</p>" %}
         {% endif %}
       {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% assign tags_joined_for_data = include.tags | join: "," %}
+{% assign tags_list_for_data = tags_joined_for_data | split: "," %}
+{% assign note_tag_slugs = "" %}
+{% for tag in tags_list_for_data %}
+  {% assign tag_slug = tag | strip | downcase %}
+  {% if tag_slug != "" %}
+    {% if note_tag_slugs != "" %}{% assign note_tag_slugs = note_tag_slugs | append: "," %}{% endif %}
+    {% assign note_tag_slugs = note_tag_slugs | append: tag_slug %}
+  {% endif %}
+{% endfor %}
+{% if note_tag_slugs == "" %}
+  {% assign note_tag_slugs = "untagged" %}
+{% endif %}
+
+{% assign note_id = include.date | date: '%Y-%m-%d-%H-%M-%S' %}
+{% if include.share_url != nil and include.share_url != "" %}
+  {% assign note_share_url = include.share_url %}
+{% elsif include.note_url != nil and include.note_url != "" %}
+  {% assign note_share_url = include.note_url | absolute_url %}
+{% elsif include.note_slug != nil and include.note_slug != "" %}
+  {% capture note_share_url %}{{ '/notes/' | append: include.note_slug | append: '/' | absolute_url }}{% endcapture %}
+{% else %}
+  {% assign note_share_url = page.url | absolute_url %}
+{% endif %}
+{% assign copy_heading = note_title %}
+{% if copy_heading == "" %}
+  {% assign copy_heading = include.display_title | strip %}
+{% endif %}
+{% capture note_copy_plain %}{% if copy_heading != "" %}{{ copy_heading }}
+
+{% endif %}{% if show_dual_dates %}{{ original_date | date: "%b %e, %Y" }}
+{{ posted_date | date: "%b %e, %Y" }}{% else %}{{ posted_date | date: "%b %e, %Y" }}{% endif %}
+
+{{ display_content | strip_html | strip }}
+
+—
+{{ site.author[page.lang] | default: site.title[page.lang] }}
+{{ note_share_url }}{% endcapture %}
+
+<div class="note-card note-item{% if include.pin %} pinned{% endif %}{% if is_standalone %} note-standalone{% endif %}" id="note-{{ note_id }}" data-tags="{{ note_tag_slugs }}">
+  {% if include.pin %}
+  <div class="note-pin" aria-hidden="true">
+    <i class="fas fa-thumbtack" title="Pinned"></i>
   </div>
   {% endif %}
-  <div class="note-share-options">
-    {% assign share_url = site.url | append: page.url | append: "#note-" | append: include.date | date: "%Y-%m-%d-%H-%M-%S" %}
-    {% assign share_text = include.content | strip_html | truncate: 300 %}
-    {% if include.image %}{% assign share_image_url = site.url | append: include.image %}{% endif %}
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}&quote={{ share_text | url_encode }}{% if include.image %}&picture={{ share_image_url | url_encode }}{% endif %}" 
-       target="_blank" title="Share on Facebook">
-        <i class="fab fa-facebook"></i>
-    </a>
 
-    <!-- Twitter -->
-    <a href="https://twitter.com/intent/tweet?text={{ share_text | url_encode }}&url={{ share_url | url_encode }}" 
-       target="_blank" title="Share on Twitter">
-        <i class="fab fa-x-twitter"></i>
-    </a>
+  {% unless is_standalone %}
+  <div class="note-header">
+    <div class="note-header-left">
+      {% if note_title != "" %}
+      <span class="note-title-label">{{ note_title }}</span>
+      {% endif %}
+    </div>
 
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ share_url | url_encode }}&summary={{ share_text | url_encode }}" 
-       target="_blank" title="Share on LinkedIn">
-        <i class="fab fa-linkedin"></i>
-    </a>
+    <div class="note-date-badges">
+      {% if show_dual_dates %}
+      <span class="note-date-badge note-date-badge--original">{{ original_date | date: "%b %e, %Y" }}</span>
+      <span class="note-date-badge note-date-badge--posted">{{ posted_date | date: "%b %e, %Y" }}</span>
+      {% else %}
+      <span class="note-date-badge note-date-badge--posted">{{ posted_date | date: "%b %e, %Y" }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% endunless %}
 
-    <!-- Threads -->
-    <a href="https://www.threads.net/share?text={{ share_text | url_encode }}%20{{ share_url | url_encode }}" 
-       target="_blank" title="Share on Threads">
-        <i class="fab fa-threads"></i>
-    </a>
+  {% if include.image %}
+  <div class="note-image">
+    <img src="{{ include.image }}" alt="Note Image">
+  </div>
+  {% endif %}
 
-    <!-- Telegram -->
-    <a href="https://telegram.me/share/url?url={{ share_url | url_encode }}&text={{ share_text | url_encode }}" 
-       target="_blank" title="Share on Telegram">
-        <i class="fab fa-telegram-plane"></i>
-    </a>
+  <div class="note-content">
+    {{ display_content }}
+  </div>
 
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text={{ share_text | url_encode }}%20{{ share_url | url_encode }}" 
-       target="_blank" title="Share on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+  {% include note-tags.html tags=include.tags %}
 
-    <!-- Email -->
-    <a href="mailto:?subject={{ page.title | escape }}&body={{ share_text | escape }}%0A%0ALink:%20{{ share_url | url_encode }}" 
-       target="_blank" title="Share via Email">
-        <i class="fas fa-envelope"></i>
+  <textarea class="note-copy-plain" hidden readonly aria-hidden="true">{{ note_copy_plain }}</textarea>
+
+  <div class="note-copy-actions" aria-label="Note actions">
+    <div class="note-copy-actions-left">
+      <button type="button" class="note-copy-btn note-copy-link" data-copy-url="{{ note_share_url }}" title="Copy link" aria-label="Copy link">
+        <i class="fas fa-link" aria-hidden="true"></i>
+        <span>Copy link</span>
+      </button>
+      <button type="button" class="note-copy-btn note-copy-text" title="Copy text" aria-label="Copy text with details">
+        <i class="fas fa-copy" aria-hidden="true"></i>
+        <span>Copy text</span>
+      </button>
+    </div>
+    {% if include.note_url != nil and include.note_url != "" %}
+    <a class="note-copy-btn note-open-btn" href="{{ include.note_url | relative_url }}" target="_blank" rel="noopener" title="Open note in new tab" aria-label="Open note in new tab">
+      <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
+      <span>Open</span>
     </a>
+    {% endif %}
+  </div>
 </div>
-
-
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const timeElements = document.querySelectorAll(".note-date");
-
-  function updateRelativeTime(timeElement) {
-      const timestamp = new Date(timeElement.getAttribute("data-timestamp"));
-      const now = new Date();
-      const minutes = Math.floor((now - timestamp) / 1000 / 60);
-      const hours = Math.floor(minutes / 60);
-      const days = Math.floor(hours / 24);
-      const weeks = Math.floor(days / 7);
-
-      // Display relative time
-      if (minutes < 60) {
-          timeElement.textContent = minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
-      } else if (hours < 24) {
-          timeElement.textContent = hours === 1 ? "1 hour ago" : `${hours} hours ago`;
-      } else if (days < 7) {
-          timeElement.textContent = days === 1 ? "1 day ago" : `${days} days ago`;
-      } else {
-          timeElement.textContent = weeks === 1 ? "1 week ago" : `${weeks} weeks ago`;
-      }
-
-      // Determine update interval
-      let nextUpdateInterval;
-      if (minutes < 60) {
-          nextUpdateInterval = 60 * 1000; // 60 seconds
-      } else if (hours < 24) {
-          nextUpdateInterval = 60 * 60 * 1000; // 60 minutes
-      } else if (days < 7) {
-          nextUpdateInterval = 24 * 60 * 60 * 1000; // 1 day
-      } else {
-          nextUpdateInterval = 7 * 24 * 60 * 60 * 1000; // 1 week
-      }
-
-      // Schedule next update
-      setTimeout(() => updateRelativeTime(timeElement), nextUpdateInterval);
-  }
-
-  // Initialize updates
-  timeElements.forEach(updateRelativeTime);
-});
-</script>
-
-<style>
-/* Note Card Styles */
-.note-card {
-  border: 2px solid #d0d7de;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 2rem auto;
-  background: #ffffff;
-  box-shadow: 0 4px 6px rgba(4, 4, 4, 0.1);
-  max-width: 600px;
-  position: relative;
-}
-
-/* Pin Icon */
-.note-pin {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  color: #f28420;
-  font-size: 1.2rem;
-}
-
-/* Tags Styles */
-.note-tags {
-  margin-top: 1rem;
-  font-size: 0.85rem;
-}
-
-.note-tag {
-  color: #3479c7;
-  text-decoration: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.note-tag:hover {
-  text-decoration: underline;
-}
-
-/* Social Media Sharing Options */
-.note-share-options {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-}
-
-.note-share-options a {
-  text-decoration: none;
-  font-size: 1.2rem;
-  color: #57606a;
-  padding: 0.4rem;
-  border-radius: 5px;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.note-share-options a:hover {
-  color: #27abbf;
-}
-
-/* Note Header */
-.note-header {
-  font-size: 0.85rem;
-  color: #57606a;
-  margin-bottom: 1rem;
-}
-
-.note-date {
-  color: rgb(242, 84, 32);
-  font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
-}
-
-/* Note Content */
-.note-content {
-  font-size: 1rem;
-  color: #24292f;
-  line-height: 1.6;
-}
-
-/* Pinned Note */
-.note-card.pinned {
-  border-color: #f28420;
-  background: #fff7e6;
-}
-
-  .note-image img {
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-</style>
-
-
-

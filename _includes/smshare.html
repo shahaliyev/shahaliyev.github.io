@@ -1,111 +1,84 @@
+{% assign post_url = page.url | absolute_url %}
+{% assign words = content | number_of_words %}
+{% assign read_mins = words | divided_by: 250 %}
+{% if read_mins < 1 %}{% assign read_mins = 1 %}{% endif %}
+{% assign posted_date = page.date %}
+{% assign original_date = page.original_date %}
+{% if original_date == nil or original_date == "" %}
+  {% assign show_dual_dates = false %}
+{% else %}
+  {% assign posted_day = posted_date | date: "%Y-%m-%d" %}
+  {% assign original_day = original_date | date: "%Y-%m-%d" %}
+  {% if posted_day == original_day %}
+    {% assign show_dual_dates = false %}
+  {% else %}
+    {% assign show_dual_dates = true %}
+  {% endif %}
+{% endif %}
+
+{% assign share_title = page.label | default: page.title %}
+{% capture post_copy_plain %}{{ share_title }}
+
+{% if show_dual_dates %}{{ original_date | date: "%b %e, %Y" }}
+{{ posted_date | date: "%b %e, %Y" }}{% elsif page.lang == "az" %}
+{% assign months_az = "Yan,Fev,Mart,Apr,May,İyun,İyul,Avq,Sen,Okt,Noy,Dek" | split: "," %}
+{% assign month = page.date | date: "%-m" | minus: 1 %}
+{{ page.date | date: "%e" }} {{ months_az[month] }}, {{ page.date | date: "%Y" }} · {{ read_mins }} dəq mətn
+{% else %}
+{{ page.date | date: "%b %e, %Y" }} · {{ read_mins }} min read
+{% endif %}
+
+{{ content | strip_html | strip }}
+
+—
+{{ site.author[page.lang] }}
+{{ post_url }}{% endcapture %}
+
 <div id="share-bar">
     <p class="share-heading">
-        {% if page.lang == "en" %}
+        {% if page.path contains "_notes/" %}
+            {% if page.lang == "en" %}
+            Share the note:
+            {% elsif page.lang == "az" %}
+            Qeydi paylaşın:
+            {% endif %}
+        {% elsif page.lang == "en" %}
             Share the post:
         {% elsif page.lang == "az" %}
             Mətni paylaşın:
         {% endif %}
     </p>
 
-    <div class="share-buttons">
-        <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">
+    <textarea id="post-copy-plain" hidden readonly aria-hidden="true">{{ post_copy_plain }}</textarea>
+
+    <div class="share-buttons share-buttons--social">
+        <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ post_url | url_encode }}" target="_blank" rel="noopener" title="Share on Facebook">
             <i class="fab fa-facebook"></i>
         </a>
-        <a class="horizontal-share-buttons" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on X">
+        <a class="horizontal-share-buttons" href="https://twitter.com/intent/tweet?url={{ post_url | url_encode }}&text={{ share_title | url_encode }}" target="_blank" rel="noopener" title="Share on X">
             <i class="fab fa-x-twitter"></i>
         </a>
-        <a class="horizontal-share-buttons" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" title="Share on LinkedIn">
+        <a class="horizontal-share-buttons" href="https://www.linkedin.com/shareArticle?mini=true&url={{ post_url | url_encode }}&title={{ share_title | url_encode }}" target="_blank" rel="noopener" title="Share on LinkedIn">
             <i class="fab fa-linkedin"></i>
         </a>
-        <a class="horizontal-share-buttons" href="https://telegram.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title | url_encode }}" target="_blank" title="Share on Telegram">
+        <a class="horizontal-share-buttons" href="https://telegram.me/share/url?url={{ post_url | url_encode }}&text={{ share_title | url_encode }}" target="_blank" rel="noopener" title="Share on Telegram">
             <i class="fab fa-telegram-plane"></i>
         </a>
-        <a class="horizontal-share-buttons" href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ page.url | absolute_url }}" target="_blank" title="Share on WhatsApp">
+        <a class="horizontal-share-buttons" href="https://api.whatsapp.com/send?text={{ share_title | url_encode }}%20{{ post_url | url_encode }}" target="_blank" rel="noopener" title="Share on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
+    </div>
 
-        <button type="button" class="horizontal-share-buttons copy-link" id="copy-link-btn" onclick="copyLink()" title="Copy link" aria-label="Copy link">
-            <i class="fas fa-copy" id="copy-link-icon" aria-hidden="true"></i>
-        </button>
+    <div class="note-copy-actions share-copy-actions" aria-label="Copy and share">
+        <div class="note-copy-actions-left share-copy-actions-left">
+            <button type="button" class="note-copy-btn post-copy-link" title="Copy link" aria-label="Copy link">
+                <i class="fas fa-link" aria-hidden="true"></i>
+                <span>Copy link</span>
+            </button>
+            <button type="button" class="note-copy-btn post-copy-text" data-copy-target="post-copy-plain" title="Copy text" aria-label="Copy text with details">
+                <i class="fas fa-copy" aria-hidden="true"></i>
+                <span>Copy text</span>
+            </button>
+        </div>
     </div>
 </div>
-
-<style>
-    .copy-link {
-        padding: 0;
-        margin: 0;
-    }
-    .share-heading {
-        font-size: 1em;
-        font-weight: bold;
-    }
-
-    #share-bar {
-        margin-top: 50px;
-        text-align: center;
-    }
-
-    .share-buttons {
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    .share-buttons a, .share-buttons button {
-        text-decoration: none;
-        font-size: 1.3em;
-        color: #40546a;
-        transition: transform 0.2s ease, color 0.2s ease;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    .share-buttons a:hover, .share-buttons button:hover {
-        color: #6186ad;
-    }
-    .copy-link.copied {
-        color: #2e7d32;
-    }
-    .copy-link.copied:hover {
-        color: #2e7d32;
-    }
-</style>
-
-<script>
-    function copyLink() {
-        var url = window.location.href;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(url).then(showCopiedState);
-        } else {
-            var textarea = document.createElement("textarea");
-            textarea.value = url;
-            textarea.setAttribute("readonly", "");
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand("copy");
-                showCopiedState();
-            } finally {
-                document.body.removeChild(textarea);
-            }
-        }
-    }
-    function showCopiedState() {
-        var btn = document.getElementById("copy-link-btn");
-        var icon = document.getElementById("copy-link-icon");
-        if (!btn || !icon) return;
-        icon.className = "fas fa-check";
-        btn.classList.add("copied");
-        btn.title = "Copied!";
-        btn.setAttribute("aria-label", "Copied!");
-        setTimeout(function() {
-            icon.className = "fas fa-copy";
-            btn.classList.remove("copied");
-            btn.title = "Copy link";
-            btn.setAttribute("aria-label", "Copy link");
-        }, 1800);
-    }
-</script>

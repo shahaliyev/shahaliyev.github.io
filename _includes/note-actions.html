@@ -1,0 +1,21 @@
+{% assign actions_share_url = include.share_url %}
+{% if actions_share_url == nil or actions_share_url == "" %}
+  {% assign actions_share_url = page.url | absolute_url %}
+{% endif %}
+
+<div class="note-copy-actions" aria-label="Note actions">
+  <button type="button" class="note-copy-btn note-copy-link" data-copy-url="{{ actions_share_url }}" title="Copy link" aria-label="Copy link">
+    <i class="fas fa-link" aria-hidden="true"></i>
+    <span>Copy link</span>
+  </button>
+  <button type="button" class="note-copy-btn note-copy-text"{% if include.copy_target %} data-copy-target="{{ include.copy_target }}"{% endif %} title="Copy text" aria-label="Copy text with details">
+    <i class="fas fa-copy" aria-hidden="true"></i>
+    <span>Copy text</span>
+  </button>
+  {% if include.open_url != nil and include.open_url != "" %}
+  <a class="note-copy-btn note-open-btn" href="{{ include.open_url | relative_url }}" target="_blank" rel="noopener noreferrer" title="Open in new tab" aria-label="Open in new tab">
+    <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
+    <span>Open</span>
+  </a>
+  {% endif %}
+</div>

@@ -39,7 +39,95 @@
   color: #35425f;
 }
 
+.note-meta-original {
+  color: #c45a11;
+}
 
+.note-meta-posted {
+  color: #2e7d4a;
+}
 
+.note-page .note-content {
+  font-family: 'Lora', serif;
+}
 
+.note-page .note-content p {
+  font-family: 'Lora', serif;
+}
+
+.note-tags--page {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+}
+
+.note-tags--page .note-tag {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #4a6fa5;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.note-tags--page .note-tag:hover {
+  color: #27abbf;
+  text-decoration: none;
+}
+
+.post-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 0.2em;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.post-navigation .previous-post,
+.post-navigation .next-post {
+  flex: 1 1 0;
+  max-width: 48%;
+}
+
+.post-navigation .previous-post {
+  text-align: left;
+}
+
+.post-navigation .next-post {
+  text-align: right;
+}
+
+.post-navigation .previous-post button,
+.post-navigation .next-post button {
+  border: 2px solid rgb(251, 254, 255);
+  border-radius: 7px;
+  color: #f3f7f2;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: rgb(83, 176, 190);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-navigation .previous-post button:hover,
+.post-navigation .next-post button:hover {
+  background-color: rgb(61, 146, 159);
+  color: #fff;
+}
+
+#share-bar {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#share-bar .share-heading {
+  font-size: 1em;
+  font-weight: bold;
+}
 

@@ -1,7 +1,7 @@
 ---
 date: 2024-12-01 22:35:00
 pin: true
-tags: test,notes,badambura
+tags: notes,badambura
 image: /assets/img/lyndon.jpg
 ---
 

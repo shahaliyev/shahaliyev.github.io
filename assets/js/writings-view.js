@@ -29,9 +29,8 @@
     if (!hubBase) {
       hubBase = lang === "az" ? "/az/" : "/";
     }
-    var notesPath = isHome
-      ? hubBase.replace(/\/?$/, "/") + "#notes"
-      : "/notes/";
+    var notesHash = "#writings-hub";
+    var notesPath = isHome ? hubBase.replace(/\/?$/, "/") + notesHash : "/notes/";
 
     var paths = {
       writings: hubBase,
@@ -40,6 +39,36 @@
 
     var searchIndex = null;
     var currentView = hub.getAttribute("data-initial-view") || "writings";
+
+    function getNotesTagFromUrl() {
+      if (typeof window.getNotesTagFromUrl === "function") {
+        return window.getNotesTagFromUrl();
+      }
+      return null;
+    }
+
+    function isNotesHubHash() {
+      var hash = location.hash || "";
+      return hash === "#writings-hub" || hash === "#notes";
+    }
+
+    function scrollToWritingsHub() {
+      var el = document.getElementById("writings-hub");
+      if (!el) return;
+      window.requestAnimationFrame(function () {
+        var top = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: top, behavior: "smooth" });
+      });
+    }
+
+    function shouldOpenNotesView() {
+      if (!notesEnabled || !isHome) return false;
+
+      return (
+        isNotesHubHash() ||
+        getNotesTagFromUrl() !== null
+      );
+    }
 
     function filterIndex(scope) {
       if (!searchIndex) return [];
@@ -113,37 +142,46 @@
         initSearch(view);
       }
 
-      if (!notesEnabled || updateHistory === false) return;
+      if (!notesEnabled || updateHistory === false || !isHome) return;
 
       if (window.history && window.history.replaceState) {
-        var onNotesPage =
-          location.pathname.indexOf("/notes") !== -1 || location.hash === "#notes";
-        if (onNotesPage && !isHome) {
-          window.history.replaceState({ view: view }, "", view === "notes" ? paths.notes : paths.writings);
-        } else {
-          window.history.replaceState(
-            { view: view },
-            "",
-            paths.writings + (view === "notes" ? "#notes" : "")
-          );
-        }
+        var hash = view === "notes" ? notesHash : "";
+        var query = window.location.search || "";
+        window.history.replaceState({ view: view }, "", paths.writings + query + hash);
       }
     }
 
     function finishInit() {
-      if (notesEnabled && (location.pathname.indexOf("/notes") !== -1 || location.hash === "#notes")) {
+      var notesTag = getNotesTagFromUrl();
+
+      if (shouldOpenNotesView()) {
         currentView = "notes";
       } else {
         currentView = "writings";
       }
 
       setView(currentView, false);
+
+      if (currentView === "notes") {
+        if (notesTag && typeof window.applyNotesTagFromUrl === "function") {
+          window.applyNotesTagFromUrl();
+        }
+        if (isNotesHubHash() || notesTag) {
+          scrollToWritingsHub();
+        }
+      }
     }
 
     if (notesEnabled) {
       window.addEventListener("popstate", function () {
-        if (location.pathname.indexOf("/notes") !== -1 || location.hash === "#notes") {
+        var notesTag = getNotesTagFromUrl();
+
+        if (shouldOpenNotesView()) {
           setView("notes", false);
+          if (notesTag && typeof window.applyNotesTagFromUrl === "function") {
+            window.applyNotesTagFromUrl();
+          }
+          scrollToWritingsHub();
         } else {
           setView("writings", false);
         }

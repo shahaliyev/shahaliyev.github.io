@@ -1,0 +1,28 @@
+{% assign sorted_notes = site.notes | sort: "date" %}
+{% assign prev_note = nil %}
+{% assign next_note = nil %}
+{% assign found_current = false %}
+
+{% for note in sorted_notes %}
+  {% if note.url == page.url %}
+    {% assign found_current = true %}
+  {% elsif found_current == false %}
+    {% assign prev_note = note %}
+  {% elsif next_note == nil %}
+    {% assign next_note = note %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="post-navigation">
+  <div class="previous-post">
+    {% if prev_note %}
+      <button onclick="window.location.href='{{ prev_note.url | relative_url }}'" class="prev" type="button">&larr; {{ prev_note.label | default: prev_note.title }}</button>
+    {% endif %}
+  </div>
+  <div class="next-post">
+    {% if next_note %}
+      <button onclick="window.location.href='{{ next_note.url | relative_url }}'" class="next" type="button">{{ next_note.label | default: next_note.title }} &rarr;</button>
+    {% endif %}
+  </div>
+</div>

@@ -1,9 +1,9 @@
 ---
 date: 2026-02-01 15:43:00
+original_date: 2020-01-27
+label: Life is Movie Only in Retrospect
 tags: cinema,Hemingway
 ---
-
-_Life is Movie Only in Retrospect  &ndash; Jan 27, 2020_
 
 Terry Gilliam is an amazing director. One of the greatest. Only a vision of a genius is capable of directing the movie called *Fear and Loathing in Las Vegas.*
 

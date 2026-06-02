@@ -1,8 +1,8 @@
 ---
 date: 2026-02-01 15:43:00
+original_date: 2020-02-07
+label: Thinking Globally
 ---
-
-_Thinking Globally &ndash; Feb 7, 2020_
 
 Recently, I came across the [Gaia hypothesis](https://en.wikipedia.org/wiki/Gaia_hypothesis). It made me look at the Earth as a superorganism and not only: humans were a part of a bigger system; our planet, galaxy, and cosmos were parts of bigger systems, ordered in an hierarchical manner, serving for no purpose or for one purpose only: to destroy herself and rise up again from her own ashes.
 

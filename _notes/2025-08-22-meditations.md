@@ -1,6 +1,6 @@
 ---
 date: 2025-08-22 23:33:00
-tags: meditations,stoicism,aurelius,reading
+tags: meditations,stoicism,aurelius,books
 pin: false
 ---
 

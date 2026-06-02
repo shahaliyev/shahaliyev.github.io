@@ -1,0 +1,96 @@
+.note-card .note-copy-actions {
+  margin-top: 1rem;
+}
+
+.note-copy-actions,
+.share-copy-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.note-copy-actions-left,
+.share-copy-actions-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.note-copy-btn,
+a.note-copy-btn,
+button.note-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.2;
+  min-height: 1.85rem;
+  color: #57606a;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  text-decoration: none;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.note-copy-btn:hover,
+a.note-copy-btn:hover {
+  color: #27abbf;
+  border-color: #27abbf;
+  background: #fff;
+}
+
+.note-copy-btn.is-copied {
+  color: #2e7d4a;
+  border-color: #2e7d4a;
+}
+
+.note-copy-btn i {
+  font-size: 0.85rem;
+}
+
+.note-open-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.note-copy-actions-left .note-copy-btn {
+  flex-shrink: 0;
+}
+
+#share-bar .share-buttons--social {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#share-bar .share-buttons--social a {
+  text-decoration: none;
+  font-size: 1.3em;
+  color: #40546a;
+  transition: color 0.2s ease;
+}
+
+#share-bar .share-buttons--social a:hover {
+  color: #6186ad;
+}
+
+#share-bar .share-copy-actions {
+  justify-content: center;
+}
+
+#share-bar .share-copy-actions-left {
+  justify-content: center;
+}

@@ -1,5 +1,3 @@
-{% if page.lang != "az" %}
-<style>
 .notes-list {
   width: 100%;
   max-width: 100%;
@@ -16,6 +14,10 @@
   max-width: 100%;
   box-sizing: border-box;
   position: relative;
+}
+
+.note-card--standalone {
+  margin: 0;
 }
 
 .note-card.pinned {
@@ -119,15 +121,18 @@
   white-space: nowrap;
 }
 
-.note-title-label {
-  display: inline-block;
-  font-family: 'Lora', Georgia, serif;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.25;
+.note-date-badge--title {
+  background: #fff;
+  border-color: #2c3e50;
   color: #2c3e50;
-  letter-spacing: 0.01em;
-  max-width: 100%;
+}
+
+a.note-title-link {
+  text-decoration: none;
+}
+
+a.note-title-link:hover {
+  background: #f0f4f8;
 }
 
 .note-date-badge--original {
@@ -180,64 +185,64 @@
 }
 
 .note-tag:hover {
-  color: #27abbf;
   text-decoration: underline;
 }
 
-</style>
-<link rel="stylesheet" href="{{ '/assets/css/share-copy.css' | relative_url }}">
+.note-copy-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 
-<article class="notes-list">
-  {% assign sorted_notes = site.notes | sort: "date" | reverse %}
-  {% assign tag_pipe = "|" %}
-  {% assign has_untagged = false %}
-  {% for note in sorted_notes %}
-    {% assign note_tags_joined = note.tags | join: "," %}
-    {% assign note_tags_list = note_tags_joined | split: "," %}
-    {% assign note_has_tag = false %}
-    {% for tag in note_tags_list %}
-      {% assign tag_slug = tag | strip | downcase %}
-      {% if tag_slug != "" %}
-        {% assign note_has_tag = true %}
-        {% assign tag_needle = "|" | append: tag_slug | append: "|" %}
-        {% unless tag_pipe contains tag_needle %}
-          {% assign tag_pipe = tag_pipe | append: tag_slug | append: "|" %}
-        {% endunless %}
-      {% endif %}
-    {% endfor %}
-    {% unless note_has_tag %}
-      {% assign has_untagged = true %}
-    {% endunless %}
-  {% endfor %}
-  {% assign unique_tags = tag_pipe | split: "|" | sort %}
+.note-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.8rem;
+  color: #57606a;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
 
-  <nav class="writings-nav notes-nav" aria-label="Filter notes by tag">
-    <button type="button" class="writings-nav-btn active" onclick="filterNotes('all')">All</button>
-    {% for tag in unique_tags %}
-      {% if tag != "" %}
-    <button type="button" class="writings-nav-btn" onclick="filterNotes('{{ tag }}')">{{ tag | capitalize }}</button>
-      {% endif %}
-    {% endfor %}
-    {% if has_untagged %}
-    <button type="button" class="writings-nav-btn" onclick="filterNotes('untagged')">Untagged</button>
-    {% endif %}
-  </nav>
+.note-copy-btn:hover {
+  color: #27abbf;
+  border-color: #27abbf;
+  background: #fff;
+}
 
-  {% for note in sorted_notes %}
-  {% capture note_share_url %}{{ note.url | absolute_url }}{% endcapture %}
-  {% include note.html
-    date=note.date
-    original_date=note.original_date
-    label=note.label
-    content=note.content
-    tags=note.tags
-    pin=note.pin
-    image=note.image
-    note_url=note.url
-    note_slug=note.slug
-    share_url=note_share_url
-    display_title=note.title
-  %}
-  {% endfor %}
-</article>
-{% endif %}
+.note-copy-btn.is-copied {
+  color: #2e7d4a;
+  border-color: #2e7d4a;
+}
+
+.note-copy-btn i {
+  font-size: 0.85rem;
+}
+
+.note-page {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.note-page-nav {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.note-back-link {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9rem;
+  color: #57606a;
+  text-decoration: none;
+}
+
+.note-back-link:hover {
+  color: #27abbf;
+  text-decoration: underline;
+}

@@ -33,7 +33,7 @@ collections:
     permalink: /writings/:title
   notes:
     output: true
-    permalink: /notes/note/:name/
+    permalink: /notes/:slug/
 
 
 defaults:
@@ -63,6 +63,7 @@ defaults:
       path: "_notes"
     values:
       layout: "note_content"
+      lang: "en"
 
 
 # Build settings

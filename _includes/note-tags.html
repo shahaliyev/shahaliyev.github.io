@@ -1,0 +1,20 @@
+{% assign tags_joined = include.tags | join: "," %}
+{% assign tags_list = tags_joined | split: "," %}
+{% assign has_tags = false %}
+{% for t in tags_list %}
+  {% assign st = t | strip %}
+  {% if st != "" %}
+    {% assign has_tags = true %}
+  {% endif %}
+{% endfor %}
+{% if has_tags %}
+<div class="note-tags{% if include.extra_class %} {{ include.extra_class }}{% endif %}">
+  {% for tag in tags_list %}
+    {% assign tag_stripped = tag | strip %}
+    {% if tag_stripped != "" %}
+      {% assign tag_slug = tag_stripped | downcase %}
+  <a class="note-tag" href="{{ '/' | relative_url }}?notes_tag={{ tag_slug | url_encode }}#writings-hub">#{{ tag_stripped }}</a>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

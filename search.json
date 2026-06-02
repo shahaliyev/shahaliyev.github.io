@@ -20,7 +20,7 @@ layout: none
   {% for note in site.notes %}
     ,
     {
-      "title"    : "{{ note.content | strip_html | strip_newlines | truncate: 80 | escape }}",
+      "title"    : "{{ note.label | default: note.title | escape }}",
       "category" : "",
       "tags"     : "{{ note.tags | join: ', ' }}",
       "url"      : "{{ site.baseurl }}{{ note.url }}",

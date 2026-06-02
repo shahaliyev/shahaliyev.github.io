@@ -1,1 +1,71 @@
-{{ content }}
+---
+layout: default
+---
+
+<head>
+  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/share-copy.css' | relative_url }}">
+</head>
+
+{% assign posted_date = page.date %}
+{% assign original_date = page.original_date %}
+{% assign note_label = page.label | strip %}
+{% if original_date == nil or original_date == "" %}
+  {% assign show_dual_dates = false %}
+{% else %}
+  {% assign posted_day = posted_date | date: "%Y-%m-%d" %}
+  {% assign original_day = original_date | date: "%Y-%m-%d" %}
+  {% if posted_day == original_day %}
+    {% assign show_dual_dates = false %}
+  {% else %}
+    {% assign show_dual_dates = true %}
+  {% endif %}
+{% endif %}
+
+{% assign display_content = content %}
+{% if note_label != "" or original_date %}
+  {% assign content_parts = content | split: "</p>" %}
+  {% if content_parts.size > 1 %}
+    {% assign first_block = content_parts[0] %}
+    {% if first_block contains "<em>" or first_block contains "<i>" %}
+      {% assign display_content = "" %}
+      {% for part in content_parts offset: 1 %}
+        {% if part != "" %}
+          {% assign display_content = display_content | append: part | append: "</p>" %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+<article class="post note-page">
+  <div class="title">
+    <h1><a href="{{ page.url | relative_url }}">{{ page.label | default: page.title }}</a></h1>
+    <p class="post-meta">
+      {% if show_dual_dates %}
+      <span class="note-meta-original">{{ original_date | date: "%b %e, %Y" }}</span>
+      <span class="note-meta-sep" aria-hidden="true"> · </span>
+      <span class="note-meta-posted">{{ posted_date | date: "%b %e, %Y" }}</span>
+      {% else %}
+      {{ posted_date | date: "%b %e, %Y" }}
+      {% endif %}
+      ·
+      {% assign words = content | number_of_words %}
+      {% assign read_mins = words | divided_by: 250 %}
+      {% if read_mins < 1 %}{% assign read_mins = 1 %}{% endif %}
+      {{ read_mins }} min read
+    </p>
+  </div>
+
+  <div class="note-content">
+    {{ display_content }}
+  </div>
+
+  {% include note-tags.html tags=page.tags extra_class="note-tags--page" %}
+
+  {% include smshare.html %}
+
+  {% include notenav.html %}
+
+  {% include giscus.html %}
+</article>
