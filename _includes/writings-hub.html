@@ -8,13 +8,6 @@
 {% else %}
   {% assign hub_base = "/" %}
 {% endif %}
-{% unless page.is_home %}
-  {% if page.lang == "az" %}
-    {% assign hub_base = "/az/writings.html" %}
-  {% else %}
-    {% assign hub_base = "/writings.html" %}
-  {% endif %}
-{% endunless %}
 
 <div id="writings-hub" class="writings-hub{% if page.is_home %} writings-hub--home{% endif %}"
      data-initial-view="{{ initial_view }}"

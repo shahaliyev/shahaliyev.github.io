@@ -173,7 +173,7 @@ Once we read ToS and consider `robots.txt`, we can start scraping allowed web pa
 From inspection, we can see that each post title, link, as well as date are inside `writing` class. We can get the list of all html elements of the same class with the help of `find_all()` function of `BeautifulSoup`.
 
 ```python
-url = "https://shahaliyev.org/writings.html"
+url = "https://shahaliyev.org/"
 
 with urlopen(url) as response:
     html = response.read()
@@ -184,7 +184,7 @@ post_list = soup.find_all(class_='writing')
 post_list[0]
 ```
 
-The function below is overkill for our purposes and will work only for two urls, `https://shahaliyev.org/writings.html` and `https://shahaliyev.org/az/writings.html`. However, it is possible to easily modify the function to suit your purposes and scrape many similiarly structured urls of a large website (e.g. category pages of a news website).
+The function below is overkill for our purposes and will work only for two urls, `https://shahaliyev.org/` and `https://shahaliyev.org/az/`. However, it is possible to easily modify the function to suit your purposes and scrape many similiarly structured urls of a large website (e.g. category pages of a news website).
 
 ```python
 import pandas as pd
