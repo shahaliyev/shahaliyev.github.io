@@ -111,4 +111,23 @@ a.note-copy-btn:hover {
 
 #share-bar .share-copy-actions-left {
   justify-content: center;
+  gap: 0.35rem;
+}
+
+#share-bar .note-copy-btn {
+  color: #57606a;
+  background: #eef1f4;
+  border: 1px solid #eef1f4;
+}
+
+#share-bar .note-copy-btn:hover {
+  color: #374151;
+  background: #e4e8ec;
+  border-color: #e4e8ec;
+}
+
+#share-bar .note-copy-btn.is-copied {
+  color: #2e7d4a;
+  background: #e6f4ea;
+  border-color: #e6f4ea;
 }

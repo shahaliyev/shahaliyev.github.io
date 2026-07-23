@@ -39,12 +39,9 @@
   color: #35425f;
 }
 
-.note-meta-original {
-  color: #c45a11;
-}
-
+.note-meta-original,
 .note-meta-posted {
-  color: #2e7d4a;
+  color: inherit;
 }
 
 .note-page .note-content {
@@ -112,14 +109,18 @@
 
 .post-navigation .previous-post button,
 .post-navigation .next-post button {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
   border: 2px solid rgb(251, 254, 255);
   border-radius: 7px;
   color: #f3f7f2;
-  padding: 10px 12px;
+  padding: 0;
+  overflow: hidden;
   font-size: 1em;
   line-height: 1.35;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: none;
   background-color: rgb(83, 176, 190);
   width: 100%;
   max-width: 100%;
@@ -129,17 +130,58 @@
 }
 
 .post-navigation .previous-post button {
+  justify-content: flex-start;
   text-align: left;
 }
 
 .post-navigation .next-post button {
+  justify-content: flex-end;
   text-align: right;
+}
+
+.post-nav-label {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.post-nav-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-width: 2.35rem;
+  padding: 0 0.7rem;
+  background-color: rgb(83, 176, 190);
+  box-sizing: border-box;
+}
+
+.post-navigation .previous-post .post-nav-chevron {
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.post-navigation .next-post .post-nav-chevron {
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.post-nav-chevron i {
+  font-size: 0.78em;
+  line-height: 1;
+  opacity: 0.95;
 }
 
 .post-navigation .previous-post button:hover,
 .post-navigation .next-post button:hover {
   background-color: rgb(61, 146, 159);
   color: #fff;
+}
+
+.post-navigation .previous-post button:hover .post-nav-chevron,
+.post-navigation .next-post button:hover .post-nav-chevron {
+  background-color: rgb(61, 146, 159);
+  border-color: transparent;
 }
 
 @media (max-width: 640px) {
@@ -159,13 +201,19 @@
   .post-navigation .previous-post button,
   .post-navigation .next-post button {
     width: 100%;
+    justify-content: flex-start;
     text-align: left;
   }
 
   .post-navigation .next-post {
     text-align: left;
   }
+
+  .post-navigation .next-post button {
+    flex-direction: row;
+  }
 }
+
 
 #share-bar {
   margin-top: 50px;

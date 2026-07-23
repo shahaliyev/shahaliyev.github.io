@@ -18,12 +18,18 @@
 <div class="post-navigation">
   <div class="previous-post">
     {% if prev_post %}
-      <button onclick="window.location.href='{{ prev_post.url | relative_url }}'" class="prev">← {{ prev_post.title }}</button>
+      <button onclick="window.location.href='{{ prev_post.url | relative_url }}'" class="prev" type="button">
+        <span class="post-nav-chevron" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+        <span class="post-nav-label">{{ prev_post.title }}</span>
+      </button>
     {% endif %}
   </div>
   <div class="next-post">
     {% if next_post %}
-      <button onclick="window.location.href='{{ next_post.url | relative_url }}'" class="next">{{ next_post.title }} →</button>
+      <button onclick="window.location.href='{{ next_post.url | relative_url }}'" class="next" type="button">
+        <span class="post-nav-label">{{ next_post.title }}</span>
+        <span class="post-nav-chevron" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+      </button>
     {% endif %}
   </div>
 </div>
