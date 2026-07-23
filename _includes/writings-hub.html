@@ -1,6 +1,7 @@
 {% assign initial_view = include.initial_view | default: "writings" %}
 {% assign show_notes = page.lang != "az" %}
-{% if show_notes == false %}
+{% assign show_research = true %}
+{% if show_notes == false and initial_view == "notes" %}
   {% assign initial_view = "writings" %}
 {% endif %}
 {% if page.lang == "az" %}
@@ -16,20 +17,28 @@
      data-is-home="{% if page.is_home %}true{% else %}false{% endif %}"
      data-page-title="{{ page.title | default: site.title[page.lang] | escape }}"
      data-notes-enabled="{% if show_notes %}true{% else %}false{% endif %}"
+     data-research-enabled="{% if show_research %}true{% else %}false{% endif %}"
      data-label-writings="{% if page.lang == 'az' %}Yazılar{% else %}Writings{% endif %}"
-     data-label-notes="{% if page.lang == 'az' %}Qeydlər{% else %}Notes{% endif %}">
+     data-label-notes="{% if page.lang == 'az' %}Qeydlər{% else %}Notes{% endif %}"
+     data-label-research="{% if page.lang == 'az' %}Tədqiqat{% else %}Research{% endif %}">
   <div class="writings-section-header">
     {% include writings-notes-toggle.html view=initial_view %}
     {% include search.html %}
   </div>
 
-  <div id="writings-panel" class="writings-panel{% if initial_view != 'notes' %} is-active{% endif %}" data-view="writings">
+  <div id="writings-panel" class="writings-panel{% if initial_view == 'writings' %} is-active{% endif %}" data-view="writings">
     {% include post_list.html %}
   </div>
 
   {% if show_notes %}
   <div id="notes-panel" class="writings-panel{% if initial_view == 'notes' %} is-active{% endif %}" data-view="notes">
     {% include notes_list.html %}
+  </div>
+  {% endif %}
+
+  {% if show_research %}
+  <div id="research-panel" class="writings-panel{% if initial_view == 'research' %} is-active{% endif %}" data-view="research">
+    {% include research_list.html %}
   </div>
   {% endif %}
 </div>
@@ -65,6 +74,11 @@
 
   .writings-view-btn.active.is-notes {
     background: #2e7d4a;
+    color: #fff;
+  }
+
+  .writings-view-btn.active.is-research {
+    background: #3d7aab;
     color: #fff;
   }
 

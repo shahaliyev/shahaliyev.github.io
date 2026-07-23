@@ -123,6 +123,7 @@
           if (item.lang && item.lang !== lang) return false;
           if (scope === "writings") return item.type === "writing";
           if (scope === "notes") return item.type === "note";
+          if (scope === "research") return item.type === "research";
           return true;
         });
 

@@ -5,9 +5,11 @@
 
     var lang = hub.getAttribute("data-lang") || "en";
     var notesEnabled = hub.getAttribute("data-notes-enabled") === "true";
+    var researchEnabled = hub.getAttribute("data-research-enabled") === "true";
     var pageTitle = hub.getAttribute("data-page-title") || "";
     var writingsPanel = document.getElementById("writings-panel");
     var notesPanel = document.getElementById("notes-panel");
+    var researchPanel = document.getElementById("research-panel");
     var toggleButtons = hub.querySelectorAll(".writings-view-btn");
     var searchContainer = hub.querySelector(".search-container");
     var searchInput = document.getElementById("search-input");
@@ -16,12 +18,14 @@
 
     var labels = {
       writings: hub.getAttribute("data-label-writings") || "Writings",
-      notes: hub.getAttribute("data-label-notes") || "Notes"
+      notes: hub.getAttribute("data-label-notes") || "Notes",
+      research: hub.getAttribute("data-label-research") || "Research"
     };
 
     var placeholders = {
       writings: lang === "az" ? "Yazılarda axtar..." : "Search writings...",
-      notes: lang === "az" ? "Qeydlərdə axtar..." : "Search notes..."
+      notes: lang === "az" ? "Qeydlərdə axtar..." : "Search notes...",
+      research: lang === "az" ? "Tədqiqatda axtar..." : "Search research..."
     };
 
     var isHome = hub.getAttribute("data-is-home") === "true";
@@ -29,12 +33,12 @@
     if (!hubBase) {
       hubBase = lang === "az" ? "/az/" : "/";
     }
-    var notesHash = "#writings-hub";
-    var notesPath = isHome ? hubBase.replace(/\/?$/, "/") + notesHash : "/notes/";
+    var hubHome = hubBase.replace(/\/?$/, "/");
 
-    var paths = {
-      writings: hubBase,
-      notes: notesPath
+    var viewHashes = {
+      writings: "#writings",
+      notes: "#notes",
+      research: "#research"
     };
 
     var searchIndex = null;
@@ -47,9 +51,18 @@
       return null;
     }
 
-    function isNotesHubHash() {
-      var hash = location.hash || "";
-      return hash === "#writings-hub" || hash === "#notes";
+    function hashToView(hash) {
+      var h = hash || "";
+      if (h === "#notes" || h === "#writings-hub") return "notes";
+      if (h === "#research") return "research";
+      if (h === "#writings") return "writings";
+      return null;
+    }
+
+    function isViewEnabled(view) {
+      if (view === "notes") return notesEnabled;
+      if (view === "research") return researchEnabled;
+      return view === "writings";
     }
 
     function scrollToWritingsHub() {
@@ -61,23 +74,27 @@
       });
     }
 
-    function shouldOpenNotesView() {
-      if (!notesEnabled || !isHome) return false;
-
-      return (
-        isNotesHubHash() ||
-        getNotesTagFromUrl() !== null
-      );
+    function resolveViewFromLocation() {
+      var fromHash = hashToView(location.hash);
+      if (fromHash && isViewEnabled(fromHash)) {
+        return fromHash;
+      }
+      if (notesEnabled && isHome && getNotesTagFromUrl() !== null) {
+        return "notes";
+      }
+      return "writings";
     }
 
     function filterIndex(scope) {
       if (!searchIndex) return [];
       return searchIndex.filter(function (item) {
         if (!notesEnabled && item.type === "note") return false;
+        if (!researchEnabled && item.type === "research") return false;
         if (lang === "az" && item.type === "note") return false;
-        if (item.lang && item.lang !== lang) return false;
+        if (item.lang && item.lang !== lang && item.type === "writing") return false;
         if (scope === "writings") return item.type === "writing";
         if (scope === "notes") return item.type === "note";
+        if (scope === "research") return item.type === "research";
         return true;
       });
     }
@@ -111,29 +128,31 @@
         btn.classList.toggle("is-posts", isActive && view === "writings");
         btn.classList.toggle("is-writings", isActive && view === "writings");
         btn.classList.toggle("is-notes", isActive && view === "notes");
+        btn.classList.toggle("is-research", isActive && view === "research");
         btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-        if (notesEnabled) {
-          btn.setAttribute("aria-selected", isActive ? "true" : "false");
-        }
+        btn.setAttribute("aria-selected", isActive ? "true" : "false");
       });
     }
 
     function setView(view, updateHistory) {
-      if (view === "notes" && !notesEnabled) {
+      if (!isViewEnabled(view)) {
         view = "writings";
       }
-      if (view !== "writings" && view !== "notes") return;
+      if (view !== "writings" && view !== "notes" && view !== "research") return;
       currentView = view;
 
       writingsPanel.classList.toggle("is-active", view === "writings");
       if (notesPanel) {
         notesPanel.classList.toggle("is-active", view === "notes");
       }
+      if (researchPanel) {
+        researchPanel.classList.toggle("is-active", view === "research");
+      }
 
       updateToggleButtons(view);
 
-      if (notesEnabled && !isHome) {
-        document.title = labels[view];
+      if ((notesEnabled || researchEnabled) && !isHome) {
+        document.title = labels[view] || pageTitle;
       } else if (pageTitle) {
         document.title = pageTitle;
       }
@@ -142,57 +161,66 @@
         initSearch(view);
       }
 
-      if (!notesEnabled || updateHistory === false || !isHome) return;
+      if (updateHistory === false || !isHome) return;
 
       if (window.history && window.history.replaceState) {
-        var hash = view === "notes" ? notesHash : "";
+        var hash = viewHashes[view] || "";
         var query = window.location.search || "";
-        window.history.replaceState({ view: view }, "", paths.writings + query + hash);
+        // Drop notes_tag when leaving notes view
+        if (view !== "notes" && query.indexOf("notes_tag=") !== -1) {
+          try {
+            var params = new URLSearchParams(query);
+            params.delete("notes_tag");
+            var next = params.toString();
+            query = next ? "?" + next : "";
+          } catch (err) {
+            query = "";
+          }
+        }
+        window.history.replaceState({ view: view }, "", hubHome + query + hash);
       }
     }
 
     function finishInit() {
-      var notesTag = getNotesTagFromUrl();
-
-      if (shouldOpenNotesView()) {
-        currentView = "notes";
-      } else {
-        currentView = "writings";
-      }
-
+      currentView = resolveViewFromLocation();
       setView(currentView, false);
 
       if (currentView === "notes") {
+        var notesTag = getNotesTagFromUrl();
         if (notesTag && typeof window.applyNotesTagFromUrl === "function") {
           window.applyNotesTagFromUrl();
         }
-        if (isNotesHubHash() || notesTag) {
-          scrollToWritingsHub();
-        }
+      }
+
+      if (currentView === "notes" || currentView === "research" || getNotesTagFromUrl()) {
+        scrollToWritingsHub();
+      }
+
+      // Normalize legacy #writings-hub → #notes
+      if (isHome && location.hash === "#writings-hub" && notesEnabled && window.history && window.history.replaceState) {
+        window.history.replaceState({ view: "notes" }, "", hubHome + (window.location.search || "") + "#notes");
       }
     }
 
-    if (notesEnabled) {
-      window.addEventListener("popstate", function () {
+    window.addEventListener("popstate", function () {
+      var view = resolveViewFromLocation();
+      setView(view, false);
+      if (view === "notes") {
         var notesTag = getNotesTagFromUrl();
-
-        if (shouldOpenNotesView()) {
-          setView("notes", false);
-          if (notesTag && typeof window.applyNotesTagFromUrl === "function") {
-            window.applyNotesTagFromUrl();
-          }
-          scrollToWritingsHub();
-        } else {
-          setView("writings", false);
+        if (notesTag && typeof window.applyNotesTagFromUrl === "function") {
+          window.applyNotesTagFromUrl();
         }
-      });
+      }
+      if (view === "notes" || view === "research") {
+        scrollToWritingsHub();
+      }
+    });
 
-      toggleButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          setView(btn.getAttribute("data-view"));
-        });
+    toggleButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setView(btn.getAttribute("data-view"));
       });
-    }
+    });
 
     fetch("/search.json")
       .then(function (response) {

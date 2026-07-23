@@ -13,7 +13,7 @@
     {% assign tag_stripped = tag | strip %}
     {% if tag_stripped != "" %}
       {% assign tag_slug = tag_stripped | downcase %}
-  <a class="note-tag" href="{{ '/' | relative_url }}?notes_tag={{ tag_slug | url_encode }}#writings-hub">#{{ tag_stripped }}</a>
+  <a class="note-tag" href="{{ '/' | relative_url }}?notes_tag={{ tag_slug | url_encode }}#notes">#{{ tag_stripped }}</a>
     {% endif %}
   {% endfor %}
 </div>

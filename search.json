@@ -30,4 +30,19 @@ layout: none
       "content"  : {{ note.content | strip_html | strip_newlines | jsonify }}
     }
   {% endfor %}
+  {% if site.research %}
+  {% for item in site.research %}
+    ,
+    {
+      "title"    : "{{ item.title | escape }}",
+      "category" : "{{ item.venue_short | default: item.venue | escape }}",
+      "tags"     : "{{ item.tags | join: ', ' }}",
+      "url"      : "{% if item.links %}{{ item.links.paper | default: item.links.doi | default: item.url }}{% else %}{{ item.url }}{% endif %}",
+      "date"     : "{{ item.date }}",
+      "type"     : "research",
+      "lang"     : "en",
+      "content"  : {{ item.abstract | default: item.content | strip_html | strip_newlines | jsonify }}
+    }
+  {% endfor %}
+  {% endif %}
 ]
