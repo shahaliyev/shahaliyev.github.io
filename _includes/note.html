@@ -60,8 +60,8 @@
 {% endif %}
 {% capture note_copy_plain %}{% if copy_heading != "" %}{{ copy_heading }}
 
-{% endif %}{% if show_dual_dates %}{{ original_date | date: "%b %e, %Y" }}
-{{ posted_date | date: "%b %e, %Y" }}{% else %}{{ posted_date | date: "%b %e, %Y" }}{% endif %}
+{% endif %}{% if show_dual_dates %}{{ original_date | date: "%d %b %Y" }}
+{{ posted_date | date: "%d %b %Y" }}{% else %}{{ posted_date | date: "%d %b %Y" }}{% endif %}
 
 {{ display_content | strip_html | strip }}
 
@@ -84,12 +84,12 @@
       {% endif %}
     </div>
 
-    <div class="note-date-badges">
+    <div class="note-dates">
       {% if show_dual_dates %}
-      <span class="note-date-badge note-date-badge--original">{{ original_date | date: "%b %e, %Y" }}</span>
-      <span class="note-date-badge note-date-badge--posted">{{ posted_date | date: "%b %e, %Y" }}</span>
+      <time datetime="{{ original_date | date: '%Y-%m-%d' }}">{{ original_date | date: "%d %b %Y" }}</time>
+      <time datetime="{{ posted_date | date: '%Y-%m-%d' }}">{{ posted_date | date: "%d %b %Y" }}</time>
       {% else %}
-      <span class="note-date-badge note-date-badge--posted">{{ posted_date | date: "%b %e, %Y" }}</span>
+      <time datetime="{{ posted_date | date: '%Y-%m-%d' }}">{{ posted_date | date: "%d %b %Y" }}</time>
       {% endif %}
     </div>
   </div>
@@ -105,26 +105,22 @@
     {{ display_content }}
   </div>
 
-  {% include note-tags.html tags=include.tags %}
-
   <textarea class="note-copy-plain" hidden readonly aria-hidden="true">{{ note_copy_plain }}</textarea>
 
-  <div class="note-copy-actions" aria-label="Note actions">
-    <div class="note-copy-actions-left">
+  <div class="note-footer">
+    {% include note-tags.html tags=include.tags %}
+    <div class="note-copy-actions" aria-label="Note actions">
       <button type="button" class="note-copy-btn note-copy-link" data-copy-url="{{ note_share_url }}" title="Copy link" aria-label="Copy link">
         <i class="fas fa-link" aria-hidden="true"></i>
-        <span>Copy link</span>
       </button>
       <button type="button" class="note-copy-btn note-copy-text" title="Copy text" aria-label="Copy text with details">
         <i class="fas fa-copy" aria-hidden="true"></i>
-        <span>Copy text</span>
       </button>
+      {% if include.note_url != nil and include.note_url != "" %}
+      <a class="note-copy-btn note-open-btn" href="{{ include.note_url | relative_url }}" target="_blank" rel="noopener" title="Open note in new tab" aria-label="Open note in new tab">
+        <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
+      </a>
+      {% endif %}
     </div>
-    {% if include.note_url != nil and include.note_url != "" %}
-    <a class="note-copy-btn note-open-btn" href="{{ include.note_url | relative_url }}" target="_blank" rel="noopener" title="Open note in new tab" aria-label="Open note in new tab">
-      <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
-      <span>Open</span>
-    </a>
-    {% endif %}
   </div>
 </div>

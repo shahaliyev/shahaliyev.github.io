@@ -4,6 +4,7 @@ layout: default
 
 <head>
   <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/notes.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/share-copy.css' | relative_url }}">
 </head>
 
@@ -43,11 +44,11 @@ layout: default
     <h1><a href="{{ page.url | relative_url }}">{{ page.label | default: page.title }}</a></h1>
     <p class="post-meta">
       {% if show_dual_dates %}
-      <span class="note-meta-original">{{ original_date | date: "%b %e, %Y" }}</span>
+      <span class="note-meta-original">{{ original_date | date: "%d %b %Y" }}</span>
       <span class="note-meta-sep" aria-hidden="true"> · </span>
-      <span class="note-meta-posted">{{ posted_date | date: "%b %e, %Y" }}</span>
+      <span class="note-meta-posted">{{ posted_date | date: "%d %b %Y" }}</span>
       {% else %}
-      {{ posted_date | date: "%b %e, %Y" }}
+      {{ posted_date | date: "%d %b %Y" }}
       {% endif %}
       ·
       {% assign words = content | number_of_words %}

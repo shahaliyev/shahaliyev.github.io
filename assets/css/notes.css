@@ -4,19 +4,20 @@
 }
 
 .note-card {
-  border: 2px solid #d0d7de;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 2rem 0;
-  background: #ffffff;
-  box-shadow: 0 4px 6px rgba(4, 4, 4, 0.1);
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  padding: 1.1rem 1.15rem;
+  margin: 1rem 0;
+  background: #fff;
+  box-shadow: none;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   position: relative;
 }
 
-.note-card--standalone {
+.note-card--standalone,
+.note-card.note-standalone {
   margin: 0;
 }
 
@@ -34,16 +35,17 @@
   top: 0.5rem;
   right: 0.5rem;
   color: #f28420;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   z-index: 1;
+  line-height: 1;
 }
 
 .note-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
   font-size: 0.85rem;
 }
 
@@ -52,17 +54,78 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 4px;
+  gap: 0.35rem;
   flex: 1;
   min-width: 0;
 }
 
-.note-date-badges {
+.note-dates {
   display: inline-flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: flex-end;
-  gap: 4px;
+  gap: 0.35rem;
   flex-shrink: 0;
+}
+
+.note-dates time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.45rem;
+  padding: 0 0.5em;
+  border: none;
+  border-radius: 4px;
+  background: #eaf6ee;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #3d7a55;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.note-dates time:first-child:not(:only-child) {
+  background: #fff3e6;
+  color: #b86a28;
+}
+
+.note-date-sep {
+  display: none;
+}
+
+.note-title-label {
+  display: inline-block;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #2c3e50;
+  letter-spacing: 0.01em;
+  max-width: 100%;
+}
+
+a.note-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.note-title-link:hover {
+  color: #556a9a;
+}
+
+.note-content {
+  font-size: 1rem;
+  color: #24292f;
+  line-height: 1.6;
+}
+
+.note-content p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: 0.75em 0;
 }
 
 .note-content ul,
@@ -107,38 +170,15 @@
   text-decoration: underline;
 }
 
-.note-date-badge {
-  display: inline-block;
-  padding: 4px 8px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.2;
-  border: 2px solid #d0d7de;
-  border-radius: 4px;
-  background: #fff;
-  color: #495057;
-  white-space: nowrap;
+.note-image {
+  margin: 0.5rem 0 0.75rem;
 }
 
-.note-date-badge--title {
-  background: #fff;
-  border-color: #2c3e50;
-  color: #2c3e50;
-}
-
-a.note-title-link {
-  text-decoration: none;
-}
-
-a.note-title-link:hover {
-  background: #f0f4f8;
-}
-
-.note-date-badge--original {
-  background: #fff;
-  border-color: #f28420;
-  color: #d96a10;
+.note-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
 .notes-nav {
@@ -148,81 +188,103 @@ a.note-title-link:hover {
 .notes-nav .writings-nav-btn.active {
   background: #2e7d4a;
   border-color: #2e7d4a;
-}
-
-.note-date-badge--posted {
-  background: #fff;
-  border-color: #2e7d4a;
-  color: #2e7d4a;
-}
-
-.note-image img {
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.note-content {
-  font-size: 1rem;
-  color: #24292f;
-  line-height: 1.6;
-}
-
-.note-content p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  margin: 0.75em 0;
+  color: #fff;
 }
 
 .note-tags {
-  margin-top: 1rem;
-  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.note-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.4rem;
+  margin-top: 0.85rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* Flatten wrappers so tags + icon buttons share one alignment axis */
+.note-footer .note-tags,
+.note-footer .note-copy-actions {
+  display: contents;
+}
+
+.note-footer .note-copy-link {
+  margin-left: auto;
+}
+
+.note-footer .note-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  vertical-align: middle;
 }
 
 .note-tag {
-  color: #3479c7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em 0.55em;
+  border: 1px solid #d7e3f0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #4a7ab0;
+  background: #f7fafc;
   text-decoration: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .note-tag:hover {
-  text-decoration: underline;
+  color: #2f5f8f;
+  background: #eef4fa;
+  border-color: #c5d6e8;
+  text-decoration: none;
 }
 
-.note-copy-actions {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.note-tags--page {
+  margin-top: 1.75rem;
+  gap: 0.4rem;
 }
 
-.note-copy-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 0.8rem;
-  color: #57606a;
-  background: #f6f8fa;
-  border: 1px solid #d0d7de;
-  border-radius: 6px;
-  padding: 0.35rem 0.6rem;
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+.note-tags--page .note-tag {
+  font-size: 0.78rem;
+  font-weight: 400;
+  padding: 0.22em 0.6em;
+  border-radius: 5px;
+  letter-spacing: 0.03em;
+  color: #4a7ab0;
+  background: #f7fafc;
+  border: 1px solid #d7e3f0;
 }
 
-.note-copy-btn:hover {
-  color: #27abbf;
-  border-color: #27abbf;
-  background: #fff;
+.note-tags--page .note-tag:hover {
+  color: #2f5f8f;
+  background: #eef4fa;
+  border-color: #c5d6e8;
 }
 
-.note-copy-btn.is-copied {
-  color: #2e7d4a;
-  border-color: #2e7d4a;
-}
-
-.note-copy-btn i {
-  font-size: 0.85rem;
+@media (max-width: 640px) {
+  .note-footer .note-copy-btn,
+  .note-footer a.note-copy-btn,
+  .note-footer button.note-copy-btn,
+  .note-footer .note-open-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-height: 2.25rem;
+  }
 }
 
 .note-page {
@@ -236,13 +298,54 @@ a.note-title-link:hover {
 }
 
 .note-back-link {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.9rem;
   color: #57606a;
   text-decoration: none;
 }
 
 .note-back-link:hover {
-  color: #27abbf;
-  text-decoration: underline;
+  color: #2e7d4a;
+  text-decoration: none;
+}
+
+/* Legacy class aliases (if any old markup remains) */
+.note-date-badges {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.note-date-badge,
+.note-date-badge--posted,
+.note-date-badge--title {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.5em;
+  border: none;
+  border-radius: 4px;
+  background: #eaf6ee;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #3d7a55;
+  white-space: nowrap;
+}
+
+.note-date-badge--original {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.5em;
+  border: none;
+  border-radius: 4px;
+  background: #fff3e6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #b86a28;
+  white-space: nowrap;
 }
