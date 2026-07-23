@@ -11,31 +11,91 @@ is_home: true
   </header>
 
   <section class="home-intro" aria-label="About">
-    <div class="home-main">
-      <div class="home-academic">
-        <p>
-          I am a PhD student at <a href="https://ada.edu.az/">ADA University</a>, researching deep generative modeling for computer vision. I also instruct in the School of IT &amp; Engineering at ADA University, where I received my bachelor's and master's degrees; the latter was a dual degree program offered by the <a href="https://www.gwu.edu/">George Washington University</a>.
-        </p>
-
-        {% include home-nav-links.html %}
-      </div>
-
-      <p class="home-chess">
-        I am an <a href="https://ratings.fide.com/profile/13406388">International Chess Master</a> with a Grandmaster norm (2019). I became the chess champion of Azerbaijan four times, in Under-12, Under-14, and Under-16 (two years in a row) age categories. I also became the U-13 World School Chess Championship silver medalist in Iaşi, Romania. My latest championship was in Nakhchivan Open 2022.
+    <div class="home-copy">
+      <p class="home-bio">
+        I am an instructor and PhD student at <a href="https://ada.edu.az/">ADA University</a>, researching deep generative modeling for image reconstruction. I am also an <a href="https://ratings.fide.com/profile/13406388">International Chess Master</a> with a Grandmaster norm (2019). I was the chess champion of Azerbaijan four times under different age categories.
       </p>
     </div>
 
     <aside class="home-sidebar">
-      <div id="profile-image">
-        <img src="/assets/img/profile.jpg" alt="Ismayil Shahaliyev's profile image" loading="lazy">
-      </div>
-      <div class="social-icons">
-        <a href="https://scholar.google.com/citations?user=VLTyio4AAAAJ&amp;hl=ru&amp;oi=sra" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a>
-        <a href="https://github.com/shahaliyev" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-        <a href="/feed.xml" target="_blank" title="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+      <figure class="profile-figure">
+        <div id="profile-image">
+          <img src="/assets/img/profile.jpg" alt="Ismayil Shahaliyev's profile image" loading="lazy">
+        </div>
+        <figcaption class="profile-credit" hidden></figcaption>
+      </figure>
+      <div class="home-sidebar-actions">
+        <a class="home-pill-link home-pill-link--resume" href="{{ '/assets/doc/Ismayil_Shahaliyev_Resume_2026_v0.pdf' | relative_url }}" target="_blank" rel="noopener">Resume</a>
+        <div class="social-icons">
+          <a href="https://scholar.google.com/citations?user=VLTyio4AAAAJ&amp;hl=ru&amp;oi=sra" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a>
+          <a href="https://github.com/shahaliyev" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="/feed.xml" target="_blank" title="RSS Feed"><i class="fas fa-rss" aria-hidden="true"></i></a>
+        </div>
       </div>
     </aside>
+
+    <div class="home-timeline-block">
+      <ul class="home-timeline" aria-label="Education and experience">
+        <li class="home-timeline-item">
+          <span class="home-timeline-rail" aria-hidden="true"><span class="home-timeline-marker"></span></span>
+          <div class="home-timeline-body">
+            <div class="home-timeline-head">
+              <span class="home-timeline-role">PhD Student in Computer Science</span>
+              <time class="home-timeline-period" datetime="2025">2025 – Present</time>
+            </div>
+            <span class="home-timeline-meta"><a href="https://ada.edu.az/">ADA University</a></span>
+          </div>
+        </li>
+        <li class="home-timeline-item">
+          <span class="home-timeline-rail" aria-hidden="true"><span class="home-timeline-marker"></span></span>
+          <div class="home-timeline-body">
+            <div class="home-timeline-head">
+              <span class="home-timeline-role">Instructor, School of IT &amp; Engineering</span>
+              <time class="home-timeline-period" datetime="2023">2023 – Present</time>
+            </div>
+            <span class="home-timeline-meta"><a href="https://www.ada.edu.az/en/schools/site">ADA University</a></span>
+          </div>
+        </li>
+        <li class="home-timeline-item">
+          <span class="home-timeline-rail" aria-hidden="true"><span class="home-timeline-marker"></span></span>
+          <div class="home-timeline-body">
+            <div class="home-timeline-head">
+              <span class="home-timeline-role">MSc in Computer Science and Data Analytics</span>
+              <time class="home-timeline-period" datetime="2020/2022">2020 – 2022</time>
+            </div>
+            <span class="home-timeline-meta"><a href="https://ada.edu.az/">ADA University</a> &amp; <a href="https://www.gwu.edu/">George Washington University</a></span>
+            <span class="home-timeline-note">cum laude, dual degree</span>
+          </div>
+        </li>
+        <li class="home-timeline-item">
+          <span class="home-timeline-rail" aria-hidden="true"><span class="home-timeline-marker"></span></span>
+          <div class="home-timeline-body">
+            <div class="home-timeline-head">
+              <span class="home-timeline-role">BSc in Computer Sciences</span>
+              <time class="home-timeline-period" datetime="2016/2020">2016 – 2020</time>
+            </div>
+            <span class="home-timeline-meta"><a href="https://ada.edu.az/">ADA University</a></span>
+          </div>
+        </li>
+        <li class="home-timeline-item">
+          <span class="home-timeline-rail" aria-hidden="true"><span class="home-timeline-marker"></span></span>
+          <div class="home-timeline-body">
+            <div class="home-timeline-head">
+              <span class="home-timeline-role">International Chess Master</span>
+              <time class="home-timeline-period" datetime="2020">2020</time>
+            </div>
+            <div class="home-timeline-head">
+              <span class="home-timeline-role home-timeline-role--sub">International Grandmaster <span class="home-timeline-note-inline">(norm)</span></span>
+              <time class="home-timeline-period" datetime="2019">2019</time>
+            </div>
+            <span class="home-timeline-meta">Max <a href="https://ratings.fide.com/profile/13406388">FIDE ELO</a>: 2421</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
 
   {% include writings-hub.html initial_view="writings" %}
 </div>
+
+<script src="{{ '/assets/js/home-intro.js' | relative_url }}" defer></script>
