@@ -32,19 +32,18 @@
   <link rel="icon" href="{{ '/assets/img/favicons/favicon.ico' | relative_url }}" type="image/x-icon">
 
   <!-- Self-hosted fonts (no Google Fonts round-trips) -->
-  <link rel="preload" href="{{ '/assets/fonts/roboto-normal-400-700-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/roboto-normal-400-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {% if page.lang == 'az' %}
-  <link rel="preload" href="{{ '/assets/fonts/roboto-normal-400-700-latin-ext.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/roboto-normal-400-latin-ext.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   {% endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/fonts.css' | relative_url }}">
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if page.layout == 'post' or page.layout == 'note_content' %}
+  <link rel="stylesheet" href="{{ '/assets/css/fonts-lora.css' | relative_url }}">
+  {% endif %}
   {% if page.css %}
     <link rel="stylesheet" href="{{ page.css | relative_url }}">
-  {% endif %}
-  {% if page.is_home %}
-    <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
   {% endif %}
 
   <!-- SEO -->
@@ -76,11 +75,27 @@
   {% endif %}
 
   {% if needs_highlight %}
-  <!-- Highlight.js for code styling -->
+  <!-- Highlight.js (core only; load uncommon language packs as needed) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  {% if content contains 'language-ada' %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/ada.min.js"></script>
+  {% endif %}
+  {% if content contains 'language-scheme' %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/scheme.min.js"></script>
+  {% endif %}
+  {% if content contains 'language-lisp' %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lisp.min.js"></script>
+  {% endif %}
+  {% if content contains 'language-fortran' %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/fortran.min.js"></script>
+  {% endif %}
+  {% if content contains 'language-prolog' %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/prolog.min.js"></script>
+  {% endif %}
+  {% if content contains 'language-fsharp' %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/fsharp.min.js"></script>
+  {% endif %}
   <script defer src="{{ '/assets/js/highlight-init.js' | relative_url }}"></script>
   {% endif %}
 

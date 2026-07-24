@@ -1,4 +1,31 @@
+{% assign img_src = include.src %}
+{% assign img_webp = nil %}
+{% if img_src contains '/assets/img/' %}
+  {% if img_src contains '.png' %}
+    {% assign img_webp_candidate = img_src | replace: '.png', '.webp' %}
+  {% elsif img_src contains '.jpg' %}
+    {% assign img_webp_candidate = img_src | replace: '.jpg', '.webp' %}
+  {% elsif img_src contains '.jpeg' %}
+    {% assign img_webp_candidate = img_src | replace: '.jpeg', '.webp' %}
+  {% endif %}
+  {% if img_webp_candidate %}
+    {% assign img_webp_paths = site.static_files | map: 'path' | join: '|' %}
+    {% assign img_webp_needle = img_webp_candidate | append: '' %}
+    {% if img_webp_paths contains img_webp_candidate %}
+      {% assign img_webp = img_webp_candidate %}
+    {% endif %}
+  {% endif %}
+{% endif %}
 <figure class="{% if include.inline %}inline-figure{% endif %}">
-    <img src="{{ include.src }}" alt="{{ include.alt }}">
-    <figcaption>{{ include.caption }}</figcaption>
+  {% if img_webp %}
+  <picture>
+    <source srcset="{{ img_webp }}" type="image/webp">
+    <img src="{{ img_src }}" alt="{{ include.alt }}"{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.height %} height="{{ include.height }}"{% endif %} loading="lazy" decoding="async">
+  </picture>
+  {% else %}
+  <img src="{{ img_src }}" alt="{{ include.alt }}"{% if include.width %} width="{{ include.width }}"{% endif %}{% if include.height %} height="{{ include.height }}"{% endif %} loading="lazy" decoding="async">
+  {% endif %}
+  {% if include.caption %}
+  <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
 </figure>

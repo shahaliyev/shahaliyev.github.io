@@ -12,7 +12,7 @@ Data we wish to work with are rarely available (e.g. as a `.csv` file) suiting o
 
 You may even stumble upon a job announcement (as of November 2024) while "sniffing around" `robots.txt` file of big companies such as <a href='https://tripadvisor.com/'>tripadvisor.com</a>. (What is `robots.txt` will be discussed soon.)
 
-{% include figcaption.html src="/assets/img/tripadvisor.png" alt="tripadvisor.com robots.txt file job announcement" caption="<a href='https://tripadvisor.com/robots.txt'>robots.txt file of tripadvisor.com</a> with job announcement" %}
+{% include figcaption.html src="/assets/img/tripadvisor.png" alt="tripadvisor.com robots.txt file job announcement" caption="<a href='https://tripadvisor.com/robots.txt'>robots.txt file of tripadvisor.com</a> with job announcement" width="903" height="531" %}
 
 {% include toc.html %}
 
@@ -168,7 +168,7 @@ def can_scrape(url, user_agent='*'):
 
 Once we read ToS and consider `robots.txt`, we can start scraping allowed web pages. The knowledge of basic web page content (generally `html`) structure is essential for that. On a browser you can right click and `inspect` the web page.
 
-![HTML Structure of a web page for web scraping](/assets/img/html-content.png)
+{% include figcaption.html src="/assets/img/html-content.png" alt="HTML Structure of a web page for web scraping" %}
 
 From inspection, we can see that each post title, link, as well as date are inside `writing` class. We can get the list of all html elements of the same class with the help of `find_all()` function of `BeautifulSoup`.
 
