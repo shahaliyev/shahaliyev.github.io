@@ -24,9 +24,6 @@ nav:
     az: Yazılar
 
 
-google_analytics: G-S1QRRQG9BM
-
-
 collections:
   posts:
     output: true

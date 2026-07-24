@@ -12,22 +12,6 @@
   {% endif %}
   <title>{{ doc_title | default: site.title[page.lang] }}</title>
 
-  <!-- Google Analytics (deferred until after load) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.addEventListener('load', function () {
-      var s = document.createElement('script');
-      s.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}';
-      s.async = true;
-      s.onload = function () {
-        gtag('js', new Date());
-        gtag('config', '{{ site.google_analytics }}');
-      };
-      document.head.appendChild(s);
-    });
-  </script>
-
   <!-- Icons: inline SVGs via _includes/icon.html (no Font Awesome) -->
   <link rel="icon" href="{{ '/assets/img/favicons/favicon.ico' | relative_url }}" type="image/x-icon">
 
