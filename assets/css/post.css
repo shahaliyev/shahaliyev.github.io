@@ -165,10 +165,12 @@
   border-left: 1px solid rgba(255, 255, 255, 0.28);
 }
 
-.post-nav-chevron i {
-  font-size: 0.78em;
-  line-height: 1;
+.post-nav-chevron .icon {
+  height: 0.78em;
+  width: auto;
+  display: block;
   opacity: 0.95;
+  font-size: 0.78em;
 }
 
 .post-navigation .previous-post button:hover,

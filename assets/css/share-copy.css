@@ -48,13 +48,6 @@ button.note-copy-btn {
   vertical-align: middle;
 }
 
-.note-copy-btn:has(span),
-a.note-copy-btn:has(span),
-button.note-copy-btn:has(span) {
-  width: auto;
-  padding: 0 0.5rem;
-}
-
 .note-copy-btn:hover,
 a.note-copy-btn:hover {
   color: #374151;
@@ -69,9 +62,30 @@ a.note-copy-btn:hover {
   border: none;
 }
 
-.note-copy-btn i {
+.note-copy-btn .icon {
+  height: 0.82rem;
+  width: auto;
+  display: block;
   font-size: 0.82rem;
+}
+
+.icon-swap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
+}
+
+.icon-swap__done {
+  display: none;
+}
+
+.note-copy-btn.is-copied .icon-swap__default {
+  display: none;
+}
+
+.note-copy-btn.is-copied .icon-swap__done {
+  display: inline-flex;
 }
 
 .note-open-btn {
@@ -99,6 +113,15 @@ a.note-copy-btn:hover {
   font-size: 1.3em;
   color: #40546a;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#share-bar .share-buttons--social a .icon {
+  height: 1em;
+  width: auto;
+  display: block;
 }
 
 #share-bar .share-buttons--social a:hover {

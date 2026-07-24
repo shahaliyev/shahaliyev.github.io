@@ -1,6 +1,15 @@
 /* assets/css/style.css */
 /* Fonts: see assets/css/fonts.css (self-hosted) */
 
+.icon {
+  display: inline-block;
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -57,7 +66,10 @@ footer .lang-switch {
   transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 }
 
-footer .lang-switch i {
+footer .lang-switch .icon {
+  height: 1em;
+  width: auto;
+  display: block;
   font-size: 1.05em;
 }
 
@@ -347,8 +359,11 @@ figcaption {
 }
 
 #scroll-btn .scroll-btn-icon {
+  height: 0.9em;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
   font-size: 0.9em;
-  line-height: 1;
 }
 
 #scroll-btn.is-visible:hover {

@@ -498,7 +498,10 @@
           <div class="research-bibtex-title">
             <h3>BibTeX</h3>
             <button type="button" class="note-copy-btn research-bibtex-copy" title="Copy" aria-label="Copy BibTeX">
-              <i class="fas fa-copy" aria-hidden="true"></i>
+              <span class="icon-swap">
+                <span class="icon-swap__default">{% include icon.html name="copy" %}</span>
+                <span class="icon-swap__done">{% include icon.html name="check" %}</span>
+              </span>
             </button>
           </div>
           <button type="button" class="research-bibtex-close" aria-label="Close">&times;</button>

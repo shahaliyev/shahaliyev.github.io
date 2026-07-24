@@ -24,21 +24,11 @@
   }
 
   function showCopied(button) {
-    var icon = button.querySelector("i");
-    if (!icon) return;
-
-    var defaultIcon = button.getAttribute("data-default-icon") || icon.className;
-    if (!button.getAttribute("data-default-icon")) {
-      button.setAttribute("data-default-icon", defaultIcon);
-    }
-
-    icon.className = "fas fa-check";
     button.classList.add("is-copied");
     button.title = "Copied!";
     button.setAttribute("aria-label", "Copied!");
 
     setTimeout(function () {
-      icon.className = button.getAttribute("data-default-icon") || defaultIcon;
       button.classList.remove("is-copied");
       button.title = "Copy";
       button.setAttribute("aria-label", "Copy BibTeX");

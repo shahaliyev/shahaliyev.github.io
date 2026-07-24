@@ -4,7 +4,7 @@
      data-search-scope="writings"
      data-search-lang="{{ current_lang }}">
     <label class="search-field" for="search-input">
-        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+        {% include icon.html name="search" extra_class="search-icon" %}
         {% if page.lang == "az" %}
           <input type="search" id="search-input"
             class="search-input" placeholder="Yazılarda axtar..." autocomplete="off">
@@ -40,6 +40,8 @@
 
     .search-icon {
         flex-shrink: 0;
+        height: 0.85rem;
+        width: auto;
         font-size: 0.85rem;
         color: #6c757d;
     }

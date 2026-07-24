@@ -159,10 +159,12 @@
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-.teaching-open i {
-  font-size: 0.85em;
-  line-height: 1;
+.teaching-open .icon {
+  height: 0.85em;
+  width: auto;
+  display: block;
   opacity: 0.92;
+  font-size: 0.85em;
 }
 
 .teaching-open:hover {
@@ -285,11 +287,11 @@
       {% if course_url != "" %}
         {% if course_external %}
         <a class="teaching-open" href="{{ course_url }}" target="_blank" rel="noopener">
-          Course Website <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
+          Course Website {% include icon.html name="external" %}
         </a>
         {% else %}
         <a class="teaching-open" href="{{ course_url | relative_url }}">
-          Course Website <i class="fas fa-up-right-from-square" aria-hidden="true"></i>
+          Course Website {% include icon.html name="external" %}
         </a>
         {% endif %}
       {% endif %}

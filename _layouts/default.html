@@ -28,11 +28,7 @@
     });
   </script>
 
-  <!-- Icons (non-blocking; icons may appear shortly after first paint) -->
-  <link rel="stylesheet" href="{{ '/assets/fa/css/all.min.css' | relative_url }}" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="{{ '/assets/fa/css/all.min.css' | relative_url }}">
-  </noscript>
+  <!-- Icons: inline SVGs via _includes/icon.html (no Font Awesome) -->
   <link rel="icon" href="{{ '/assets/img/favicons/favicon.ico' | relative_url }}" type="image/x-icon">
 
   <!-- Self-hosted fonts (no Google Fonts round-trips) -->
@@ -112,7 +108,7 @@
   </footer>
 
   <button id="scroll-btn" type="button" aria-label="Back to top" title="Back to top" onclick="scrollToTop()">
-    <i class="fa-solid fa-arrow-up scroll-btn-icon" aria-hidden="true"></i>
+    {% include icon.html name="arrow-up" extra_class="scroll-btn-icon" %}
     <span>Back to top</span>
   </button>
   

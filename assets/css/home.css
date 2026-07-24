@@ -154,28 +154,26 @@
   transform: none;
 }
 
-.social-icons .fab,
-.social-icons .fas {
+.social-icons .icon {
+  height: 1em;
+  width: auto;
+  display: block;
   color: rgb(106, 106, 123);
 }
 
-.social-icons a:hover .fab,
-.social-icons a:hover .fas {
+.social-icons a:hover .icon {
   color: #4a5560;
 }
 
-.social-icons .fab.fa-github:hover,
-.social-icons a:hover .fab.fa-github {
+.social-icons a:hover .icon--github {
   color: #282623d8;
 }
 
-.social-icons .fa-graduation-cap:hover,
-.social-icons a:hover .fa-graduation-cap {
+.social-icons a:hover .icon--graduation-cap {
   color: #1a73e8;
 }
 
-.social-icons .fas.fa-rss:hover,
-.social-icons a:hover .fas.fa-rss {
+.social-icons a:hover .icon--rss {
   color: #d05a0cca;
 }
 

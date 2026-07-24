@@ -53,29 +53,35 @@
 
     <div class="share-buttons share-buttons--social">
         <a class="horizontal-share-buttons" href="https://www.facebook.com/sharer/sharer.php?u={{ post_url | url_encode }}" target="_blank" rel="noopener" title="Share on Facebook">
-            <i class="fab fa-facebook"></i>
+            {% include icon.html name="facebook" %}
         </a>
         <a class="horizontal-share-buttons" href="https://twitter.com/intent/tweet?url={{ post_url | url_encode }}&text={{ share_title | url_encode }}" target="_blank" rel="noopener" title="Share on X">
-            <i class="fab fa-x-twitter"></i>
+            {% include icon.html name="x-twitter" %}
         </a>
         <a class="horizontal-share-buttons" href="https://www.linkedin.com/shareArticle?mini=true&url={{ post_url | url_encode }}&title={{ share_title | url_encode }}" target="_blank" rel="noopener" title="Share on LinkedIn">
-            <i class="fab fa-linkedin"></i>
+            {% include icon.html name="linkedin" %}
         </a>
         <a class="horizontal-share-buttons" href="https://telegram.me/share/url?url={{ post_url | url_encode }}&text={{ share_title | url_encode }}" target="_blank" rel="noopener" title="Share on Telegram">
-            <i class="fab fa-telegram-plane"></i>
+            {% include icon.html name="telegram" %}
         </a>
         <a class="horizontal-share-buttons" href="https://api.whatsapp.com/send?text={{ share_title | url_encode }}%20{{ post_url | url_encode }}" target="_blank" rel="noopener" title="Share on WhatsApp">
-            <i class="fab fa-whatsapp"></i>
+            {% include icon.html name="whatsapp" %}
         </a>
     </div>
 
     <div class="note-copy-actions share-copy-actions" aria-label="Copy and share">
         <div class="note-copy-actions-left share-copy-actions-left">
             <button type="button" class="note-copy-btn post-copy-link" title="Copy link" aria-label="Copy link">
-                <i class="fas fa-link" aria-hidden="true"></i>
+                <span class="icon-swap">
+                  <span class="icon-swap__default">{% include icon.html name="link" %}</span>
+                  <span class="icon-swap__done">{% include icon.html name="check" %}</span>
+                </span>
             </button>
             <button type="button" class="note-copy-btn post-copy-text" data-copy-target="post-copy-plain" title="Copy text" aria-label="Copy text with details">
-                <i class="fas fa-copy" aria-hidden="true"></i>
+                <span class="icon-swap">
+                  <span class="icon-swap__default">{% include icon.html name="copy" %}</span>
+                  <span class="icon-swap__done">{% include icon.html name="check" %}</span>
+                </span>
             </button>
         </div>
     </div>

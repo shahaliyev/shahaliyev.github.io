@@ -18,7 +18,7 @@
   <div class="previous-post">
     {% if prev_note %}
       <button onclick="window.location.href='{{ prev_note.url | relative_url }}'" class="prev" type="button">
-        <span class="post-nav-chevron" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+        <span class="post-nav-chevron" aria-hidden="true">{% include icon.html name="chevron-left" %}</span>
         <span class="post-nav-label">{{ prev_note.label | default: prev_note.title }}</span>
       </button>
     {% endif %}
@@ -27,7 +27,7 @@
     {% if next_note %}
       <button onclick="window.location.href='{{ next_note.url | relative_url }}'" class="next" type="button">
         <span class="post-nav-label">{{ next_note.label | default: next_note.title }}</span>
-        <span class="post-nav-chevron" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        <span class="post-nav-chevron" aria-hidden="true">{% include icon.html name="chevron-right" %}</span>
       </button>
     {% endif %}
   </div>

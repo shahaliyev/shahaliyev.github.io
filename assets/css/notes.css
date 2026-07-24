@@ -40,6 +40,12 @@
   line-height: 1;
 }
 
+.note-pin .icon {
+  height: 1em;
+  width: auto;
+  display: block;
+}
+
 .note-header {
   display: flex;
   justify-content: space-between;

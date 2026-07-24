@@ -26,28 +26,16 @@
   function showCopied(button, labels) {
     if (!button) return;
 
-    var icon = button.querySelector("i");
     var defaultTitle = button.getAttribute("data-default-title") || button.title;
     var defaultLabel = button.getAttribute("aria-label") || defaultTitle;
     var copiedTitle = labels.copiedTitle || "Copied!";
     var copiedLabel = labels.copiedLabel || copiedTitle;
-
-    if (icon) {
-      var defaultIcon = button.getAttribute("data-default-icon") || icon.className;
-      if (!button.getAttribute("data-default-icon")) {
-        button.setAttribute("data-default-icon", defaultIcon);
-      }
-      icon.className = "fas fa-check";
-    }
 
     button.classList.add("is-copied");
     button.title = copiedTitle;
     button.setAttribute("aria-label", copiedLabel);
 
     window.setTimeout(function () {
-      if (icon) {
-        icon.className = button.getAttribute("data-default-icon");
-      }
       button.classList.remove("is-copied");
       button.title = defaultTitle;
       button.setAttribute("aria-label", defaultLabel);
