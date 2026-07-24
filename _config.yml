@@ -103,6 +103,10 @@ kramdown:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
+# Underscore-prefixed files are skipped unless listed here (_headers for CF/Netlify).
+include:
+  - _headers
+
 exclude:
   - notes/
 

@@ -1,0 +1,7 @@
+# Cache rules for Cloudflare Pages / Netlify.
+# GitHub Pages alone ignores this file (max-age=600). If you proxy via Cloudflare
+# DNS (orange cloud) instead of Pages, add a Cache Rule: URI Path starts with
+# /assets/ -> Edge TTL 1 month+, Browser TTL 1 year.
+
+/assets/*
+  Cache-Control: public, max-age=31536000

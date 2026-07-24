@@ -96,8 +96,32 @@
   {% endunless %}
 
   {% if include.image %}
+  {% assign note_img_src = include.image %}
+  {% assign note_img_webp = nil %}
+  {% if note_img_src contains '/assets/img/' %}
+    {% if note_img_src contains '.png' %}
+      {% assign note_img_webp_candidate = note_img_src | replace: '.png', '.webp' %}
+    {% elsif note_img_src contains '.jpg' %}
+      {% assign note_img_webp_candidate = note_img_src | replace: '.jpg', '.webp' %}
+    {% elsif note_img_src contains '.jpeg' %}
+      {% assign note_img_webp_candidate = note_img_src | replace: '.jpeg', '.webp' %}
+    {% endif %}
+    {% if note_img_webp_candidate %}
+      {% assign note_img_webp_paths = site.static_files | map: 'path' | join: '|' %}
+      {% if note_img_webp_paths contains note_img_webp_candidate %}
+        {% assign note_img_webp = note_img_webp_candidate %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
   <div class="note-image">
-    <img src="{{ include.image }}" alt="Note Image">
+    {% if note_img_webp %}
+    <picture>
+      <source srcset="{{ note_img_webp }}" type="image/webp">
+      <img src="{{ note_img_src }}" alt="Note Image" loading="lazy" decoding="async">
+    </picture>
+    {% else %}
+    <img src="{{ note_img_src }}" alt="Note Image" loading="lazy" decoding="async">
+    {% endif %}
   </div>
   {% endif %}
 

@@ -1,0 +1,6 @@
+---
+# Built by Jekyll: style.css + home.css as one home stylesheet (one request).
+---
+{% include_relative style.css %}
+
+{% include_relative home.css %}
