@@ -1,6 +1,10 @@
 {% if page.lang != "az" %}
-<link rel="stylesheet" href="{{ '/assets/css/notes.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/share-copy.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/notes.css' | relative_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ '/assets/css/share-copy.css' | relative_url }}" media="print" onload="this.media='all'">
+<noscript>
+  <link rel="stylesheet" href="{{ '/assets/css/notes.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/share-copy.css' | relative_url }}">
+</noscript>
 
 <article class="notes-list">
   {% assign sorted_notes = site.notes | sort: "date" | reverse %}

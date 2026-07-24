@@ -16,7 +16,10 @@ is_home: true
     <aside class="home-sidebar">
       <figure class="profile-figure">
         <div id="profile-image">
-          <img src="/assets/img/profile.jpg" alt="Ismayil Shahaliyev's profile image" loading="lazy">
+          <picture>
+            <source srcset="/assets/img/profile.webp" type="image/webp">
+            <img src="/assets/img/profile.jpg" alt="Ismayil Shahaliyev's profile image" width="312" height="312" fetchpriority="high" decoding="async">
+          </picture>
         </div>
         <figcaption class="profile-credit" hidden></figcaption>
       </figure>

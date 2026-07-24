@@ -12,19 +12,34 @@
   {% endif %}
   <title>{{ doc_title | default: site.title[page.lang] }}</title>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics (deferred until after load) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}';
+      s.async = true;
+      s.onload = function () {
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics }}');
+      };
+      document.head.appendChild(s);
+    });
+  </script>
 
-  gtag('config', '{{ site.google_analytics }}');
-</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Icons  -->
-  <link rel="stylesheet" href="{{ '/assets/fa/css/all.min.css' | relative_url }}">
+  <!-- Icons (non-blocking; icons may appear shortly after first paint) -->
+  <link rel="stylesheet" href="{{ '/assets/fa/css/all.min.css' | relative_url }}" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="{{ '/assets/fa/css/all.min.css' | relative_url }}">
+  </noscript>
   <link rel="icon" href="{{ '/assets/img/favicons/favicon.ico' | relative_url }}" type="image/x-icon">
+
+  <!-- Fonts (single request; display=swap already set) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap">
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
@@ -39,20 +54,41 @@
   {% seo %}
   <link rel="alternate" type="application/atom+xml" title="{{ site.title.en | default: site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
+  {% assign needs_highlight = false %}
+  {% assign needs_math = false %}
+  {% if page.highlight == true %}
+    {% assign needs_highlight = true %}
+  {% endif %}
+  {% if page.math == true %}
+    {% assign needs_math = true %}
+  {% endif %}
+  {% unless page.is_home %}
+    {% if content contains '<pre' %}
+      {% assign needs_highlight = true %}
+    {% endif %}
+    {% if content contains '$$' or content contains '\(' or content contains '\[' %}
+      {% assign needs_math = true %}
+    {% endif %}
+  {% endunless %}
+
+  {% if needs_math %}
   <!-- MathJax Latex -->
   <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+  {% endif %}
 
-  <!-- Highlightjs for code styling / TODO: Add liquid flag for pages -->
+  {% if needs_highlight %}
+  <!-- Highlight.js for code styling -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-  <script defer>hljs.highlightAll();</script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script defer src="{{ '/assets/js/highlight-init.js' | relative_url }}"></script>
+  {% endif %}
 
-  <!-- Search -->
-  <script src="/assets/js/search.js"></script>
+  <!-- Search library (defer; must precede writings-view.js in document order) -->
+  <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
 </head>
 
 <body{% if page.is_home %} class="home-page"{% endif %}>
@@ -80,6 +116,7 @@
   </button>
   
   <!-- JS -->
-  <script src="{{ '/assets/js/app.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/app.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/js/copy.js' | relative_url }}" defer></script>
 </body>
+</html>

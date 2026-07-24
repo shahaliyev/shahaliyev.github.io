@@ -1,7 +1,5 @@
 /* assets/css/style.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+/* Google Fonts loaded via <link> in _layouts/default.html */
 
 html {
   scroll-behavior: smooth;
