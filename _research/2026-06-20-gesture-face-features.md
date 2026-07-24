@@ -17,6 +17,13 @@ links:
   pdf: https://link.springer.com/content/pdf/10.1007/s11760-026-05474-4.pdf
   code: https://github.com/ADA-SITE-JML/gesture_face_features
 tags: [computer-vision, transfer-learning, sign-language]
+keywords:
+  - Model transferability estimation
+  - Transfer learning
+  - Fine-grained recognition
+  - Hand gesture recognition
+  - Pre-trained model comparison
+  - Sign language
 abstract: >
   This paper introduces an evaluation pipeline for transferability estimation
   in fine-grained visual recognition tasks, with a focus on hand gesture

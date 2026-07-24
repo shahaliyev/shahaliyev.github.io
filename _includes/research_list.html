@@ -1,10 +1,46 @@
 <style>
+.research-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0.75em 0 0.5em;
+}
+
+.research-nav .writings-nav-btn {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #495057;
+  background: #f1f3f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.research-nav .writings-nav-btn:hover {
+  background: #e8eaed;
+  color: #1a1a1a;
+}
+
+.research-nav .writings-nav-btn.active {
+  background: #3d7aab;
+  border-color: #3d7aab;
+  color: #fff;
+}
+
 .research-list {
   width: 100%;
   max-width: 100%;
   margin: 0.75em 0 0;
   padding: 0;
   list-style: none;
+}
+
+.research-nav + .research-list {
+  margin-top: 0.35em;
 }
 
 .research-item {
@@ -241,6 +277,36 @@
 {% else %}
   {% assign sorted_research = "" | split: "," %}
 {% endif %}
+
+{% assign research_keywords = "" | split: "," %}
+{% for item in sorted_research %}
+  {% assign item_keywords = item.keywords | default: item.tags %}
+  {% if item_keywords %}
+    {% for kw in item_keywords %}
+      {% assign kw_slug = kw | slugify %}
+      {% assign already = false %}
+      {% for existing in research_keywords %}
+        {% assign existing_slug = existing | slugify %}
+        {% if existing_slug == kw_slug %}
+          {% assign already = true %}
+        {% endif %}
+      {% endfor %}
+      {% unless already %}
+        {% assign research_keywords = research_keywords | push: kw %}
+      {% endunless %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% if research_keywords.size > 0 %}
+<nav class="research-nav writings-nav" aria-label="Filter research by keyword">
+  <button type="button" class="writings-nav-btn active" data-keyword="all">All</button>
+  {% for kw in research_keywords %}
+  <button type="button" class="writings-nav-btn" data-keyword="{{ kw | slugify }}">{{ kw }}</button>
+  {% endfor %}
+</nav>
+{% endif %}
+
 <ul class="research-list">
   {% for item in sorted_research %}
   {% assign paper_url = "" %}
@@ -250,7 +316,15 @@
     {% assign paper_url = item.links.doi %}
   {% endif %}
   {% assign abs_id = "research-abs-" | append: forloop.index %}
-  <li class="research-item">
+  {% assign item_keywords = item.keywords | default: item.tags %}
+  {% assign keyword_slugs = "" | split: "," %}
+  {% if item_keywords %}
+    {% for kw in item_keywords %}
+      {% assign kw_slug = kw | slugify %}
+      {% assign keyword_slugs = keyword_slugs | push: kw_slug %}
+    {% endfor %}
+  {% endif %}
+  <li class="research-item" data-keywords="{{ keyword_slugs | join: ',' }}">
     {% if item.abstract %}
     <input type="checkbox" id="{{ abs_id }}" class="research-abs-toggle">
     {% endif %}

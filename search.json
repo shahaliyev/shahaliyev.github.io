@@ -36,7 +36,7 @@ layout: none
     {
       "title"    : "{{ item.title | escape }}",
       "category" : "{{ item.venue_short | default: item.venue | escape }}",
-      "tags"     : "{{ item.tags | join: ', ' }}",
+      "tags"     : "{% if item.keywords %}{{ item.keywords | join: ', ' }}{% else %}{{ item.tags | join: ', ' }}{% endif %}",
       "url"      : "{% if item.links %}{{ item.links.paper | default: item.links.doi | default: item.url }}{% else %}{{ item.url }}{% endif %}",
       "date"     : "{{ item.date }}",
       "type"     : "research",
