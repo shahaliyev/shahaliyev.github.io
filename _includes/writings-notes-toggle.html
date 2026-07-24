@@ -1,15 +1,18 @@
 {% assign show_notes = page.lang != "az" %}
 {% assign show_research = true %}
+{% assign show_teaching = true %}
 {% if page.lang == "az" %}
   {% assign writings_label = "Yazılar" %}
   {% assign notes_label = "Qeydlər" %}
   {% assign research_label = "Tədqiqat" %}
-  {% assign toggle_aria = "Yazılar, qeydlər və tədqiqat" %}
+  {% assign teaching_label = "Tədris" %}
+  {% assign toggle_aria = "Yazılar, tədqiqat və tədris" %}
 {% else %}
   {% assign writings_label = "Writings" %}
   {% assign notes_label = "Notes" %}
   {% assign research_label = "Research" %}
-  {% assign toggle_aria = "Writings, notes, and research" %}
+  {% assign teaching_label = "Teaching" %}
+  {% assign toggle_aria = "Writings, notes, research, and teaching" %}
 {% endif %}
 
 {% assign view = include.view | default: "writings" %}
@@ -17,7 +20,7 @@
   {% assign view = "writings" %}
 {% endif %}
 
-{% if show_notes or show_research %}
+{% if show_notes or show_research or show_teaching %}
 <h1 class="writings-page-h1 writings-view-toggle" role="tablist" aria-label="{{ toggle_aria }}">
   <button type="button" role="tab" class="writings-view-btn{% if view == 'writings' %} active is-writings{% endif %}" data-view="writings" aria-pressed="{% if view == 'writings' %}true{% else %}false{% endif %}" aria-selected="{% if view == 'writings' %}true{% else %}false{% endif %}">
     {{ writings_label }}
@@ -30,6 +33,11 @@
   {% if show_research %}
   <button type="button" role="tab" class="writings-view-btn{% if view == 'research' %} active is-research{% endif %}" data-view="research" aria-pressed="{% if view == 'research' %}true{% else %}false{% endif %}" aria-selected="{% if view == 'research' %}true{% else %}false{% endif %}">
     {{ research_label }}
+  </button>
+  {% endif %}
+  {% if show_teaching %}
+  <button type="button" role="tab" class="writings-view-btn{% if view == 'teaching' %} active is-teaching{% endif %}" data-view="teaching" aria-pressed="{% if view == 'teaching' %}true{% else %}false{% endif %}" aria-selected="{% if view == 'teaching' %}true{% else %}false{% endif %}">
+    {{ teaching_label }}
   </button>
   {% endif %}
 </h1>

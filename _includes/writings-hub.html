@@ -1,6 +1,7 @@
 {% assign initial_view = include.initial_view | default: "writings" %}
 {% assign show_notes = page.lang != "az" %}
 {% assign show_research = true %}
+{% assign show_teaching = true %}
 {% if show_notes == false and initial_view == "notes" %}
   {% assign initial_view = "writings" %}
 {% endif %}
@@ -18,9 +19,11 @@
      data-page-title="{{ page.title | default: site.title[page.lang] | escape }}"
      data-notes-enabled="{% if show_notes %}true{% else %}false{% endif %}"
      data-research-enabled="{% if show_research %}true{% else %}false{% endif %}"
+     data-teaching-enabled="{% if show_teaching %}true{% else %}false{% endif %}"
      data-label-writings="{% if page.lang == 'az' %}Yazılar{% else %}Writings{% endif %}"
      data-label-notes="{% if page.lang == 'az' %}Qeydlər{% else %}Notes{% endif %}"
-     data-label-research="{% if page.lang == 'az' %}Tədqiqat{% else %}Research{% endif %}">
+     data-label-research="{% if page.lang == 'az' %}Tədqiqat{% else %}Research{% endif %}"
+     data-label-teaching="{% if page.lang == 'az' %}Tədris{% else %}Teaching{% endif %}">
   <div class="writings-section-header">
     {% include writings-notes-toggle.html view=initial_view %}
     {% include search.html %}
@@ -39,6 +42,12 @@
   {% if show_research %}
   <div id="research-panel" class="writings-panel{% if initial_view == 'research' %} is-active{% endif %}" data-view="research">
     {% include research_list.html %}
+  </div>
+  {% endif %}
+
+  {% if show_teaching %}
+  <div id="teaching-panel" class="writings-panel{% if initial_view == 'teaching' %} is-active{% endif %}" data-view="teaching">
+    {% include teaching_list.html %}
   </div>
   {% endif %}
 </div>
@@ -82,6 +91,11 @@
     color: #fff;
   }
 
+  .writings-view-btn.active.is-teaching {
+    background: #7c5c8a;
+    color: #fff;
+  }
+
   .notes-list ul a:hover,
   .notes-list ol a:hover {
     text-decoration: none;
@@ -93,4 +107,5 @@
 </style>
 
 <script src="{{ '/assets/js/notes-filter.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/teaching-filter.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/writings-view.js' | relative_url }}" defer></script>

@@ -6,10 +6,12 @@
     var lang = hub.getAttribute("data-lang") || "en";
     var notesEnabled = hub.getAttribute("data-notes-enabled") === "true";
     var researchEnabled = hub.getAttribute("data-research-enabled") === "true";
+    var teachingEnabled = hub.getAttribute("data-teaching-enabled") === "true";
     var pageTitle = hub.getAttribute("data-page-title") || "";
     var writingsPanel = document.getElementById("writings-panel");
     var notesPanel = document.getElementById("notes-panel");
     var researchPanel = document.getElementById("research-panel");
+    var teachingPanel = document.getElementById("teaching-panel");
     var toggleButtons = hub.querySelectorAll(".writings-view-btn");
     var searchContainer = hub.querySelector(".search-container");
     var searchInput = document.getElementById("search-input");
@@ -19,13 +21,15 @@
     var labels = {
       writings: hub.getAttribute("data-label-writings") || "Writings",
       notes: hub.getAttribute("data-label-notes") || "Notes",
-      research: hub.getAttribute("data-label-research") || "Research"
+      research: hub.getAttribute("data-label-research") || "Research",
+      teaching: hub.getAttribute("data-label-teaching") || "Teaching"
     };
 
     var placeholders = {
       writings: lang === "az" ? "Yazılarda axtar..." : "Search writings...",
       notes: lang === "az" ? "Qeydlərdə axtar..." : "Search notes...",
-      research: lang === "az" ? "Tədqiqatda axtar..." : "Search research..."
+      research: lang === "az" ? "Tədqiqatda axtar..." : "Search research...",
+      teaching: lang === "az" ? "Tədrisdə axtar..." : "Search teaching..."
     };
 
     var isHome = hub.getAttribute("data-is-home") === "true";
@@ -38,7 +42,8 @@
     var viewHashes = {
       writings: "#writings",
       notes: "#notes",
-      research: "#research"
+      research: "#research",
+      teaching: "#teaching"
     };
 
     var searchIndex = null;
@@ -55,6 +60,7 @@
       var h = hash || "";
       if (h === "#notes" || h === "#writings-hub") return "notes";
       if (h === "#research") return "research";
+      if (h === "#teaching") return "teaching";
       if (h === "#writings") return "writings";
       return null;
     }
@@ -62,6 +68,7 @@
     function isViewEnabled(view) {
       if (view === "notes") return notesEnabled;
       if (view === "research") return researchEnabled;
+      if (view === "teaching") return teachingEnabled;
       return view === "writings";
     }
 
@@ -90,11 +97,13 @@
       return searchIndex.filter(function (item) {
         if (!notesEnabled && item.type === "note") return false;
         if (!researchEnabled && item.type === "research") return false;
+        if (!teachingEnabled && item.type === "teaching") return false;
         if (lang === "az" && item.type === "note") return false;
         if (item.lang && item.lang !== lang && item.type === "writing") return false;
         if (scope === "writings") return item.type === "writing";
         if (scope === "notes") return item.type === "note";
         if (scope === "research") return item.type === "research";
+        if (scope === "teaching") return item.type === "teaching";
         return true;
       });
     }
@@ -129,6 +138,7 @@
         btn.classList.toggle("is-writings", isActive && view === "writings");
         btn.classList.toggle("is-notes", isActive && view === "notes");
         btn.classList.toggle("is-research", isActive && view === "research");
+        btn.classList.toggle("is-teaching", isActive && view === "teaching");
         btn.setAttribute("aria-pressed", isActive ? "true" : "false");
         btn.setAttribute("aria-selected", isActive ? "true" : "false");
       });
@@ -138,7 +148,7 @@
       if (!isViewEnabled(view)) {
         view = "writings";
       }
-      if (view !== "writings" && view !== "notes" && view !== "research") return;
+      if (view !== "writings" && view !== "notes" && view !== "research" && view !== "teaching") return;
       currentView = view;
 
       writingsPanel.classList.toggle("is-active", view === "writings");
@@ -148,10 +158,13 @@
       if (researchPanel) {
         researchPanel.classList.toggle("is-active", view === "research");
       }
+      if (teachingPanel) {
+        teachingPanel.classList.toggle("is-active", view === "teaching");
+      }
 
       updateToggleButtons(view);
 
-      if ((notesEnabled || researchEnabled) && !isHome) {
+      if ((notesEnabled || researchEnabled || teachingEnabled) && !isHome) {
         document.title = labels[view] || pageTitle;
       } else if (pageTitle) {
         document.title = pageTitle;
@@ -192,7 +205,7 @@
         }
       }
 
-      if (currentView === "notes" || currentView === "research" || getNotesTagFromUrl()) {
+      if (currentView === "notes" || currentView === "research" || currentView === "teaching" || getNotesTagFromUrl()) {
         scrollToWritingsHub();
       }
 
@@ -211,7 +224,7 @@
           window.applyNotesTagFromUrl();
         }
       }
-      if (view === "notes" || view === "research") {
+      if (view === "notes" || view === "research" || view === "teaching") {
         scrollToWritingsHub();
       }
     });

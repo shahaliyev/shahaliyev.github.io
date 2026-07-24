@@ -45,4 +45,19 @@ layout: none
     }
   {% endfor %}
   {% endif %}
+  {% if site.teaching %}
+  {% for item in site.teaching %}
+    ,
+    {
+      "title"    : "{{ item.title | escape }}",
+      "category" : "{{ item.institution | escape }}",
+      "tags"     : "",
+      "url"      : "{% if item.links.course %}{{ item.links.course }}{% else %}{{ item.url }}{% endif %}",
+      "date"     : "{{ item.date }}",
+      "type"     : "teaching",
+      "lang"     : "en",
+      "content"  : {{ item.description | default: item.content | strip_html | strip_newlines | jsonify }}
+    }
+  {% endfor %}
+  {% endif %}
 ]

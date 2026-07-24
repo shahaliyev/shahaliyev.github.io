@@ -37,6 +37,9 @@ collections:
   research:
     output: false
     permalink: /research/:slug/
+  teaching:
+    output: false
+    permalink: /teaching/:slug/
 
 
 defaults:
@@ -70,6 +73,11 @@ defaults:
   -
     scope:
       path: "_research"
+    values:
+      lang: "en"
+  -
+    scope:
+      path: "_teaching"
     values:
       lang: "en"
 
