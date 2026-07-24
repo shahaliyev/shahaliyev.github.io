@@ -123,7 +123,7 @@ p.logo {
 .site-header {
   box-sizing: border-box;
   max-width: 700px;
-  margin: 2rem auto 1.5rem;
+  margin: 40px auto 1.5rem;
   padding: 0 10px;
   text-align: center;
 }
@@ -253,7 +253,7 @@ a, button {
 
 @media screen and (max-width: 768px) {
   .site-header {
-    margin-top: 1.5rem;
+    margin-top: 40px;
     margin-bottom: 1.25rem;
   }
 

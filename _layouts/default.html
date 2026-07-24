@@ -56,17 +56,15 @@
 </head>
 
 <body{% if page.is_home %} class="home-page"{% endif %}>
-  {% unless page.is_home %}
   <header class="site-header">
     <p class="logo">
       {% if page.lang == "en" %}
         <a href="/">{{ site.title[page.lang] }}</a>
       {% else %}
-        <a href="{{ page.lang | relative_url }}">{{ site.title[page.lang] }}</a>
+        <a href="{{ '/az' | relative_url }}">{{ site.title[page.lang] }}</a>
       {% endif %}
     </p>
   </header>
-  {% endunless %}
 
   <main>
     {{ content }}
