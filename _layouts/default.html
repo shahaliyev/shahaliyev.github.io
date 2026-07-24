@@ -50,39 +50,40 @@
     {% if content contains '<pre' %}
       {% assign needs_highlight = true %}
     {% endif %}
-    {% if content contains '$$' or content contains '\(' or content contains '\[' %}
+    {% if content contains '$$' %}
       {% assign needs_math = true %}
     {% endif %}
   {% endunless %}
 
   {% if needs_math %}
-  <!-- MathJax Latex -->
-  <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+  <!-- KaTeX (self-hosted; same $$ / \( \) / \[ \] delimiters as MathJax) -->
+  <link rel="stylesheet" href="{{ '/assets/vendor/katex/katex.min.css' | relative_url }}">
+  <script defer src="{{ '/assets/vendor/katex/katex.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/vendor/katex/auto-render.min.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/js/katex-init.js' | relative_url }}"></script>
   {% endif %}
 
   {% if needs_highlight %}
-  <!-- Highlight.js (core only; load uncommon language packs as needed) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <!-- Highlight.js (self-hosted; uncommon language packs as needed) -->
+  <link rel="stylesheet" href="{{ '/assets/vendor/highlightjs/default.min.css' | relative_url }}">
+  <script defer src="{{ '/assets/vendor/highlightjs/highlight.min.js' | relative_url }}"></script>
   {% if content contains 'language-ada' %}
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/ada.min.js"></script>
+  <script defer src="{{ '/assets/vendor/highlightjs/languages/ada.min.js' | relative_url }}"></script>
   {% endif %}
   {% if content contains 'language-scheme' %}
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/scheme.min.js"></script>
+  <script defer src="{{ '/assets/vendor/highlightjs/languages/scheme.min.js' | relative_url }}"></script>
   {% endif %}
   {% if content contains 'language-lisp' %}
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/lisp.min.js"></script>
+  <script defer src="{{ '/assets/vendor/highlightjs/languages/lisp.min.js' | relative_url }}"></script>
   {% endif %}
   {% if content contains 'language-fortran' %}
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/fortran.min.js"></script>
+  <script defer src="{{ '/assets/vendor/highlightjs/languages/fortran.min.js' | relative_url }}"></script>
   {% endif %}
   {% if content contains 'language-prolog' %}
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/prolog.min.js"></script>
+  <script defer src="{{ '/assets/vendor/highlightjs/languages/prolog.min.js' | relative_url }}"></script>
   {% endif %}
   {% if content contains 'language-fsharp' %}
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/fsharp.min.js"></script>
+  <script defer src="{{ '/assets/vendor/highlightjs/languages/fsharp.min.js' | relative_url }}"></script>
   {% endif %}
   <script defer src="{{ '/assets/js/highlight-init.js' | relative_url }}"></script>
   {% endif %}
@@ -107,7 +108,8 @@
   </main>
 
   <footer>
-    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> | {% include lang-switch.html %}</p>
+    <p>{{ site.author[page.lang] }} &copy; {{ "now" | date: "%Y" }} | <a href="{{ '/feed.xml' | relative_url }}">RSS</a> | <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> | {% include privacy-notice.html %} | {% include lang-switch.html %}</p>
+    {% include privacy-dialog.html %}
   </footer>
 
   <button id="scroll-btn" type="button" aria-label="Back to top" title="Back to top" onclick="scrollToTop()">
@@ -118,5 +120,6 @@
   <!-- JS -->
   <script src="{{ '/assets/js/app.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/js/copy.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/video-embed.js' | relative_url }}" defer></script>
 </body>
 </html>

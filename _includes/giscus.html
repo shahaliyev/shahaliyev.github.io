@@ -1,41 +1,53 @@
-<div id="giscus-container" class="giscus-container"></div>
+<div id="giscus-container" class="giscus-container">
+  <div class="giscus-load-panel">
+    <p class="giscus-load-heading">Comments</p>
+    <button type="button" class="giscus-load-btn" id="giscus-load-btn">
+      Load comments
+    </button>
+    <p class="giscus-privacy-note">Powered by Giscus · GitHub cookies may apply if you sign in</p>
+  </div>
+</div>
 <script>
 (function () {
-  var host = document.getElementById("giscus-container");
-  if (!host) return;
+  var host = document.getElementById('giscus-container');
+  var btn = document.getElementById('giscus-load-btn');
+  if (!host || !btn) return;
 
   var loaded = false;
   function loadGiscus() {
     if (loaded) return;
     loaded = true;
-    var s = document.createElement("script");
-    s.src = "https://giscus.app/client.js";
+    btn.disabled = true;
+    btn.textContent = 'Loading…';
+
+    var panel = host.querySelector('.giscus-load-panel');
+
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
     s.async = true;
-    s.crossOrigin = "anonymous";
-    s.setAttribute("data-repo", "shahaliyev/shahaliyev.github.io");
-    s.setAttribute("data-repo-id", "R_kgDOK_qyzg");
-    s.setAttribute("data-category", "Announcements");
-    s.setAttribute("data-category-id", "DIC_kwDOK_qyzs4CkG4R");
-    s.setAttribute("data-mapping", "pathname");
-    s.setAttribute("data-strict", "0");
-    s.setAttribute("data-reactions-enabled", "1");
-    s.setAttribute("data-emit-metadata", "0");
-    s.setAttribute("data-input-position", "bottom");
-    s.setAttribute("data-theme", "preferred_color_scheme");
-    s.setAttribute("data-lang", "en");
+    s.crossOrigin = 'anonymous';
+    s.setAttribute('data-repo', 'shahaliyev/shahaliyev.github.io');
+    s.setAttribute('data-repo-id', 'R_kgDOK_qyzg');
+    s.setAttribute('data-category', 'Announcements');
+    s.setAttribute('data-category-id', 'DIC_kwDOK_qyzs4CkG4R');
+    s.setAttribute('data-mapping', 'pathname');
+    s.setAttribute('data-strict', '0');
+    s.setAttribute('data-reactions-enabled', '1');
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', 'bottom');
+    s.setAttribute('data-theme', 'preferred_color_scheme');
+    s.setAttribute('data-lang', 'en');
+    s.onload = function () {
+      if (panel) panel.remove();
+    };
+    s.onerror = function () {
+      loaded = false;
+      btn.disabled = false;
+      btn.textContent = 'Load comments';
+    };
     host.appendChild(s);
   }
 
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; })) {
-        io.disconnect();
-        loadGiscus();
-      }
-    }, { rootMargin: "400px 0px" });
-    io.observe(host);
-  } else {
-    window.addEventListener("load", loadGiscus);
-  }
+  btn.addEventListener('click', loadGiscus);
 })();
 </script>
