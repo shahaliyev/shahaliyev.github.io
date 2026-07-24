@@ -24,6 +24,17 @@ keywords:
   - Hand gesture recognition
   - Pre-trained model comparison
   - Sign language
+bibtex: |
+  @article{representation_mte2026,
+    title = {Representation space evaluation of feature extractors for model transferability in fine-grained recognition},
+    author = {Shahaliyev, Ismayil and Hasanov, Jamaladdin},
+    journal = {Signal, Image and Video Processing},
+    volume = {20},
+    pages = {439},
+    year = {2026},
+    doi = {10.1007/s11760-026-05474-4},
+    url = {https://doi.org/10.1007/s11760-026-05474-4}
+  }
 abstract: >
   This paper introduces an evaluation pipeline for transferability estimation
   in fine-grained visual recognition tasks, with a focus on hand gesture
