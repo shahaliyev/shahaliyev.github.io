@@ -1,0 +1,49 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  {% assign feed_title = site.title.en | default: site.title %}
+  {% assign feed_desc = site.description.en | default: site.description %}
+  {% assign feed_author = site.author.en | default: site.author %}
+  {% assign writings = site.posts | where_exp: "item", "item.draft != true" %}
+  {% assign notes = site.notes | where_exp: "item", "item.draft != true" %}
+  {% assign items = writings | concat: notes | sort: "date" | reverse %}
+  <title type="text">{{ feed_title | xml_escape }}</title>
+  <subtitle type="text">{{ feed_desc | xml_escape }}</subtitle>
+  <link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml"/>
+  <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>{{ '/feed.xml' | absolute_url | xml_escape }}</id>
+  <author>
+    <name>{{ feed_author | xml_escape }}</name>
+  </author>
+  {% for item in items limit: 30 %}
+  {% assign entry_title = item.title | default: item.label | strip %}
+  {% if entry_title == "" %}
+    {% assign entry_title = item.content | strip_html | normalize_whitespace | truncate: 80 %}
+  {% endif %}
+  {% if entry_title == "" %}
+    {% assign entry_title = "Note" %}
+  {% endif %}
+  <entry{% if item.lang %} xml:lang="{{ item.lang }}"{% endif %}>
+    <title type="html">{{ entry_title | smartify | strip_html | normalize_whitespace | xml_escape }}</title>
+    <link href="{{ item.url | absolute_url }}" rel="alternate" type="text/html"/>
+    <published>{{ item.date | date_to_xmlschema }}</published>
+    <updated>{{ item.last_modified_at | default: item.date | date_to_xmlschema }}</updated>
+    <id>{{ item.id | absolute_url | xml_escape }}</id>
+    <author>
+      <name>{{ feed_author | xml_escape }}</name>
+    </author>
+    {% if item.collection == "notes" %}
+    <category term="notes"/>
+    {% else %}
+    <category term="writings"/>
+    {% endif %}
+    {% for tag in item.tags %}
+    <category term="{{ tag | xml_escape }}"/>
+    {% endfor %}
+    <content type="html">{{ item.content | strip | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>

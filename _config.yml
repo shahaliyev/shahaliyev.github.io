@@ -85,9 +85,11 @@ defaults:
 # Build settings
 theme:
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+
+# Combined writings + notes Atom feed lives in /feed.xml (custom).
+# jekyll-feed is not used because it cannot merge collections into one feed.
 
 markdown: kramdown
 kramdown:
