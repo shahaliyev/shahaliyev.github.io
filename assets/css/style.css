@@ -87,8 +87,53 @@ p, li, ol li, .table {
   font-size: 1.1em;
 }
 
-.footnotes li, .footnotes p {
+/* Hide manual "Footnotes" headings; separator is the rule on .footnotes */
+h3#footnotes,
+br:has(+ h3#footnotes) {
+  display: none;
+}
+
+.footnotes {
+  margin: 2.25em 0 0;
+  padding: 1.1em 0 0;
+  border-top: 1px solid #e4e4e4;
+  color: #8a8a8a;
+  font-size: 0.82em;
+}
+
+.footnotes ol {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.footnotes li {
+  margin: 0.35em 0;
+}
+
+.footnotes li,
+.footnotes p {
+  font-family: 'Roboto', sans-serif;
   font-size: 1em;
+  line-height: 1.5;
+  color: inherit;
+}
+
+.footnotes a {
+  color: #8a96b0;
+}
+
+.footnotes a:hover {
+  color: #6275a0;
+}
+
+.footnotes .reversefootnote {
+  margin-left: 0.15em;
+  text-decoration: none;
+  color: #b0b0b0;
+}
+
+.footnotes .reversefootnote:hover {
+  color: #6275a0;
 }
 
 .logo a {
@@ -132,26 +177,124 @@ p.logo {
 }
 
 blockquote {
-  /* border-left: 4px solid #3498db; 
-  background-color: #f0f7fc;
-  padding: 5px;
-  padding-left: 20px; 
-  margin: 10px 0;
-  font-style: italic;
-  border-radius: 8px;
-  font-size: 1em; */
-
-  background-color: #f0f7fc;
-  border-left: 5px solid #3498db; 
-  padding: 5px 5px 5px 15px;
-  margin: 20px 0;
-  font-size: 1em;
-  color: #333;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin: 1.6em 0;
+  padding: 0.1em 0 0.1em 1.15em;
+  border-left: 2px solid #c8c8c8;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  color: #444;
 }
+
 blockquote p {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  font-size: 1.05em;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0.55em 0;
+  color: #3f3f3f;
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Footnote marks must not stretch individual poem lines inside quotes */
+blockquote sup,
+sup[role="doc-noteref"] {
+  font-size: 0.72em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0;
+  vertical-align: super;
+}
+
+blockquote a.footnote,
+a.footnote {
+  text-decoration: none;
+  color: #6275a0;
+}
+
+blockquote a.footnote:hover,
+a.footnote:hover {
+  color: #35425f;
+}
+
+blockquote .blockquote-footnote-refs {
+  white-space: nowrap;
+}
+
+/* MkDocs-style footnote hover tooltips */
+.footnote-tooltip {
+  position: fixed;
+  z-index: 40;
+  box-sizing: border-box;
+  max-width: min(20rem, calc(100vw - 1.5rem));
+  padding: 0.45em 0.65em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #7a7a7a;
+  text-align: left;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+.footnote-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.footnote-tooltip p {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.footnote-tooltip p + p {
+  margin-top: 0.4em;
+}
+
+.footnote-tooltip a {
+  color: #8a96b0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footnote-tooltip a:hover {
+  color: #6275a0;
+}
+
+.footnote-tooltip .reversefootnote {
+  display: none;
+}
+
+.footnote-tooltip em {
+  font-style: italic;
+}
+
+sup[role="doc-noteref"] a.footnote:focus-visible {
+  outline: 2px solid #a0a8b8;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 

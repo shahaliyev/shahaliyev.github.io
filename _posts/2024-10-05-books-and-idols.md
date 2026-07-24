@@ -9,7 +9,7 @@ We read, but what we read isn't merely the writing of an author anymore. We read
 
 Books are for the refinement of our experiences and should prepare us for life—action. In books, we cannot find answers to the most important questions of life, for no one knows the answer. Famous writers are no more than talented showmen who have mastered their craft — the craft of word, structure of language, lyrical flow of sentences, rhythm of syllables, consonants, vowels. The main purpose of literature is to entertain, soothe us, or rush the blood in our veins. We find solace in the novels of Balzac or Stendhal with the hope of understanding the “springs of society” (as Maurois would put it), or living an elevated, passionate life. We desperately hope that their stories will finally disillusion us, when in reality, because of our erroneous reckoning, they do the opposite and impose on us an unrealistic view of the world. One should realize: the eighteenth century French morals, confined by the experience, imagination, and complexity of its author’s character are nothing but distortion of reality. Nabokov didn’t have false expectations of literature:
 
->[^1] We turn to the storyteller for entertainment, for mental stimulation of the simplest kind, for emotional involvement, for the pleasure of wandering in some distant regions of space and time. A slightly different, though not necessarily higher, cast of mind seeks teachers in writers. […] Unfortunately, I know people who read French and Russian novelists in order to find out something about life in gay Paris or in sad Russia.
+> We turn to the storyteller for entertainment, for mental stimulation of the simplest kind, for emotional involvement, for the pleasure of wandering in some distant regions of space and time. A slightly different, though not necessarily higher, cast of mind seeks teachers in writers. […] Unfortunately, I know people who read French and Russian novelists in order to find out something about life in gay Paris or in sad Russia.[^1]
 
 Knowledge propagates through time, and authors I read have already studied classics in great depth. Not only studied, but purified. Not only purified, but opposed. Not only opposed, but rejected. Does it make someone a better man if he has studied the complete oeuvre of Plutarch or Seneca? Isn’t it obvious that in Montaigne I can find both the refined Plutarch *and* Seneca? Or that the whole knowledge corpus of humanity sums up to fifty ideas, being told and retold, over and over and over again in different forms and mediums?
 
@@ -19,7 +19,7 @@ Friends we admire are full of shortcomings, great minds we venerate are as troub
 
 We approach a scholar, an eternal student of philosophy, with the hope of gaining wisdom, and to our surprise, we soon realize that he is as miserable as we are. He has neither answers nor sagacity and, like a parrot, he repeats the ideas of influential men who have lived centuries before him and contradicted each other. Wisdom comes from not theory, but experience, from not education, but action. I know the true story of an illiterate and poor peasant who, for his family, exacted his revenge on a wicked yet powerful official.
 
->[^3] One thing is certain today — the illiterate are definitely not the least intelligent among us. If it be knowledge or wisdom one is seeking, then one had better go direct to the source. And the source is not the scholar or philosopher, not the master, saint, or teacher, but life itself — direct experience of life.
+> One thing is certain today — the illiterate are definitely not the least intelligent among us. If it be knowledge or wisdom one is seeking, then one had better go direct to the source. And the source is not the scholar or philosopher, not the master, saint, or teacher, but life itself — direct experience of life.[^3]
 
 An ill-mind seeks answers, wanders, casts round for the *source* as if the source is not under his nose. His mind is chastised by infinite questions of ‘how’s: *“How to get the direct experience of life”?*, *“How to live life at its full intensity?”*, *“How to live with passion?”* He looks for an external remedy as if the remedy is outside, and he turns to limitless books and countless works of art, only to be disenchanted. But at the end of painful disenchantment, there is a glimmer of hope, and the coda of oblivious idolatry may eventually bring a cure.
 
@@ -45,10 +45,10 @@ I left this essay alone for several days to come back and look at it with a fres
 
 There is nothing in my writing that I am certain about, yet my sentences claim confidence. I am afraid of misleading someone to my perplexed understanding of reality, but I shouldn't assume more self-importance than I deserve, and the impact I can have. I have already installed wiring around the hazardous void of my thoughts, and what I write is nothing but a checkpoint to describe my intellectual capacity in some region of time and space.
 
-> The Moving Finger writes; and, having writ [^4]<br>
+> The Moving Finger writes; and, having writ<br>
 Moves on: nor all thy Piety nor Wit<br>
 Shall lure it back to cancel half a Line,<br>
-Nor all thy Tears wash out a Word of it.<br>
+Nor all thy Tears wash out a Word of it.[^4]
 
 I draft the following lines: *In a man dozes a seed of greatness and he has no interest in breaking his gramophone of lullabies. This gramophone is made up of books and idols.* With these sentences, I become certain that this essay is only a literary exercise for me. There is nothing original in it, it is a copy of Emerson and others who condensed a proportion of existing knowledge of their time. Everything I say, and everything I am going to say, has been said before, more clearly, precisely, beautifully. *There is nothing new under the sun.* A wider look should also tell to the reader that this writing is a result of books I have read.
 
