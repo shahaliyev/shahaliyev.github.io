@@ -47,7 +47,7 @@
   font-family: 'Lora', serif;
 }
 
-.note-page .note-content p {
+.note-page .note-content > p {
   font-family: 'Lora', serif;
 }
 

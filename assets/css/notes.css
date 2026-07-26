@@ -128,14 +128,14 @@ a.note-title-link:hover {
   line-height: 1.6;
 }
 
-.note-content p {
+.note-content > p {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   margin: 0.75em 0;
 }
 
-.note-content ul,
-.note-content ol {
+.note-content > ul,
+.note-content > ol {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   margin: 0.75em 0;
@@ -143,15 +143,16 @@ a.note-title-link:hover {
   color: #24292f;
 }
 
-.note-content ul {
+.note-content > ul {
   list-style-type: disc;
 }
 
-.note-content ol {
+.note-content > ol {
   list-style-type: decimal;
 }
 
-.note-content li {
+.note-content > ul li,
+.note-content > ol li {
   font-size: 1rem;
   margin: 0.35em 0;
   line-height: 1.6;
@@ -167,12 +168,16 @@ a.note-title-link:hover {
   list-style-type: circle;
 }
 
-.note-content a {
+.note-content > p a,
+.note-content > ul a,
+.note-content > ol a {
   color: #556a9a;
   text-decoration: none;
 }
 
-.note-content a:hover {
+.note-content > p a:hover,
+.note-content > ul a:hover,
+.note-content > ol a:hover {
   text-decoration: underline;
 }
 
